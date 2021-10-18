@@ -66,8 +66,9 @@ FOREIGN KEY (book_id) REFERENCES book(book_id)
 );
 
 CREATE TABLE login (
-login_id INT (10) PRIMARY KEY,
-password VARCHAR(50)
+user_id INT (10) PRIMARY KEY,
+password VARCHAR(50),
+FOREIGN KEY (user_id) REFERENCES user(user_id)
 );
 
 DROP USER IF EXISTS 'Pomegranate'@'localhost';
