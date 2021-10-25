@@ -9,18 +9,18 @@ import java.sql.Date;
 @Entity
 public class Book {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int book_id;
     private String ISBN;
     private String title;
     private String description;
     private int year;
 
-    public int getId() {
+    public int getBook_id() {
         return book_id;
     }
 
-    public void setId(int id) {
+    public void setBook_id(int id) {
         this.book_id = id;
     }
 

@@ -4,10 +4,7 @@ import com.explosivepomegranate.rest.api.model.Book;
 import com.explosivepomegranate.rest.api.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
 
@@ -32,12 +29,12 @@ public class BookController {
      * add a new book --------still a draft, model is still incomplete and this method will require some work work
      * */
     @PostMapping(path = "/addBook")
-    public @ResponseBody Book addNewBook(@RequestParam String isbn, @RequestParam String title, @RequestParam String description, @RequestParam int year) {
+    public @ResponseBody Book addNewBook(@RequestBody Book sendBookInfo) {
         Book book = new Book();
-        book.setISBN(isbn);
-        book.setTitle(title);
-        book.setDescription(description);
-        book.setYear(year);
+        book.setISBN(sendBookInfo.getISBN());
+        book.setTitle(sendBookInfo.getTitle());
+        book.setDescription(sendBookInfo.getDescription());
+        book.setYear(sendBookInfo.getYear());
 
         bookRepository.save(book);
         return book;
