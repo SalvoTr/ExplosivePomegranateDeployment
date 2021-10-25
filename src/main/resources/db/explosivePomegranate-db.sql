@@ -67,7 +67,7 @@ CREATE TABLE borrowed(
 
 CREATE TABLE login (
                        user_id INT PRIMARY KEY,
-                       password VARCHAR(50),
+                       password VARCHAR(200),
                        FOREIGN KEY (user_id) REFERENCES  user(user_id)
 );
 
@@ -153,7 +153,7 @@ INSERT INTO library.category VALUES(5,'Technic');
 INSERT INTO library.category VALUES(6,'Politic');
 INSERT INTO library.category VALUES(7,'History');
 
-/* add content to book_category, done by Clelia*//*
+/* add content to book_category, done by Clelia*/
 INSERT INTO library.book_category VALUES(3,1);
 INSERT INTO library.book_category VALUES(6,1);
 INSERT INTO library.book_category VALUES(1,2);
@@ -167,13 +167,13 @@ INSERT INTO library.book_category VALUES(10,5);
 INSERT INTO library.book_category VALUES(11,6);
 INSERT INTO library.book_category VALUES(12,6);
 INSERT INTO library.book_category VALUES(13,7);
-INSERT INTO library.book_category VALUES(14,7);*/
+INSERT INTO library.book_category VALUES(14,7);
 
-/* add content to role, done by Clelia*//*
+/* add content to role, done by Clelia*/
 INSERT INTO library.role VALUES(1, 'ROLE_ADMIN');
 INSERT INTO library.role VALUES(2, 'ROLE_USER');
-*/
-/* add content to user, done by Clelia *//*
+
+/* add content to user, done by Clelia */
 INSERT INTO library.user VALUES(1, 'Sonja','Nussbaumer', 'sonja.nussbaumer@students.fhnw.ch', 1);
 INSERT INTO library.user VALUES(2, 'Rebecca','Beutling', 'rebecca.beutling@students.fhnw.ch', 1);
 INSERT INTO library.user VALUES(3, 'Salvatore','Trupia', 'salvatore.trupia@students.fhnw.ch', 1);
@@ -182,61 +182,60 @@ INSERT INTO library.user VALUES(5, 'Paul','Hansel', 'paul.hansel@students.fhnw.c
 INSERT INTO library.user VALUES(6, 'Ursula','Jankiv', 'ursula.jankiv@students.fhnw.ch', 2);
 INSERT INTO library.user VALUES(7, 'Andreas','Martin', 'andreas.martin@fhnw.ch', 1);
 INSERT INTO library.user VALUES(8, 'Devid','Montecchiari', 'devid.montecchiari@fhnw.ch', 1);
-INSERT INTO library.user VALUES(9, 'Charuta','Pande', 'charuta.pande@fhnw.ch', 1);*/
+INSERT INTO library.user VALUES(9, 'Charuta','Pande', 'charuta.pande@fhnw.ch', 1);
 
-/* add content to borrowed, done by Clelia *//*
-INSERT INTO library.borrowed(1,9,5,'2021-01-03','2021-01-30',NULL,NULL,TRUE );
-INSERT INTO library.borrowed(2,8,14,'2021-01-03','2021-01-10',NULL,'Coffe stain on first page',TRUE );
-INSERT INTO library.borrowed(3,7,1,'2021-01-15','2021-02-01',NULL,NULL,TRUE );
-INSERT INTO library.borrowed(4,6,2,'2021-02-01','2021-02-20',NULL,'Comment added with ink on some of the pages',TRUE );
-INSERT INTO library.borrowed(5,5,3,'2021-03-01','2021-03-05',NULL,NULL,TRUE );
-INSERT INTO library.borrowed(6,4,4,'2021-01-01','2021-03-25',NULL,NULL,TRUE );
-INSERT INTO library.borrowed(7,3,5,'2021-04-01','2021-04-02',NULL,'Book cover is instable',TRUE );
-INSERT INTO library.borrowed(8,2,6,'2021-04-25','2021-05-07',NULL,'someone folded the edged',TRUE );
-INSERT INTO library.borrowed(9,1,7,'2021-05-07','2021-05-010',NULL,NULL,TRUE );
-INSERT INTO library.borrowed(10,1,8,'2021-05-07','2021-05-19',NULL,NULL,TRUE );
-INSERT INTO library.borrowed(11,2,9,'2021-05-11','2021-06-04',NULL,'Last page is ripped out- nothing important, all important pages are there',TRUE );
-INSERT INTO library.borrowed(12,3,10,'2021-06-02','2021-06-29',NULL,NULL,TRUE );
-INSERT INTO library.borrowed(13,4,11,'2021-06-03','2021-06-17',NULL,NULL,TRUE );
-INSERT INTO library.borrowed(14,5,12,'2021-06-14','2021-06-28',NULL,NULL,TRUE );
-INSERT INTO library.borrowed(15,6,13,'2021-06-23','2021-07-12',NULL,NULL,TRUE );
-INSERT INTO library.borrowed(16,7,14,'2021-07-01','2021-07-11',NULL,NULL,TRUE );
-INSERT INTO library.borrowed(17,8,14,'2021-07-02','2021-07-13',NULL,NULL,TRUE );
-INSERT INTO library.borrowed(18,9,13,'2021-07-05','2021-07-30',NULL,NULL,TRUE );
-INSERT INTO library.borrowed(19,9,12,'2021-07-07','2021-07-13',NULL,'Ink stain in chapter 5',TRUE );
-INSERT INTO library.borrowed(20,8,11,'2021-08-01','2021-08-17',NULL,NULL,TRUE );
-INSERT INTO library.borrowed(21,7,10,'2021-08-04','2021-08-20',NULL,NULL,TRUE );
-INSERT INTO library.borrowed(22,6,9,'2021-08-09','2021-08-28',NULL,NULL,TRUE );
-INSERT INTO library.borrowed(23,5,8,'2021-09-01','2021-09-12',NULL,NULL,TRUE );
-INSERT INTO library.borrowed(24,4,7,'2021-09-02','2021-09-13',NULL,'Someone drew a funny face on the author image',FALSE );
-INSERT INTO library.borrowed(25,3,6,'2021-09-15','2021-10-01',NULL,NULL,FALSE );
-INSERT INTO library.borrowed(26,2,5,'2021-09-20','2021-10-17',NULL,'Book cover is damaged',FALSE );
-INSERT INTO library.borrowed(27,1,4,'2021-10-01','2021-10-22',NULL,NULL,FALSE );
-INSERT INTO library.borrowed(28,1,3,'2021-10-01','2021-10-12',NULL,NULL,FALSE );
-INSERT INTO library.borrowed(29,2,2,'2021-10-22','2021-10-28',NULL,NULL,FALSE );
-INSERT INTO library.borrowed(30,3,1,'2021-10-14','2021-11-05',NULL,NULL,FALSE );*/
+/* add content to borrowed, done by Clelia */
+INSERT INTO library.borrowed VALUES(1,9,5,'2021-01-03','2021-01-30',NULL,NULL,TRUE );
+INSERT INTO library.borrowed VALUES(2,8,14,'2021-01-03','2021-01-10',NULL,'Coffe stain on first page',TRUE );
+INSERT INTO library.borrowed VALUES(3,7,1,'2021-01-15','2021-02-01',NULL,NULL,TRUE );
+INSERT INTO library.borrowed VALUES(4,6,2,'2021-02-01','2021-02-20',NULL,'Comment added with ink on some of the pages',TRUE );
+INSERT INTO library.borrowed VALUES(5,5,3,'2021-03-01','2021-03-05',NULL,NULL,TRUE );
+INSERT INTO library.borrowed VALUES(6,4,4,'2021-01-01','2021-03-25',NULL,NULL,TRUE );
+INSERT INTO library.borrowed VALUES(7,3,5,'2021-04-01','2021-04-02',NULL,'Book cover is instable',TRUE );
+INSERT INTO library.borrowed VALUES(8,2,6,'2021-04-25','2021-05-07',NULL,'someone folded the edged',TRUE );
+INSERT INTO library.borrowed VALUES(9,1,7,'2021-05-07','2021-05-010',NULL,NULL,TRUE );
+INSERT INTO library.borrowed VALUES(10,1,8,'2021-05-07','2021-05-19',NULL,NULL,TRUE );
+INSERT INTO library.borrowed VALUES(11,2,9,'2021-05-11','2021-06-04',NULL,'Last page is ripped out- nothing important, all important pages are there',TRUE );
+INSERT INTO library.borrowed VALUES(12,3,10,'2021-06-02','2021-06-29',NULL,NULL,TRUE );
+INSERT INTO library.borrowed VALUES(13,4,11,'2021-06-03','2021-06-17',NULL,NULL,TRUE );
+INSERT INTO library.borrowed VALUES(14,5,12,'2021-06-14','2021-06-28',NULL,NULL,TRUE );
+INSERT INTO library.borrowed VALUES(15,6,13,'2021-06-23','2021-07-12',NULL,NULL,TRUE );
+INSERT INTO library.borrowed VALUES(16,7,14,'2021-07-01','2021-07-11',NULL,NULL,TRUE );
+INSERT INTO library.borrowed VALUES(17,8,14,'2021-07-02','2021-07-13',NULL,NULL,TRUE );
+INSERT INTO library.borrowed VALUES(18,9,13,'2021-07-05','2021-07-30',NULL,NULL,TRUE );
+INSERT INTO library.borrowed VALUES(19,9,12,'2021-07-07','2021-07-13',NULL,'Ink stain in chapter 5',TRUE );
+INSERT INTO library.borrowed VALUES(20,8,11,'2021-08-01','2021-08-17',NULL,NULL,TRUE );
+INSERT INTO library.borrowed VALUES(21,7,10,'2021-08-04','2021-08-20',NULL,NULL,TRUE );
+INSERT INTO library.borrowed VALUES(22,6,9,'2021-08-09','2021-08-28',NULL,NULL,TRUE );
+INSERT INTO library.borrowed VALUES(23,5,8,'2021-09-01','2021-09-12',NULL,NULL,TRUE );
+INSERT INTO library.borrowed VALUES(24,4,7,'2021-09-02','2021-09-13',NULL,'Someone drew a funny face on the author image',FALSE );
+INSERT INTO library.borrowed VALUES(25,3,6,'2021-09-15','2021-10-01',NULL,NULL,FALSE );
+INSERT INTO library.borrowed VALUES(26,2,5,'2021-09-20','2021-10-17',NULL,'Book cover is damaged',FALSE );
+INSERT INTO library.borrowed VALUES(27,1,4,'2021-10-01','2021-10-22',NULL,NULL,FALSE );
+INSERT INTO library.borrowed VALUES(28,1,3,'2021-10-01','2021-10-12',NULL,NULL,FALSE );
+INSERT INTO library.borrowed VALUES(29,2,2,'2021-10-22','2021-10-28',NULL,NULL,FALSE );
+INSERT INTO library.borrowed VALUES(30,3,1,'2021-10-14','2021-11-05',NULL,NULL,FALSE );
 
 /* add content to login, done by Clelia */
 /*Password2021. via Bycrypt round 12 encoder*/
-/*
-INSERT INTO library.login(1, '$2a$12$R.pOm2MC3GOOrokRx5ZXYuhSlDJqzCZgpSERWhb1WcUMDaxf6JJb2
+INSERT INTO library.login VALUES(1, '$2a$12$R.pOm2MC3GOOrokRx5ZXYuhSlDJqzCZgpSERWhb1WcUMDaxf6JJb2
 ');
-INSERT INTO library.login(2, '$2a$12$R.pOm2MC3GOOrokRx5ZXYuhSlDJqzCZgpSERWhb1WcUMDaxf6JJb2
+INSERT INTO library.login VALUES(2, '$2a$12$R.pOm2MC3GOOrokRx5ZXYuhSlDJqzCZgpSERWhb1WcUMDaxf6JJb2
 ');
-INSERT INTO library.login(3, '$2a$12$R.pOm2MC3GOOrokRx5ZXYuhSlDJqzCZgpSERWhb1WcUMDaxf6JJb2
+INSERT INTO library.login VALUES(3, '$2a$12$R.pOm2MC3GOOrokRx5ZXYuhSlDJqzCZgpSERWhb1WcUMDaxf6JJb2
 ');
-INSERT INTO library.login(4, '$2a$12$R.pOm2MC3GOOrokRx5ZXYuhSlDJqzCZgpSERWhb1WcUMDaxf6JJb2
+INSERT INTO library.login VALUES(4, '$2a$12$R.pOm2MC3GOOrokRx5ZXYuhSlDJqzCZgpSERWhb1WcUMDaxf6JJb2
 ');
-INSERT INTO library.login(5, '$2a$12$R.pOm2MC3GOOrokRx5ZXYuhSlDJqzCZgpSERWhb1WcUMDaxf6JJb2
+INSERT INTO library.login VALUES(5, '$2a$12$R.pOm2MC3GOOrokRx5ZXYuhSlDJqzCZgpSERWhb1WcUMDaxf6JJb2
 ');
-INSERT INTO library.login(6, '$2a$12$R.pOm2MC3GOOrokRx5ZXYuhSlDJqzCZgpSERWhb1WcUMDaxf6JJb2
+INSERT INTO library.login VALUES(6, '$2a$12$R.pOm2MC3GOOrokRx5ZXYuhSlDJqzCZgpSERWhb1WcUMDaxf6JJb2
 ');
-INSERT INTO library.login(7, '$2a$12$R.pOm2MC3GOOrokRx5ZXYuhSlDJqzCZgpSERWhb1WcUMDaxf6JJb2
+INSERT INTO library.login VALUES(7, '$2a$12$R.pOm2MC3GOOrokRx5ZXYuhSlDJqzCZgpSERWhb1WcUMDaxf6JJb2
 ');
-INSERT INTO library.login(8, '$2a$12$R.pOm2MC3GOOrokRx5ZXYuhSlDJqzCZgpSERWhb1WcUMDaxf6JJb2
+INSERT INTO library.login VALUES(8, '$2a$12$R.pOm2MC3GOOrokRx5ZXYuhSlDJqzCZgpSERWhb1WcUMDaxf6JJb2
 ');
-INSERT INTO library.login(9, '$2a$12$R.pOm2MC3GOOrokRx5ZXYuhSlDJqzCZgpSERWhb1WcUMDaxf6JJb2
-'); */
+INSERT INTO library.login VALUES(9, '$2a$12$R.pOm2MC3GOOrokRx5ZXYuhSlDJqzCZgpSERWhb1WcUMDaxf6JJb2
+');
 
 
 
