@@ -54,8 +54,12 @@ https://lucid.app/lucidchart/7dc561be-ccba-475d-8fea-9955b0b630bb/edit?viewport_
 
 ### reinstall DB with IntelliJ
 go into your project folder.
-When you are in the folder explosivepomegranate/ then run
-mysql -u root -p exposivePomegranate-db < src/main/resources/db/exposivePomegranate-db.sql
+When you are in the folder explosivepomegranate/ then run 
+
+mysql -u root -p library < src/main/resources/db/exposivePomegranate-db.sql
+
+in the IntelliJ Terminal / Terminal
+
 you will need to insert your mysql root password after you hit enter.
 then the database should be installed on your local environment.
 alternatively you can open the exposivePomegranate-db.sql file and just run it in the mysql interface
