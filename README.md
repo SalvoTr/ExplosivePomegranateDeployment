@@ -63,3 +63,17 @@ in the IntelliJ Terminal / Terminal
 you will need to insert your mysql root password after you hit enter.
 then the database should be installed on your local environment.
 alternatively you can open the exposivePomegranate-db.sql file and just run it in the mysql interface
+
+# Start developing
+build you application by importing the maven dependencies
+
+in the terminal it is
+mvn clean install
+
+then run your application over the interlliJ start option
+
+## working with Postmen
+make a post request
+![Post Request](documentation-resources/postmen-post.png?raw=true "Title")
+make a get request
+![Get Request](documentation-resources/postmen-get.png?raw=true "Title")
