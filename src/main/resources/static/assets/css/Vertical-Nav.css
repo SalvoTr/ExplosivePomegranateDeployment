@@ -1,0 +1,88 @@
+#sidebar li {
+  list-style-type: none;
+  padding-top: 10px;
+  color: #000000;
+  border-bottom-style: solid;
+  padding: 10px 10px 10px 0px;
+}
+
+#sidebar {
+  position: fixed;
+  right: -500px;
+  background: rgb(245, 221, 25);
+  width: 25vh;
+  /*text-align: center;*/
+  z-index: 10000;
+  font-size: 14pt;
+  font-family: 'Ubuntu';
+  transition: all 400ms linear;
+  -webkit-transition: all 400ms linear;
+  -moz-transition: all 400ms linear;
+  -o-transition: all 400ms linear;
+  padding-top: 0px !important;
+}
+
+#sidebar.active {
+  right: 0px;
+  height: 100%;
+}
+
+#sidebar ul {
+  padding-top: 20%;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+  color: white;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+#sidebar a {
+  color: black;
+}
+
+.here {
+  font-size: 18pt;
+}
+
+.contact-info {
+  padding-top: 20%;
+  color: #000000 !important;
+  position: absolute;
+  bottom: 0;
+}
+
+#page-down {
+  font-size: 20pt;
+  position: fixed;
+  margin: 30px;
+  height: 64px;
+  width: 64px;
+  text-align: center;
+  border-style: solid;
+  line-height: 64px;
+  transition: all 400ms linear;
+  -moz-transition: all 400ms linear;
+  -webkit-transition: all 400ms linear;
+  -o-transition: all 400ms linear;
+  right: 10px;
+  bottom: 0;
+}
+
+@media (max-width: 550px) {
+  #sidebar {
+    display: none;
+  }
+}
+

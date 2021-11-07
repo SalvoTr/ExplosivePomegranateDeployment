@@ -26,6 +26,7 @@ target/
 *.ipr
 .DS_Store
 !**/target/
+target/
 
 
 ### NetBeans ###

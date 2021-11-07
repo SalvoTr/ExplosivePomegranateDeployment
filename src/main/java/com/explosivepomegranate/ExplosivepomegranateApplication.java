@@ -1,4 +1,4 @@
-package com.example.explosivepomegranate;
+package com.explosivepomegranate;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
