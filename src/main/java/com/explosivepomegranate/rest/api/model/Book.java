@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 public class Book {
@@ -15,6 +16,7 @@ public class Book {
     private String title;
     private String description;
     private int year;
+    private List<Book> books;
 
     public int getBook_id() {
         return book_id;
@@ -54,5 +56,9 @@ public class Book {
 
     public void setYear(int year) {
         this.year = year;
+    }
+
+    public List<Book> getBooks() {
+        return books;
     }
 }
