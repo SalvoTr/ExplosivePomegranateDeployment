@@ -1,9 +1,6 @@
 package com.explosivepomegranate.rest.api.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
 
@@ -17,6 +14,16 @@ public class Book {
     private String description;
     private int year;
     private List<Book> books;
+
+    //Salvatore - connects the Book table with the Category table
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "book_category",
+        joinColumns = @JoinColumn(name = "book_id"),
+        inverseJoinColumns = @JoinColumn(name = "category_id"))
+
+
+    //Salvatore - connects the Book table with the Author table
+    //TODO
 
     public int getBook_id() {
         return book_id;

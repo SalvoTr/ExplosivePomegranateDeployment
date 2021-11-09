@@ -6,9 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Date;
-import java.util.List;
-
 @Controller
 public class BookController {
 
@@ -18,7 +15,7 @@ public class BookController {
 
     /**
      * @author: Salvatore
-     * I have no idea what I'm doing.
+     * I have no idea what I'm doing
      * */
     @GetMapping(path="/allCategories", produces = "application/json")
 
@@ -32,9 +29,7 @@ public class BookController {
      * Basically only difference is that I used a List that I added in Book.java (like template/example from AM)
      * */
     @GetMapping(path="/allBooks",  produces = "application/json")
-    public List<Book> getBooks() {
-        return bookRepository.findAll();
-    }
+    public Iterable<Book> getBooks() { return bookRepository.findAll(); }
 
 
     /**
