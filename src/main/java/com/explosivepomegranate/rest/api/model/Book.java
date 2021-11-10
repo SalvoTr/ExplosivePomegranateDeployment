@@ -6,8 +6,7 @@ import java.util.List;
 
 @Entity
 public class Book {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int book_id;
     private String ISBN;
     private String title;
@@ -20,10 +19,15 @@ public class Book {
     @JoinTable(name = "book_category",
         joinColumns = @JoinColumn(name = "book_id"),
         inverseJoinColumns = @JoinColumn(name = "category_id"))
-
+    private List<Category> belongsToCategory; //List of categories the book belongs to - required for @ManyToMany
 
     //Salvatore - connects the Book table with the Author table
-    //TODO
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "book_author",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "author_id"))
+    private List<Author> createdByAuthors; //List of all authors that have written this book - required for @ManyToMany
+
 
     public int getBook_id() {
         return book_id;
@@ -67,5 +71,25 @@ public class Book {
 
     public List<Book> getBooks() {
         return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
+    }
+
+    public List<Category> getBelongsToCategory() {
+        return belongsToCategory;
+    }
+
+    public void setBelongsToCategory(List<Category> belongsToCategory) {
+        this.belongsToCategory = belongsToCategory;
+    }
+
+    public List<Author> getCreatedByAuthors() {
+        return createdByAuthors;
+    }
+
+    public void setCreatedByAuthors(List<Author> createdByAuthors) {
+        this.createdByAuthors = createdByAuthors;
     }
 }
