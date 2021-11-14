@@ -1,6 +1,9 @@
 package com.explosivepomegranate.rest.api.model;
 
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -10,10 +13,10 @@ public class Category {
     private int category_id;
     private String category_name;
     //Salvatore - connects the Book table with the Category table
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "book_category",
-            joinColumns = @JoinColumn(name = "category_id"),
-            inverseJoinColumns = @JoinColumn(name = "book_id"))
+    @ManyToMany(mappedBy = "belongsToCategory")
+//    @JoinTable(name = "book_category",
+//            joinColumns = @JoinColumn(name = "category_id"),
+//            inverseJoinColumns = @JoinColumn(name = "book_id"))
     private List<Book> booksInCategory; //List of all books written in this category - required for @ManyToMany
 
 

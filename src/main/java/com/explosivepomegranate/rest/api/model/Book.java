@@ -1,5 +1,8 @@
 package com.explosivepomegranate.rest.api.model;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
@@ -12,17 +15,16 @@ public class Book {
     private String title;
     private String description;
     private int year;
-    private List<Book> books;
 
     //Salvatore - connects the Book table with the Category table
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
     @JoinTable(name = "book_category",
         joinColumns = @JoinColumn(name = "book_id"),
         inverseJoinColumns = @JoinColumn(name = "category_id"))
     private List<Category> belongsToCategory; //List of categories the book belongs to - required for @ManyToMany
 
     //Salvatore - connects the Book table with the Author table
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
     @JoinTable(name = "book_author",
             joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id"))
@@ -67,14 +69,6 @@ public class Book {
 
     public void setYear(int year) {
         this.year = year;
-    }
-
-    public List<Book> getBooks() {
-        return books;
-    }
-
-    public void setBooks(List<Book> books) {
-        this.books = books;
     }
 
     public List<Category> getBelongsToCategory() {

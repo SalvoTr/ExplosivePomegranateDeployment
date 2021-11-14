@@ -1,5 +1,8 @@
 package com.explosivepomegranate.rest.api.model;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -11,10 +14,10 @@ public class Author {
     private String author_lastname;
 
     //Salvatore - connects the Book table with the Author table
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "book_author",
-            joinColumns = @JoinColumn(name = "author_id"),
-            inverseJoinColumns = @JoinColumn(name = "book_id"))
+    @ManyToMany(mappedBy = "createdByAuthors")
+//    @JoinTable(name = "book_author",
+//            joinColumns = @JoinColumn(name = "author_id"),
+//            inverseJoinColumns = @JoinColumn(name = "book_id"))
     private List<Book> wroteBooks; //List of books the author has written - required for @ManyToMany
 
 
