@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Date;
+import java.util.Optional;
 
 @RestController
 public class BookController {
@@ -38,5 +38,18 @@ public class BookController {
 
         bookRepository.save(book);
         return book;
+    }
+
+    /**
+     *@author Sonja
+     *UC6 find book by id
+     *@return Optional<Book> object found with given id
+     **/
+
+    @GetMapping (path="/bookInfo/{book_id}")
+    public @ResponseBody
+    Optional<Book> getBookByID (@PathVariable (value="book_id") String bookId){
+        //todo error handling?
+        return bookRepository.findById(Integer.parseInt(bookId));
     }
 }
