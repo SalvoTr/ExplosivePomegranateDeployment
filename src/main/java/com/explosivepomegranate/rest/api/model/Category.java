@@ -1,6 +1,5 @@
 package com.explosivepomegranate.rest.api.model;
 
-
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -12,13 +11,17 @@ public class Category {
     @Id @GeneratedValue
     private int category_id;
     private String category_name;
-    //Salvatore - connects the Book table with the Category table
-    @ManyToMany(mappedBy = "belongsToCategory")
-//    @JoinTable(name = "book_category",
-//            joinColumns = @JoinColumn(name = "category_id"),
-//            inverseJoinColumns = @JoinColumn(name = "book_id"))
-    private List<Book> booksInCategory; //List of all books written in this category - required for @ManyToMany
 
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "categories", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private List<Book> books;
+
+    public List<Book> getBooks() {
+       return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
+    }
 
     public int getCategory_id() {
         return category_id;
@@ -36,11 +39,4 @@ public class Category {
         this.category_name = category_name;
     }
 
-    public List<Book> getBooksInCategory() {
-        return booksInCategory;
     }
-
-    public void setBooksInCategory(List<Book> booksInCategory) {
-        this.booksInCategory = booksInCategory;
-    }
-}

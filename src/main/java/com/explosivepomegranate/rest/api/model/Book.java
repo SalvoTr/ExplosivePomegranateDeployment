@@ -1,11 +1,13 @@
 package com.explosivepomegranate.rest.api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Book {
@@ -17,19 +19,33 @@ public class Book {
     private int year;
 
     //Salvatore - connects the Book table with the Category table
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE}) @JsonIgnore
     @JoinTable(name = "book_category",
-        joinColumns = @JoinColumn(name = "book_id"),
-        inverseJoinColumns = @JoinColumn(name = "category_id"))
-    private List<Category> belongsToCategory; //List of categories the book belongs to - required for @ManyToMany
+            joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id", referencedColumnName = "category_id"))
+    private Set<Category> categories;
 
-    //Salvatore - connects the Book table with the Author table
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE}) @JsonIgnore
     @JoinTable(name = "book_author",
-            joinColumns = @JoinColumn(name = "book_id"),
-            inverseJoinColumns = @JoinColumn(name = "author_id"))
-    private List<Author> createdByAuthors; //List of all authors that have written this book - required for @ManyToMany
+            joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "author_id", referencedColumnName = "author_id"))
+    private Set<Author> authors;
 
+    public Set<Author> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(Set<Author> authors) {
+        this.authors = authors;
+    }
+
+    public Set<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
+    }
 
     public int getBook_id() {
         return book_id;
@@ -71,19 +87,4 @@ public class Book {
         this.year = year;
     }
 
-    public List<Category> getBelongsToCategory() {
-        return belongsToCategory;
-    }
-
-    public void setBelongsToCategory(List<Category> belongsToCategory) {
-        this.belongsToCategory = belongsToCategory;
-    }
-
-    public List<Author> getCreatedByAuthors() {
-        return createdByAuthors;
-    }
-
-    public void setCreatedByAuthors(List<Author> createdByAuthors) {
-        this.createdByAuthors = createdByAuthors;
-    }
 }

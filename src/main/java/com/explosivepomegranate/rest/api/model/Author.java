@@ -13,13 +13,17 @@ public class Author {
     private String author_firstname;
     private String author_lastname;
 
-    //Salvatore - connects the Book table with the Author table
-    @ManyToMany(mappedBy = "createdByAuthors")
-//    @JoinTable(name = "book_author",
-//            joinColumns = @JoinColumn(name = "author_id"),
-//            inverseJoinColumns = @JoinColumn(name = "book_id"))
-    private List<Book> wroteBooks; //List of books the author has written - required for @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "authors", cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    private List<Book> books;
 
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
+    }
+//Salvatore - connects the Book table with the Author table
 
     public int getAuthor_id() {
         return author_id;
@@ -45,11 +49,5 @@ public class Author {
         this.author_lastname = author_lastname;
     }
 
-    public List<Book> getWroteBooks() {
-        return wroteBooks;
-    }
 
-    public void setWroteBooks(List<Book> wroteBooks) {
-        this.wroteBooks = wroteBooks;
-    }
 }
