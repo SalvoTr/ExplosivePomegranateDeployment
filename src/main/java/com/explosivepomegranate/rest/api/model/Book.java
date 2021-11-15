@@ -15,6 +15,8 @@ public class Book {
     private String title;
     private String description;
     private int year;
+    private boolean currentlyBorrowed;
+
 
     public int getBook_id() {
         return book_id;
@@ -54,5 +56,13 @@ public class Book {
 
     public void setYear(int year) {
         this.year = year;
+    }
+
+    public boolean isCurrentlyBorrowed() {
+        return currentlyBorrowed;
+    }
+
+    public void setCurrentlyBorrowed(boolean currentlyBorrowed) {
+        this.currentlyBorrowed = currentlyBorrowed;
     }
 }
