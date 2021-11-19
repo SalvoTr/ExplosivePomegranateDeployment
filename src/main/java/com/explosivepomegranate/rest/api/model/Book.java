@@ -17,6 +17,8 @@ public class Book {
     private String title;
     private String description;
     private int year;
+    private boolean currentlyBorrowed;
+
 
     //Salvatore - connects the Book table with the Category table
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE}) @JsonIgnore
@@ -87,4 +89,11 @@ public class Book {
         this.year = year;
     }
 
+    public boolean isCurrentlyBorrowed() {
+        return currentlyBorrowed;
+    }
+
+    public void setCurrentlyBorrowed(boolean currentlyBorrowed) {
+        this.currentlyBorrowed = currentlyBorrowed;
+    }
 }

@@ -62,4 +62,17 @@ public class BookController {
         bookRepository.save(book);
         return book;
     }
+
+    /**
+     *@author Sonja
+     *UC6 find book by id
+     *@return Optional<Book> object found with given id
+     **/
+
+    @GetMapping (path="/bookInfo/{book_id}")
+    public @ResponseBody
+    Optional<Book> getBookByID (@PathVariable (value="book_id") String bookId){
+        //todo error handling?
+        return bookRepository.findById(Integer.parseInt(bookId));
+    }
 }
