@@ -68,7 +68,7 @@ public class BookController {
     /**
      *@author Sonja
      *UC6 find book by id
-     *@return Optional<Book> object found with given id
+     *@return Book object found with given id
      **/
     @GetMapping (path="/bookInfo/{book_id}")
     public @ResponseBody
