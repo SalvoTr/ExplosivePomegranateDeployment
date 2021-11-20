@@ -7,9 +7,11 @@ import com.explosivepomegranate.rest.api.repository.AuthorRepository;
 import com.explosivepomegranate.rest.api.repository.BookRepository;
 import com.explosivepomegranate.rest.api.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class BookController {
@@ -68,11 +70,10 @@ public class BookController {
      *UC6 find book by id
      *@return Optional<Book> object found with given id
      **/
-
     @GetMapping (path="/bookInfo/{book_id}")
     public @ResponseBody
-    Optional<Book> getBookByID (@PathVariable (value="book_id") String bookId){
+    Book getBookByID (@PathVariable (value="book_id") String bookId){
         //todo error handling?
-        return bookRepository.findById(Integer.parseInt(bookId));
+        return bookRepository.findById(Integer.parseInt(bookId)).get();
     }
 }
