@@ -13,5 +13,14 @@ public class IndexController {
     }
 
     @GetMapping("/home")
-    public String home() { return "book-search-admin.html"; }
+    public String home() { return "Admin/book-search-admin.html"; }
+
+    @GetMapping("/register")
+    public String register() { return "register.html"; }
+
+    @GetMapping("/myProfile")
+    public String profile() { return "Admin/profile-admin.html"; }
+
+    @GetMapping("/currentlyBorrowed")
+    public String borrowed() { return "Admin/borrowed-books-overview.html"; }
 }
