@@ -26,7 +26,9 @@
                 <h1 align="center">Welcome to the FHNW Library</h1>
                 <div class="login-card col-sm-8"><img class="profile-img-card" src="assets/img/login-avatar.png">
                     <p class="profile-name-card"> </p>
-                    <form class="form-signin"><span class="reauth-email"> </span><input class="form-control" type="email" id="inputEmail" required="" placeholder="Email address" autofocus=""><input class="form-control" type="password" id="inputPassword" required="" placeholder="Password">
+                    <form class="form-signin" action="/" method="post"><span class="reauth-email"> </span>
+                        <input class="form-control" type="email" id="inputEmail" required="" name="username" placeholder="Email address" autofocus="">
+                        <input class="form-control" type="password" id="inputPassword" required="" name="password" placeholder="Password">
                         <div class="checkbox">
                             <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Remember me</label></div>
                         </div><button class="btn btn-primary btn-lg d-block btn-signin w-100" type="submit">Sign in</button>
@@ -49,7 +51,7 @@
             </div>
         </div>
     </div><footer id="footer">
-    
+
     <div style= "background: light-grey; text-align: center; margin: 0px; padding:2px">
         <p style= "color:grey; font-family: raleway">© 2021 Explosive Pomegrenade</p>
     </div>

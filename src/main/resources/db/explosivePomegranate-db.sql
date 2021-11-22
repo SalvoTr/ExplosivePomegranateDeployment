@@ -218,26 +218,12 @@ INSERT INTO library.borrowed VALUES(30,3,1,'2021-10-14','2021-11-05',NULL,NULL,F
 
 /* add content to login, done by Clelia */
 /*Password2021. via Bycrypt round 12 encoder*/
-INSERT INTO library.login VALUES(1, '$2a$12$R.pOm2MC3GOOrokRx5ZXYuhSlDJqzCZgpSERWhb1WcUMDaxf6JJb2
-');
-INSERT INTO library.login VALUES(2, '$2a$12$R.pOm2MC3GOOrokRx5ZXYuhSlDJqzCZgpSERWhb1WcUMDaxf6JJb2
-');
-INSERT INTO library.login VALUES(3, '$2a$12$R.pOm2MC3GOOrokRx5ZXYuhSlDJqzCZgpSERWhb1WcUMDaxf6JJb2
-');
-INSERT INTO library.login VALUES(4, '$2a$12$R.pOm2MC3GOOrokRx5ZXYuhSlDJqzCZgpSERWhb1WcUMDaxf6JJb2
-');
-INSERT INTO library.login VALUES(5, '$2a$12$R.pOm2MC3GOOrokRx5ZXYuhSlDJqzCZgpSERWhb1WcUMDaxf6JJb2
-');
-INSERT INTO library.login VALUES(6, '$2a$12$R.pOm2MC3GOOrokRx5ZXYuhSlDJqzCZgpSERWhb1WcUMDaxf6JJb2
-');
-INSERT INTO library.login VALUES(7, '$2a$12$R.pOm2MC3GOOrokRx5ZXYuhSlDJqzCZgpSERWhb1WcUMDaxf6JJb2
-');
-INSERT INTO library.login VALUES(8, '$2a$12$R.pOm2MC3GOOrokRx5ZXYuhSlDJqzCZgpSERWhb1WcUMDaxf6JJb2
-');
-INSERT INTO library.login VALUES(9, '$2a$12$R.pOm2MC3GOOrokRx5ZXYuhSlDJqzCZgpSERWhb1WcUMDaxf6JJb2
-');
-
-
-
-
-
+INSERT INTO library.login VALUES(1, '$2a$12$6kCrs9tqszAXQvPxb5CRde199uvHMJaX6E8NO0I5UiV1JlX71A.Ru');
+INSERT INTO library.login VALUES(2, '$2a$12$6kCrs9tqszAXQvPxb5CRde199uvHMJaX6E8NO0I5UiV1JlX71A.Ru');
+INSERT INTO library.login VALUES(3, '$2a$12$6kCrs9tqszAXQvPxb5CRde199uvHMJaX6E8NO0I5UiV1JlX71A.Ru');
+INSERT INTO library.login VALUES(4, '$2a$12$6kCrs9tqszAXQvPxb5CRde199uvHMJaX6E8NO0I5UiV1JlX71A.Ru');
+INSERT INTO library.login VALUES(5, '$2a$12$6kCrs9tqszAXQvPxb5CRde199uvHMJaX6E8NO0I5UiV1JlX71A.Ru');
+INSERT INTO library.login VALUES(6, '$2a$12$6kCrs9tqszAXQvPxb5CRde199uvHMJaX6E8NO0I5UiV1JlX71A.Ru');
+INSERT INTO library.login VALUES(7, '$2a$12$6kCrs9tqszAXQvPxb5CRde199uvHMJaX6E8NO0I5UiV1JlX71A.Ru');
+INSERT INTO library.login VALUES(8, '$2a$12$6kCrs9tqszAXQvPxb5CRde199uvHMJaX6E8NO0I5UiV1JlX71A.Ru');
+INSERT INTO library.login VALUES(9, '$2a$12$6kCrs9tqszAXQvPxb5CRde199uvHMJaX6E8NO0I5UiV1JlX71A.Ru');

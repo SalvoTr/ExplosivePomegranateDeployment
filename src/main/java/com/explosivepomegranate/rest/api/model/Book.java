@@ -1,15 +1,17 @@
 package com.explosivepomegranate.rest.api.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Book {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int book_id;
     private String ISBN;
     private String title;
@@ -54,5 +56,13 @@ public class Book {
 
     public void setYear(int year) {
         this.year = year;
+    }
+
+    public boolean isCurrentlyBorrowed() {
+        return currentlyBorrowed;
+    }
+
+    public void setCurrentlyBorrowed(boolean currentlyBorrowed) {
+        this.currentlyBorrowed = currentlyBorrowed;
     }
 }
