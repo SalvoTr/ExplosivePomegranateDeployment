@@ -5,6 +5,7 @@ import com.explosivepomegranate.rest.api.model.Book;
 import com.explosivepomegranate.rest.api.model.Category;
 import com.explosivepomegranate.rest.api.repository.AuthorRepository;
 import com.explosivepomegranate.rest.api.repository.BookRepository;
+import com.explosivepomegranate.rest.api.repository.BorrowedRepository;
 import com.explosivepomegranate.rest.api.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
@@ -23,6 +24,8 @@ public class BookController {
     private AuthorRepository authorRepository;
     @Autowired
     private CategoryRepository categoryRepository;
+    @Autowired
+    private BorrowedRepository borrowedRepository;
 
     /**
      * @author: Salvatore
@@ -76,4 +79,7 @@ public class BookController {
         //todo error handling?
         return bookRepository.findById(Integer.parseInt(bookId)).get();
     }
+
+    @GetMapping (path = "/allBorrowed", produces = "application/json")
+    public List<Book> getBorrowed() { return borrowedRepository.findAll(); }
 }

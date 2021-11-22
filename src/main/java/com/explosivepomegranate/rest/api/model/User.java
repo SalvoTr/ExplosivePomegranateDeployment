@@ -3,8 +3,10 @@ package com.explosivepomegranate.rest.api.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
+@Table(name = "User")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,6 +14,10 @@ public class User {
     private String firstname;
     private String lastname;
     private String email;
+
+    @OneToMany(mappedBy="user", fetch = FetchType.EAGER)
+    private List<Borrowed> borrowers;
+
     @ManyToOne
     @JoinColumn(name="role_id", nullable = false)
     private Role role;
@@ -80,4 +86,12 @@ public class User {
     public Login getLogin() { return login; }
 
     public void setLogin(Login login){ this.login = login; }
+
+    public List<Borrowed> getBorrowers() {
+        return borrowers;
+    }
+
+    public void setBorrowers(List<Borrowed> borrowers) {
+        this.borrowers = borrowers;
+    }
 }

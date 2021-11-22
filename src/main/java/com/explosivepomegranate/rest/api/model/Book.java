@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
+@Table(name = "Book")
 public class Book {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int book_id;
@@ -18,7 +19,6 @@ public class Book {
     private String description;
     private int year;
     private boolean currentlyBorrowed;
-
 
     //Salvatore - connects the Book table with the Category table
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE}) @JsonIgnore
@@ -32,6 +32,10 @@ public class Book {
             joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id", referencedColumnName = "author_id"))
     private Set<Author> authors;
+
+    //Sonja - connects the book with borrowed
+    @OneToMany(mappedBy = "book", fetch = FetchType.EAGER)
+    private List<Borrowed> borrowed;
 
     public Set<Author> getAuthors() {
         return authors;
@@ -95,5 +99,13 @@ public class Book {
 
     public void setCurrentlyBorrowed(boolean currentlyBorrowed) {
         this.currentlyBorrowed = currentlyBorrowed;
+    }
+
+    public List<Borrowed> getBorrowed() {
+        return borrowed;
+    }
+
+    public void setBorrowed(List<Borrowed> borrowed) {
+        this.borrowed = borrowed;
     }
 }
