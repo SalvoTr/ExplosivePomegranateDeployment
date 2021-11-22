@@ -15,7 +15,7 @@ public class User {
     private String lastname;
     private String email;
 
-    @OneToMany(mappedBy="user")
+    @OneToMany(mappedBy="user", fetch = FetchType.EAGER)
     private List<Borrowed> borrowers;
 
     @ManyToOne
@@ -26,9 +26,6 @@ public class User {
     @PrimaryKeyJoinColumn
     @JsonIgnore
     private Login login;
-
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "borrowers", cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    private List<Book> books;
 
     public User(int user_id, String firstname, String lastname, String email, Role role, Login login) {
         this.user_id = user_id;
@@ -90,12 +87,11 @@ public class User {
 
     public void setLogin(Login login){ this.login = login; }
 
-    public List<Book> getBooks() {
-        return books;
+    public List<Borrowed> getBorrowers() {
+        return borrowers;
     }
 
-    public void setBooks(List<Book> books) {
-        this.books = books;
+    public void setBorrowers(List<Borrowed> borrowers) {
+        this.borrowers = borrowers;
     }
-
 }

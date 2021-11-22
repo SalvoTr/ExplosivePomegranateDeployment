@@ -34,7 +34,7 @@ public class Book {
     private Set<Author> authors;
 
     //Sonja - connects the book with borrowed
-    @OneToMany(mappedBy = "book")
+    @OneToMany(mappedBy = "book", fetch = FetchType.EAGER)
     private List<Borrowed> borrowed;
 
     public Set<Author> getAuthors() {
