@@ -17,11 +17,11 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationEn
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(securedEnabled = true, proxyTargetClass = true, prePostEnabled = true)
+@EnableGlobalMethodSecurity(securedEnabled = true, proxyTargetClass = true, prePostEnabled = true) // enables the @Secured attribute for methods
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private UserDetailsServiceImpl userDetailService;
+    private UserDetailsServiceImpl userDetailService; //
 
     /**
      * Encypt password with BCryptPasswordEncoder with 12 rounds
@@ -53,7 +53,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                    //.requireCsrfProtectionMatcher(new CSRFRequestMatcher())
                    // .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()).and()
                 .authorizeRequests()
-                    .antMatchers("/assets/**", "/").permitAll()
+                    .antMatchers("/assets/**", "/", "/register").permitAll()
                     .anyRequest().authenticated()
                     .and()
                 .formLogin()
