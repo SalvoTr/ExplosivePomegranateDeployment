@@ -71,15 +71,15 @@ public class BookController {
         return author.getBooks();
     }
 
-    /**
-     * @author: Salvatore
-     * /booksReleasesIn/   (UC5)
-     * */
-    @GetMapping(path = "", produces = "application/json") //TODO: path name written wrong?s
-    public List<Book> getBookByRelease(@PathVariable(value="XXXXXXXX")) {
-        //TODO: WORK IN PROGRESS
-        return bookRepository
+
+    //Salvatore - to be deleted
+/*
+    @author: Salvatore
+    /booksReleasesIn/ (UC5)
+    @GetMapping(path = "", produces = "application/json") //
+    public List<Book> getBookByRelease(@PathVariable(value="?")) {
     }
+*/
 
     /**
      * @author Clelia
