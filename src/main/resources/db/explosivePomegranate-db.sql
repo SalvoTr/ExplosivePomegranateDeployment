@@ -56,11 +56,11 @@ CREATE TABLE borrowed(
                          borrow_id INT AUTO_INCREMENT PRIMARY KEY,
                          user_id INT ,
                          book_id INT,
-                         startDate DATE,
-                         initEndDate DATE,
-                         extendEndDate DATE,
-                         bookComment VARCHAR (600),
-                         bookStatus BOOLEAN,
+                         start_date DATE,
+                         init_end_date DATE,
+                         extend_end_date DATE,
+                         book_comment VARCHAR (600),
+                         book_status BOOLEAN,
                          FOREIGN KEY (user_id) REFERENCES user(user_id),
                          FOREIGN KEY (book_id) REFERENCES book(book_id)
 );
@@ -206,7 +206,7 @@ INSERT INTO library.borrowed VALUES(18,9,13,'2021-07-05','2021-07-30',NULL,NULL,
 INSERT INTO library.borrowed VALUES(19,9,12,'2021-07-07','2021-07-13',NULL,'Ink stain in chapter 5',TRUE );
 INSERT INTO library.borrowed VALUES(20,8,11,'2021-08-01','2021-08-17',NULL,NULL,TRUE );
 INSERT INTO library.borrowed VALUES(21,7,10,'2021-08-04','2021-08-20',NULL,NULL,TRUE );
-INSERT INTO library.borrowed VALUES(22,6,9,'2021-08-09','2021-08-28',NULL,NULL,TRUE );
+INSERT INTO library.borrowed VALUES(22,6,9,' 2021-08-09','2021-08-28',NULL,NULL,TRUE );
 INSERT INTO library.borrowed VALUES(23,5,8,'2021-09-01','2021-09-12',NULL,NULL,TRUE );
 INSERT INTO library.borrowed VALUES(24,4,7,'2021-09-02','2021-09-13',NULL,'Someone drew a funny face on the author image',FALSE );
 INSERT INTO library.borrowed VALUES(25,3,6,'2021-09-15','2021-10-01',NULL,NULL,FALSE );

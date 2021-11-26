@@ -6,11 +6,12 @@ import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "Book")
+@Table(name = "book")
 public class Book {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int book_id;
@@ -18,9 +19,9 @@ public class Book {
     private String title;
     private String description;
     private int year;
-    private boolean currentlyBorrowed;
+    private boolean currentlyBorrowed; //TODO the sql doesn't have that attribute
 
-    //Salvatore - connects the Book table with the Category table
+    //Connects the Book table with the Category table
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE}) @JsonIgnore
     @JoinTable(name = "book_category",
             joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "book_id"),
@@ -33,8 +34,8 @@ public class Book {
             inverseJoinColumns = @JoinColumn(name = "author_id", referencedColumnName = "author_id"))
     private Set<Author> authors;
 
-    //Sonja - connects the book with borrowed
-    @OneToMany(mappedBy = "book", fetch = FetchType.EAGER)
+    //Connects the book with borrowed
+    @OneToMany(mappedBy = "book", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Borrowed> borrowed;
 
     public Set<Author> getAuthors() {
