@@ -9,6 +9,8 @@ import java.sql.Date;
 @Entity
 @Table(name = "borrowed")
 public class Borrowed {
+
+    //with camel case initially didn't work - had to change names here and in SQL with underscores
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int borrow_id;
     private Date start_date;
