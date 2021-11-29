@@ -78,20 +78,20 @@ public class BookService {
     /**
      * @author: Salvatore
      * Fetches all books from a given category ID(UC5)
-     * TODO: Each book item is listed a duplicate amount of times as much as the book item has borrowers
      * */
     public List<Book> getBookByCategory(int categoryId){
-        Category category = categoryRepository.findById(categoryId).get();
-        return category.getBooks();
+        //Category category = categoryRepository.findById(categoryId).get();
+        //return category.getBooks();
+        return bookRepository.findByCategories_Id(categoryId);
     }
 
     /**
      * @author: Salvatore
      * Fetches all books from a given author ID(UC5)
-     * TODO: Same problem as above
      * */
     public List<Book> getBookByAuthor(int authorId){
-        Author author = authorRepository.findById(authorId).get();
-        return author.getBooks();
+        //Author author = authorRepository.findById(authorId).get();
+        //return author.getBooks();
+        return bookRepository.findByAuthors_Id(authorId);
     }
 }

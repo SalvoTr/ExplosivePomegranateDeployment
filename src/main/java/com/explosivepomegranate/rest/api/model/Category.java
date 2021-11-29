@@ -1,5 +1,6 @@
 package com.explosivepomegranate.rest.api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -8,12 +9,22 @@ import java.util.List;
 
 @Entity
 public class Category {
-    @Id @GeneratedValue
-    private int category_id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "category_id", nullable = false)
+    private int id;
     private String category_name;
 
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "categories", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Book> books;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
 
     //Getters and Setters
@@ -25,13 +36,6 @@ public class Category {
         this.books = books;
     }
 
-    public int getCategory_id() {
-        return category_id;
-    }
-
-    public void setCategory_id(int category_id) {
-        this.category_id = category_id;
-    }
 
     public String getCategory_name() {
         return category_name;

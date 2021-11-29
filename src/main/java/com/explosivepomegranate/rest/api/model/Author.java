@@ -5,8 +5,10 @@ import java.util.List;
 
 @Entity
 public class Author {
-    @Id @GeneratedValue
-    private int author_id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "author_id", nullable = false)
+    private int id;
     private String author_firstname;
     private String author_lastname;
 
@@ -22,12 +24,12 @@ public class Author {
     }
 //Salvatore - connects the Book table with the Author table
 
-    public int getAuthor_id() {
-        return author_id;
+    public int getId() {
+        return id;
     }
 
-    public void setAuthor_id(int author_id) {
-        this.author_id = author_id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getAuthor_firstname() {
