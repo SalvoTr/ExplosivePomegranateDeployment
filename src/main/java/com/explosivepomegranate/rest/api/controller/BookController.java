@@ -41,7 +41,7 @@ public class BookController {
      * returns list of all books (UC5/6)
      * */
     @GetMapping(path="/allBooks",  produces = "application/json")
-    public List<Book> getBooks() { return bookRepository.findAll(); }
+    public List<Book> getBooks() { return bookService.getAllBooks(); }
 
     /**
      * @author: Salvatore
@@ -50,8 +50,7 @@ public class BookController {
      * */
     @GetMapping (path="/categoryBooks/{category_id}", produces = "application/json")
     public List<Book> getBookByCategory(@PathVariable(value = "category_id") String categoryId){
-        Category category = categoryRepository.findById(Integer.parseInt(categoryId)).get();
-        return category.getBooks();
+        return bookService.getBookByCategory(Integer.parseInt(categoryId));
     }
 
     /**
@@ -61,13 +60,13 @@ public class BookController {
      * */
     @GetMapping (path="/authorBooks/{author_id}", produces = "application/json")
     public List<Book> getBookByAuthor(@PathVariable(value = "author_id") String authorId){
-        Author author = authorRepository.findById(Integer.parseInt(authorId)).get();
-        return author.getBooks();
+        return bookService.getBookByAuthor(Integer.parseInt(authorId));
     }
 
 
     /**
      * @author: Clelia
+     * try to add a new book, body expected to be json format
      * */
     @PostMapping(path = "/addBook")
     public @ResponseBody ResponseEntity<Book> addNewBook(@RequestBody Book sendBookInfo) {
