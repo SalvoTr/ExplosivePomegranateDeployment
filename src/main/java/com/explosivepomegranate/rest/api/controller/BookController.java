@@ -72,15 +72,6 @@ public class BookController {
     }
 
 
-    //Salvatore - to be deleted
-/*
-    @author: Salvatore
-    /booksReleasesIn/ (UC5)
-    @GetMapping(path = "", produces = "application/json") //
-    public List<Book> getBookByRelease(@PathVariable(value="?")) {
-    }
-*/
-
     /**
      * @author Clelia
      * add a new book --------still a draft, model is still incomplete and this method will require some work
