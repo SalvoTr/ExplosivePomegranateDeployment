@@ -71,7 +71,6 @@ alternatively you can open the exposivePomegranate-db.sql file and just run it i
 | UC5/6    | GET          | /allBooks    | isbn, title, description, year, (image), category(ies), author(s), bookStatus |
 | UC5      | GET          | /categoryBooks/<category_id>|  isbn, title, description, year, (image), category(ies), author(s), bookStatus |
 | UC5      | GET          | /authorBooks/<author_id>|  isbn, title, description, year, (image), category(ies), author(s), bookStatus |
-| UC5      | GET          | /booksReleasesIn/<year>|  isbn, title, description, year, (image), category(ies), author(s), bookStatus |
 | UC6      | GET          | /bookInfo/<book_id>  | isbn, title, description, year, (image), category(ies), author(s), bookStatus, bookComment, startDate, initEndDate, (extendEndDate)|
 | UC7      | POST         | /reserveBook/<book_id> | book_id, bookStatus |
 | UC8      | GET          | /myBorrows   | isbn, title, description, year, (image), category(ies), author(s), bookStatus , initEndDate |

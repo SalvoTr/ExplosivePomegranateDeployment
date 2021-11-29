@@ -15,6 +15,8 @@ public class Category {
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "categories", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Book> books;
 
+
+    //Getters and Setters
     public List<Book> getBooks() {
        return books;
     }

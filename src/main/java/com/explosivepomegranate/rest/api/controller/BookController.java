@@ -21,7 +21,7 @@ public class BookController {
 
     /**
      * @author: Salvatore
-     *
+     * returns list of all categories (UC5)
      * */
     @GetMapping(path="/allCategories", produces = "application/json")
     public List<Category> getCategories() {
@@ -30,7 +30,7 @@ public class BookController {
 
     /**
      * @author: Salvatore
-     *
+     * returns list of all authors (UC5)
      * */
     @GetMapping(path="/allAuthors", produces = "application/json")
     public List<Author> getAuthors() { return bookService.getAllAuthors(); }
@@ -38,10 +38,33 @@ public class BookController {
 
     /**
      * @author: Salvatore
-     *
+     * returns list of all books (UC5/6)
      * */
     @GetMapping(path="/allBooks",  produces = "application/json")
-    public List<Book> getBooks() { return bookService.getAllBooks(); }
+    public List<Book> getBooks() { return bookRepository.findAll(); }
+
+    /**
+     * @author: Salvatore
+     * Fetches all books from a given category ID(UC5)
+     * TODO: Each book item is listed a duplicate amount of times as much as the book item has borrowers
+     * */
+    @GetMapping (path="/categoryBooks/{category_id}", produces = "application/json")
+    public List<Book> getBookByCategory(@PathVariable(value = "category_id") String categoryId){
+        Category category = categoryRepository.findById(Integer.parseInt(categoryId)).get();
+        return category.getBooks();
+    }
+
+    /**
+     * @author: Salvatore
+     * Fetches all books from a given author ID(UC5)
+     * TODO: Same problem as above
+     * */
+    @GetMapping (path="/authorBooks/{author_id}", produces = "application/json")
+    public List<Book> getBookByAuthor(@PathVariable(value = "author_id") String authorId){
+        Author author = authorRepository.findById(Integer.parseInt(authorId)).get();
+        return author.getBooks();
+    }
+
 
     /**
      * @author: Clelia
@@ -58,9 +81,9 @@ public class BookController {
     }
 
     /**
-     *@author Sonja
-     *UC6 find book by id
-     *@return Book object found with given id
+     * @author Sonja
+     * find book by id (UC6)
+     * @return Book object found with given id
      **/
     @GetMapping (path="/bookInfo/{book_id}")
     public @ResponseBody
@@ -77,7 +100,7 @@ public class BookController {
 
     /**
      * @author: Salvatore
-     *
+     * returns list of all borrowed books (UC11)
      * */
     @GetMapping (path = "/allBorrowed", produces = "application/json")
     public List<Borrowed> getBorrowed() { return bookService.getAllBorrowed(); }
