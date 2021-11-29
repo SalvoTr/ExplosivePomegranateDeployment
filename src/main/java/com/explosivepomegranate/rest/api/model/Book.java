@@ -28,6 +28,7 @@ public class Book {
             inverseJoinColumns = @JoinColumn(name = "category_id", referencedColumnName = "category_id"))
     private Set<Category> categories;
 
+    //Connects the Book table with the Author table
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE}) @JsonIgnore
     @JoinTable(name = "book_author",
             joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "book_id"),
@@ -38,6 +39,8 @@ public class Book {
     @OneToMany(mappedBy = "book", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Borrowed> borrowed;
 
+
+    //Getters and Setters
     public Set<Author> getAuthors() {
         return authors;
     }
