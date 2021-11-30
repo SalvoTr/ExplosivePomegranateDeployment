@@ -1,9 +1,6 @@
 package com.explosivepomegranate.rest.api.controller;
 
-import com.explosivepomegranate.rest.api.model.Author;
-import com.explosivepomegranate.rest.api.model.Book;
-import com.explosivepomegranate.rest.api.model.Borrowed;
-import com.explosivepomegranate.rest.api.model.Category;
+import com.explosivepomegranate.rest.api.model.*;
 import com.explosivepomegranate.rest.api.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,7 +13,7 @@ import java.util.List;
 @RestController
 public class BookController {
 
-@Autowired
+    @Autowired
     BookService bookService;
 
     /**
@@ -60,7 +57,6 @@ public class BookController {
     public List<Book> getBookByAuthor(@PathVariable(value = "author_id") String authorId){
         return bookService.getBookByAuthor(Integer.parseInt(authorId));
     }
-
 
     /**
      * @author: Clelia
