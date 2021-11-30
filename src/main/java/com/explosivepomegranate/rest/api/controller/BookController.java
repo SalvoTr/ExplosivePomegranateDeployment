@@ -46,7 +46,6 @@ public class BookController {
     /**
      * @author: Salvatore
      * Fetches all books from a given category ID(UC5)
-     * TODO: Each book item is listed a duplicate amount of times as much as the book item has borrowers
      * */
     @GetMapping (path="/categoryBooks/{category_id}", produces = "application/json")
     public List<Book> getBookByCategory(@PathVariable(value = "category_id") String categoryId){
@@ -56,7 +55,6 @@ public class BookController {
     /**
      * @author: Salvatore
      * Fetches all books from a given author ID(UC5)
-     * TODO: Same problem as above
      * */
     @GetMapping (path="/authorBooks/{author_id}", produces = "application/json")
     public List<Book> getBookByAuthor(@PathVariable(value = "author_id") String authorId){
