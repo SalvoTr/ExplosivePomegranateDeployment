@@ -47,7 +47,7 @@ public class User {
     public User(String email, String password) {
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

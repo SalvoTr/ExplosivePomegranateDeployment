@@ -23,7 +23,7 @@ public class UserController {
     @PostMapping(path = "/myNewUser")
     public ResponseEntity<Void> postNewUser(@RequestBody User user){
         try{
-            userService.saveNewUser(user); //TODO: NOT SURE IF BOOKSERVICE OR IF SHOULD CREATE NEW "USERSERVICE"
+            userService.saveNewUser(user);
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, e.getMessage());
         }
