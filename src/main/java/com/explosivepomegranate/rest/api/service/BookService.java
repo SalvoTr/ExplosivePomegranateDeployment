@@ -66,7 +66,8 @@ public class BookService {
      **/
     public Book getBookByID (int bookId){
         //todo error handling?
-        return bookRepository.findById(bookId).get();
+        Book book = bookRepository.findById(bookId).get();
+        return book;
     }
 
     /**

@@ -12,6 +12,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "book")
+@SecondaryTable(name = "borrowed")
 public class Book {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int book_id;
@@ -19,6 +20,7 @@ public class Book {
     private String title;
     private String description;
     private int year;
+    @Column(name = "book_status", table = "borrowed")
     private boolean currentlyBorrowed; //TODO the sql doesn't have that attribute
 
     //Connects the Book table with the Category table
@@ -37,6 +39,7 @@ public class Book {
 
     //Connects the book with borrowed
     @OneToMany(mappedBy = "book", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OrderBy(value = "init_end_date")
     private List<Borrowed> borrowed;
 
 
@@ -102,7 +105,7 @@ public class Book {
     }
 
     public void setCurrentlyBorrowed(boolean currentlyBorrowed) {
-        this.currentlyBorrowed = currentlyBorrowed;
+        this.currentlyBorrowed = getBorrowed().get(this.getBook_id()).isBookStatus();
     }
 
     public List<Borrowed> getBorrowed() {
