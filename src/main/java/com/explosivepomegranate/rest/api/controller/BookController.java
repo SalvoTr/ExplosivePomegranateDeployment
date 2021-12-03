@@ -5,9 +5,13 @@ import com.explosivepomegranate.rest.api.model.Book;
 import com.explosivepomegranate.rest.api.model.Borrowed;
 import com.explosivepomegranate.rest.api.model.Category;
 import com.explosivepomegranate.rest.api.service.BookService;
+import com.explosivepomegranate.rest.api.service.BorrowedService;
+import com.explosivepomegranate.rest.api.service.CustomUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -18,6 +22,8 @@ public class BookController {
 
 @Autowired
     BookService bookService;
+@Autowired
+    BorrowedService borrowedService;
 
     /**
      * @author: Salvatore
@@ -93,6 +99,23 @@ public class BookController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
         }
         return ResponseEntity.ok(book);
+    }
+
+    /**
+     * @author Sonja
+     * UC7 reserve book
+     */
+    @PostMapping (path = "/reserveBook/")
+    public @ResponseBody ResponseEntity<Borrowed> reserveBook (@RequestBody Borrowed sendReservationInfo, Authentication authentication) {
+        CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
+        Borrowed borrow = null;
+
+        try {
+            borrow = borrowedService.reserveBook(sendReservationInfo);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, e.getMessage());
+        }
+        return ResponseEntity.accepted().body(borrow);
     }
 
     /**
