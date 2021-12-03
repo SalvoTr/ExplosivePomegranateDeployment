@@ -23,4 +23,7 @@ public class IndexController {
 
     @GetMapping("/currentlyBorrowed")
     public String borrowed() { return "Admin/borrowed-books-overview.html"; }
+
+    @GetMapping("/myBorrowedBooks")
+    public String myBorrowed() { return "Admin/my-borrowed-books-overview.html"; }
 }
