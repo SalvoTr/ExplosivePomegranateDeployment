@@ -17,6 +17,9 @@ public class UserService {
      * Creates a new user account (UC3)
      * */
     public void saveNewUser(@Validated User user) throws Exception{
+
+
+
         if (user.getId() == null) {
             if (userRepository.findByEmail(user.getEmail()) != null) {
                 throw new Exception("Email address " + user.getEmail() + " already exists");
