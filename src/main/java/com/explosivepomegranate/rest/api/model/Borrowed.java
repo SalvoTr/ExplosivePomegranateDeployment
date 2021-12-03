@@ -76,4 +76,12 @@ public class Borrowed {
     public void setBookStatus(boolean book_status) {
         this.book_status = book_status;
     }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
 }

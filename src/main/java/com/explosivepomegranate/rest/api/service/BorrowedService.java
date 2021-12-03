@@ -31,10 +31,9 @@ public class BorrowedService {
      */
 
     public @ResponseBody
-    Borrowed reserveBook (Borrowed sendReservationInfo) {
+    Borrowed reserveBook (Borrowed sendReservationInfo, Integer bookID) {
         Borrowed borrow = new Borrowed();
-        borrow.setBookComment(sendReservationInfo.getBookComment());
-        borrow.setBorrowed_id(sendReservationInfo.getBorrow_id());
+        borrow.setBook(bookRepository.getOne(bookID));
         borrow.setBookStatus(sendReservationInfo.isBookStatus());
         borrowedRepository.save(sendReservationInfo);
     return borrow;

@@ -10,6 +10,7 @@ import com.explosivepomegranate.rest.api.service.CustomUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
@@ -105,13 +106,12 @@ public class BookController {
      * @author Sonja
      * UC7 reserve book
      */
-    @PostMapping (path = "/reserveBook/")
-    public @ResponseBody ResponseEntity<Borrowed> reserveBook (@RequestBody Borrowed sendReservationInfo, Authentication authentication) {
+    @PostMapping (path = "/reserveBook/{book_id}", produces = "application/json")
+    public @ResponseBody ResponseEntity<Borrowed> reserveBook (@RequestBody Borrowed sendReservationInfo, Authentication authentication, @PathVariable (value="book_id") String bookId) {
         CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
         Borrowed borrow = null;
-
         try {
-            borrow = borrowedService.reserveBook(sendReservationInfo);
+            borrow = borrowedService.reserveBook(sendReservationInfo, Integer.parseInt(bookId));
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, e.getMessage());
         }
