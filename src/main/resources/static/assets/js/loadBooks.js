@@ -5,8 +5,6 @@ $(document).ready(function () {
         // call the function getAllBooks defined in app.js and get the json list of books back
         // take the result and form a div book element for each list item and then display those newly created html items on the page
         getAllBooks( function (result) {
-           console.log("Test the fuck out of that method");
-           console.log(result);
            // delete content of the dom element with id
            $("#allBooks").empty();
             // go through result list
