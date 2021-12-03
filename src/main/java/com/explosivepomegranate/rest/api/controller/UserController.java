@@ -10,17 +10,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-@RestController
+@RestController //User Endpoint
 public class UserController {
 
     @Autowired
     UserService userService;
 
-    /** TODO XXXXXXXXX
+    /**
      * @author: Salvatore
      * Creates an account (UC3)
      * */
-    @PostMapping(path = "/myNewUser")
+    @PostMapping(path = "/myNewUser") //TODO register instead of myNewUser?
     public ResponseEntity<Void> postNewUser(@RequestBody User user){
         try{
             userService.saveNewUser(user);

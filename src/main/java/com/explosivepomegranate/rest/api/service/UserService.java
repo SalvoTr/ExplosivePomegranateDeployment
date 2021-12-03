@@ -12,7 +12,7 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    /** TODO XXXXXXXXX
+    /**
      * @author: Salvatore
      * Creates a new user account (UC3)
      * */
