@@ -9,8 +9,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
+import com.explosivepomegranate.rest.api.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@RestController //User Endpoint
+@RestController
 public class UserController {
 
     @Autowired
@@ -31,4 +36,12 @@ public class UserController {
     }
 
 
+    /**
+     * @author Clelia
+     * return USER_ROLE
+     * */
+    @GetMapping(path = "/userRole", produces = "application/json")
+    public Boolean isAdminRole(Authentication authentication) {
+        return userService.isAdminRole(authentication);
+    }
 }

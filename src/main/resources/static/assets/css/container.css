@@ -7,3 +7,24 @@
   margin-left: auto;
 }
 
+.col-sm-9 {
+  padding: 30px;
+}
+
+.input-group-text{
+  background: rgb(245, 221, 25);
+}
+
+.row {
+  background: #f5f5f5;
+}
+
+.col-sm-2 img {
+  width: 150px;
+  height: 200px;
+}
+
+.placeholder-empty {
+  height: 19px;
+  background: #ffffff;
+}
