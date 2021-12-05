@@ -33,9 +33,9 @@ public class UserService {
 
         User newUser = new User();
         BeanUtils.copyProperties(user, newUser);
-//        Role newRole = new Role();
+        Role newRole = new Role(2, "ROLE_USER");
 //        Login newLogin = new Login();
-//        newUser.setRole(newRole);
+        newUser.setRole(newRole);
 //        newUser.setLogin(newLogin);
         //user.setPassword(passwordEncoder.encode(user.getPassword())); TODO ask security-expert Meneghin
         userRepository.save(user);

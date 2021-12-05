@@ -22,7 +22,7 @@ public class UserController {
 
     @Autowired
     UserService userService;
-    //TEST PURPOSES
+    //TEST PURPOSES:
     @Autowired
     UserRepository userRepository;
     @Autowired

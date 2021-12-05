@@ -21,6 +21,14 @@ public class Role {
     @JsonIgnore
     private List<User> users;
 
+    public Role(int id, String name){
+        this.role_id = id;
+        this.name = name;
+    }
+
+    public Role() {
+    }
+
     public List<User> getUsers() {
         return users;
     }
