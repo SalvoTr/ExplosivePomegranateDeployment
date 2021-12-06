@@ -44,7 +44,6 @@ public class UserController {
         return ResponseEntity.accepted().body(user);
     }
 
-
     /**
      * @author Clelia
      * return USER_ROLE
@@ -66,4 +65,5 @@ public class UserController {
 
     @GetMapping (path = "/allRoles", produces = "application/json")
     public List<Role> getRoles() { return roleRepository.findAll(); }
+
 }

@@ -23,7 +23,7 @@ public class User {
     private List<Borrowed> borrowers;
 
     @ManyToOne
-    @JoinColumn(name="role_id", nullable = false)
+    @JoinColumn(name="role_id")
     private Role role;
 
     @OneToOne(mappedBy = "user", fetch = FetchType.EAGER)
@@ -41,7 +41,6 @@ public class User {
     }
 
     public User() {
-
     }
 
     public User(String email, String password) {

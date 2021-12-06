@@ -25,12 +25,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
      * Encypt password with BCryptPasswordEncoder with 12 rounds
-     *
      * @author Clelia
      * */
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder(12);
+            return new BCryptPasswordEncoder(12);
     }
 
     /**
