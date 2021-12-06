@@ -12,7 +12,7 @@ $(document).ready(function () {
                 //add new item into div with id allBooks
                 $("#allBooks")
                     .append(
-                        $('<div class="row">').append(
+                        $('<a href="/bookDetails/'+book.book_id+'"><div class="row">').append(
                             $('<div class="col-sm-2">').append(
                                 $('<img src="../assets/img/sample-book-cover.png">')
                             ),
