@@ -8,9 +8,12 @@ import com.explosivepomegranate.rest.api.repository.LoginRepository;
 import com.explosivepomegranate.rest.api.repository.RoleRepository;
 import com.explosivepomegranate.rest.api.repository.UserRepository;
 import com.explosivepomegranate.rest.api.service.UserService;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.security.core.Authentication;
@@ -35,13 +38,17 @@ public class UserController {
      * Registers a new account (UC3)
      * */
     @PostMapping(path = "/myNewUser")
-    public ResponseEntity<User> postNewUser(@RequestBody User user){
+    public ResponseEntity<User> postNewUser(@RequestBody JsonNode jsonNode) {
         try{
-           userService.saveNewUser(user);
+            userService.saveNewUser(jsonNode);
         } catch (Exception e) {
+           // TODO: now something is missing in the way it is saved. there is an error thrown, maybe cascade types? see link as reference
+            // not sure if this helps but maybe a start https://www.baeldung.com/hibernate-unsaved-transient-instance-error
             throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, e.getMessage());
         }
-        return ResponseEntity.accepted().body(user);
+       // return ResponseEntity.accepted().body(user);
+        // TODO: update this and update cascade types
+        return null;
     }
 
     /**

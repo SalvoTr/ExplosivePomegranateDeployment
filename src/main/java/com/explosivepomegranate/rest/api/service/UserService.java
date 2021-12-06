@@ -7,6 +7,7 @@ import com.explosivepomegranate.rest.api.model.User;
 import com.explosivepomegranate.rest.api.repository.LoginRepository;
 import com.explosivepomegranate.rest.api.repository.RoleRepository;
 import com.explosivepomegranate.rest.api.repository.UserRepository;
+import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -31,27 +32,32 @@ public class UserService {
      * @author: Salvatore
      * Creates a new user account (UC3)
      * */
-    public void saveNewUser(@Validated User user) throws Exception {
+    //public void saveNewUser(@Validated User user) throws Exception {
+    public void saveNewUser(JsonNode jsonNode) throws Exception {
+
+        User newUser = new User();
+        newUser.setFirstname(jsonNode.get("firstname").asText());
+        newUser.setLastname(jsonNode.get("lastname").asText());
+        newUser.setEmail(jsonNode.get("email").asText());
+
         //Some basic checks to see if account already registered
-        if (user.getId() == null) {
-            if (userRepository.findByEmail(user.getEmail()) != null) {
-                throw new Exception("Email address " + user.getEmail() + " already exists");
+       if (newUser.getId() == null) {
+            if (userRepository.findByEmail(newUser.getEmail()) != null) {
+                throw new Exception("Email address " + newUser.getEmail() + " already exists");
             }
-        } else if (userRepository.findByEmailAndIdNot(user.getEmail(), user.getId()) != null) {
-            throw new Exception("Email address " + user.getEmail() + " already exists");
+        } else if (userRepository.findByEmailAndIdNot(newUser.getEmail(), newUser.getId()) != null) {
+            throw new Exception("Email address " + newUser.getEmail() + " already exists");
         }
 
         Role userRole = roleRepository.findAll().get(1);
-        user.setRole(userRole);
-
-
-        Login newLogin = user.getLogin();
-        //Login newLogin = new Login();
-        //newLogin.setUser(user);
-        newLogin.setPassword(passwordEncoder.encode(newLogin.getPassword())); //TODO IDK how to get PW
-
-        userRepository.save(user);
-        loginRepository.save(newLogin);
+        newUser.setRole(userRole);
+        newUser.setLogin(new Login());
+        Login login = newUser.getLogin();
+        login.setUser(newUser);
+        login.setPassword(passwordEncoder.encode(jsonNode.get("password").asText()));
+        //loginRepository.save(newLogin);
+        userRepository.save(newUser);
+        //TODO save is not working yet, sais one of them needs to be saved first and then updated
     }
 
      /**
