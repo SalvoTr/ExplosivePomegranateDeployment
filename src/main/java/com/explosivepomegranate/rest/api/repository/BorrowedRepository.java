@@ -1,19 +1,21 @@
 package com.explosivepomegranate.rest.api.repository;
 
-import com.explosivepomegranate.rest.api.model.Book;
 import com.explosivepomegranate.rest.api.model.Borrowed;
-import com.explosivepomegranate.rest.api.service.CustomUserDetails;
+import com.explosivepomegranate.rest.api.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.security.core.Authentication;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
+@Repository
 public interface BorrowedRepository extends JpaRepository<Borrowed, Integer> {
 
     /**
      * @author Sonja
      * Methode for returing user id
      */
-    findByUserID(Authentication authentication) {
-        CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
-        return userDetails;
-    }
+  List<Borrowed> findByUserId (Integer user_id);
+    // https://www.netsurfingzone.com/jpa/how-to-write-custom-method-in-repository-in-spring-data-jpa/
+
 }

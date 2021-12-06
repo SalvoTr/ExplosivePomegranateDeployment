@@ -1,9 +1,6 @@
 package com.explosivepomegranate.rest.api.controller;
 
-import com.explosivepomegranate.rest.api.model.Author;
-import com.explosivepomegranate.rest.api.model.Book;
-import com.explosivepomegranate.rest.api.model.Borrowed;
-import com.explosivepomegranate.rest.api.model.Category;
+import com.explosivepomegranate.rest.api.model.*;
 import com.explosivepomegranate.rest.api.service.BookService;
 import com.explosivepomegranate.rest.api.service.BorrowedService;
 import com.explosivepomegranate.rest.api.service.CustomUserDetails;
@@ -13,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -109,7 +107,7 @@ public class BookController {
      */
     @PostMapping(path = "/reserveBook/{book_id}", produces = "application/json")
     public @ResponseBody
-    ResponseEntity<Borrowed> reserveBook(@RequestBody Borrowed sendReservationInfo, //Authentication authentication,
+    ResponseEntity<Borrowed> reserveBook(@RequestBody Borrowed sendReservationInfo, @AuthenticationPrincipal
                                          @PathVariable(value = "book_id") String bookId) {
         //CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
         Borrowed borrow;
@@ -128,7 +126,7 @@ public class BookController {
 
     @GetMapping(path = "/myBorrows")
     public List<Borrowed> myBorrows(Authentication authentication) {
-        //CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
+        CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
         borrowedService.getMyBorrows(authentication);
         return null; //borrowedService.getMyBorrows();
     }
@@ -145,7 +143,7 @@ public class BookController {
      * UC18 add a comment to a book
      **/
 
-    @PostMapping(path = "/addComment/{book_id}")
+ /*   @PostMapping(path = "/addComment/{book_id}")
     public @ResponseBody
     ResponseEntity<Borrowed> addNewComment(@RequestBody String addComment, //Authentication authentication
                                            @PathVariable(value = "book_id") String bookId) {
@@ -156,7 +154,7 @@ public class BookController {
             throw new ResponseStatusException(HttpStatus.CONFLICT, e.getMessage());
         }
         return ResponseEntity.accepted().body(book_comment);
-    }
+    }*/
 }
 
 

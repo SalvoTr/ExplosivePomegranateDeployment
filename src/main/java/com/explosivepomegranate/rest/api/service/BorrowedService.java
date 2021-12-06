@@ -48,7 +48,9 @@ public class BorrowedService {
      */
     public List<Borrowed> getMyBorrows (Authentication authentication) {
         CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
-        return borrowedRepository.findByUserID();
+
+        userDetails.getUserId();
+        return borrowedRepository.findByUserId(userDetails.getUserId());
     }
 
     /**
