@@ -16,6 +16,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 @RestController
@@ -106,10 +107,12 @@ public class BookController {
      * @author Sonja
      * UC7 reserve book
      */
-    @PostMapping (path = "/reserveBook/{book_id}", produces = "application/json")
-    public @ResponseBody ResponseEntity<Borrowed> reserveBook (@RequestBody Borrowed sendReservationInfo, Authentication authentication, @PathVariable (value="book_id") String bookId) {
-        CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
-        Borrowed borrow = null;
+    @PostMapping(path = "/reserveBook/{book_id}", produces = "application/json")
+    public @ResponseBody
+    ResponseEntity<Borrowed> reserveBook(@RequestBody Borrowed sendReservationInfo, //Authentication authentication,
+                                         @PathVariable(value = "book_id") String bookId) {
+        //CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
+        Borrowed borrow;
         try {
             borrow = borrowedService.reserveBook(sendReservationInfo, Integer.parseInt(bookId));
         } catch (Exception e) {
@@ -119,9 +122,41 @@ public class BookController {
     }
 
     /**
+     * @author Sonja
+     * UC8 my borrowed books
+     */
+
+    @GetMapping(path = "/myBorrows")
+    public List<Borrowed> myBorrows(Authentication authentication) {
+        //CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
+        borrowedService.getMyBorrows(authentication);
+        return null; //borrowedService.getMyBorrows();
+    }
+
+    /**
      * @author: Salvatore
      * returns list of all borrowed books (UC11)
      * */
     @GetMapping (path = "/allBorrowed", produces = "application/json")
-    public List<Borrowed> getBorrowed() { return bookService.getAllBorrowed(); }
+    public List<Borrowed> getBorrowed() { return borrowedService.getAllBorrowed();}
+
+    /**
+     * @author Sonja
+     * UC18 add a comment to a book
+     **/
+
+    @PostMapping(path = "/addComment/{book_id}")
+    public @ResponseBody
+    ResponseEntity<Borrowed> addNewComment(@RequestBody String addComment, //Authentication authentication
+                                           @PathVariable(value = "book_id") String bookId) {
+        Borrowed book_comment;
+        try {
+            book_comment = borrowedService.addNewComment(addComment, Integer.parseInt(bookId));
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, e.getMessage());
+        }
+        return ResponseEntity.accepted().body(book_comment);
+    }
 }
+
+

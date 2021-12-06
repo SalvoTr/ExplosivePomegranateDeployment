@@ -72,12 +72,6 @@ public class BookService {
 
     /**
      * @author: Salvatore
-     * returns list of all borrowed books (UC11)
-     * */
-    public List<Borrowed> getAllBorrowed() { return borrowedRepository.findAll(); }
-
-    /**
-     * @author: Salvatore
      * Fetches all books from a given category ID(UC5)
      * */
     public List<Book> getBookByCategory(int categoryId){
