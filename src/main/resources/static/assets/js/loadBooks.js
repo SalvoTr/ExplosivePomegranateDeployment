@@ -17,6 +17,7 @@ $(document).ready(function () {
                                 $('<img src="../assets/img/sample-book-cover.png">')
                             ),
                             $('<div class="col-sm-9">').append(
+                                $(book.currentlyBorrowed ? $('<p class="BorrowedStyle">').text("Currently borrowed") : $('<p class="notBorrowedStyle">').text("Available")),
                                 $("<h3>").text(book.title),
                                 $("<p>").text(book.description)
                             ),
