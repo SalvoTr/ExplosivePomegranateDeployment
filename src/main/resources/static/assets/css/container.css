@@ -28,3 +28,13 @@
   height: 19px;
   background: #ffffff;
 }
+
+.BorrowedStyle {
+  color: red;
+  font-style: italic;
+}
+
+.notBorrowedStyle{
+  color: #343a40;
+  font-style: italic;
+}
