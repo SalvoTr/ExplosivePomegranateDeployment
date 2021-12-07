@@ -4,7 +4,7 @@ package com.explosivepomegranate.rest.api.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+@Controller //the actual controller that serves the HTML pages
 public class IndexController {
 
     @GetMapping("/")

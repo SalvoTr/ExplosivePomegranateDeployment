@@ -12,7 +12,8 @@ import java.util.Set;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int user_id;
+    @Column(name = "user_id", nullable = false)
+    private int id;
     private String firstname;
     private String lastname;
     private String email;
@@ -22,16 +23,16 @@ public class User {
     private List<Borrowed> borrowers;
 
     @ManyToOne
-    @JoinColumn(name="role_id", nullable = false)
+    @JoinColumn(name="role_id")
     private Role role;
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     @JsonIgnore
     private Login login;
 
-    public User(int user_id, String firstname, String lastname, String email, Role role, Login login) {
-        this.user_id = user_id;
+    public User(int id, String firstname, String lastname, String email, Role role, Login login) {
+        this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
@@ -40,18 +41,17 @@ public class User {
     }
 
     public User() {
-
     }
 
     public User(String email, String password) {
     }
 
-    public int getUser_id() {
-        return user_id;
+    public Integer getId() {
+        return id;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirstname() {
