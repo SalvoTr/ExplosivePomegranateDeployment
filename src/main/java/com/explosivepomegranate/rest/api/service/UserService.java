@@ -55,9 +55,7 @@ public class UserService {
         Login login = newUser.getLogin();
         login.setUser(newUser);
         login.setPassword(passwordEncoder.encode(jsonNode.get("password").asText()));
-        //loginRepository.save(newLogin);
         userRepository.save(newUser);
-        //TODO save is not working yet, sais one of them needs to be saved first and then updated
     }
 
      /**

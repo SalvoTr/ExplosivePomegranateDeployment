@@ -38,17 +38,13 @@ public class UserController {
      * Registers a new account (UC3)
      * */
     @PostMapping(path = "/myNewUser")
-    public ResponseEntity<User> postNewUser(@RequestBody JsonNode jsonNode) {
+    public ResponseEntity<JsonNode> postNewUser(@RequestBody JsonNode jsonNode) {
         try{
             userService.saveNewUser(jsonNode);
         } catch (Exception e) {
-           // TODO: now something is missing in the way it is saved. there is an error thrown, maybe cascade types? see link as reference
-            // not sure if this helps but maybe a start https://www.baeldung.com/hibernate-unsaved-transient-instance-error
             throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, e.getMessage());
         }
-       // return ResponseEntity.accepted().body(user);
-        // TODO: update this and update cascade types
-        return null;
+        return ResponseEntity.accepted().body(jsonNode);
     }
 
     /**

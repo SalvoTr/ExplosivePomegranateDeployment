@@ -26,7 +26,7 @@ public class User {
     @JoinColumn(name="role_id")
     private Role role;
 
-    @OneToOne(mappedBy = "user", fetch = FetchType.EAGER)
+    @OneToOne(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     @JsonIgnore
     private Login login;

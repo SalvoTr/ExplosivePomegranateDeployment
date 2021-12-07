@@ -9,7 +9,7 @@ public class Login {
     @Column(name="user_id") int id;
     private String password;
 
-    @OneToOne
+    @OneToOne (cascade = CascadeType.ALL)
     @MapsId
     @JoinColumn(name="user_id")
     private User user;
