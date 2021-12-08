@@ -20,7 +20,8 @@ $(document).ready(function () {
                             $('<div class="col-sm-9">').append(
                                 $(book.currentlyBorrowed ? $('<p class="BorrowedStyle">').text("Currently borrowed") : $('<p class="notBorrowedStyle">').text("Available")),
                                 $("<h3>").text(book.title),
-                                $("<p>").text(book.description)
+                                // if text description lenght is over 200 replace the remaining text with '...'
+                                $(book.description.length > 200 ? $("<p>").text(book.description.substring(0,200)+"...") : $("<p>").text(book.description) )
                             )
                         ),
                         $('<div class="placeholder-empty">')
