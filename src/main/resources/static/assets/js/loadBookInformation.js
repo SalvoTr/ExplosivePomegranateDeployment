@@ -15,6 +15,7 @@ $(document).ready(function () {
                     ),
                     $('<div class="col-sm-8">').append(
                         $('<h1 class="bookInfoTitle">').text(result.title),
+                        // if book is currently borrowed show text "currently borrowed" if not then show it is available
                         $(result.currentlyBorrowed ? $('<p class="BorrowedStyle">').text("Currently borrowed") : $('<p class="notBorrowedStyle">').text("Available")),
                         $('<p>').text("ISBN:"+result.isbn),
                         $('<p>').text("Published:"+result.year),

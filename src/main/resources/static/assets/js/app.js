@@ -1,27 +1,6 @@
+// ############################# AJAX calls #####################################################
+
 serviceEndpointURL = window.location.protocol + "//" + window.location.host;
-
-$(document).ready(function() {
-    isUserAdmin(function (isAdmin){
-        // if user is no admin = ROLE_ADMIN = true, hide a few elements on the page
-        if(!isAdmin) {
-            //navigation of currently borrowed
-            $("#currentlyBorrowed").hide();
-            // button to add new book
-            $("#addNewBook").hide();
-            // button to edit book
-            $("#editBook").hide();
-        }
-    })
-});
-
-//return the last part of the url to get an id
-function getUrlParameter(){
-    // first take the url
-    // split it on each /
-    // then use the last item that was left
-    // for example "https://localhos:8080/bookDetails/15" returns 15
-    return $(location).attr("href").split('/').pop();
-}
 
 // make a Get reguest to "/allBooks" and get the json with all books back
 function getAllBooks(callback) {
