@@ -10,7 +10,16 @@ $(document).ready(function() {
             $("#addNewBook").hide();
         }
     })
-})
+});
+
+//return the last part of the url to get an id
+function getUrlParameter(){
+    // first take the url
+    // split it on each /
+    // then use the last item that was left
+    // for example "https://localhos:8080/bookDetails/15" returns 15
+    return $(location).attr("href").split('/').pop();
+}
 
 // make a Get reguest to "/allBooks" and get the json with all books back
 function getAllBooks(callback) {
@@ -63,6 +72,18 @@ function postNewUser(firstname, lastname, email, password, callbackSuccess, call
         error: function (jqXHR, textStatus, errorThrown) {
             console.log(jqXHR, textStatus, errorThrown);
             callbackError(jqXHR.responseJSON.message);
+        }
+    });
+}
+
+// get bookInformation
+function getBookInfo(bookId, callback){
+    $.ajax({
+        type: "GET",
+        contentType: "application/json",
+        url: serviceEndpointURL+"/bookInfo/"+bookId,
+        success: function (data) {
+            callback(data);
         }
     });
 }
