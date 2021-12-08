@@ -17,13 +17,23 @@ $(document).ready(function () {
                         $('<h1 class="bookInfoTitle">').text(result.title),
                         $(result.currentlyBorrowed ? $('<p class="BorrowedStyle">').text("Currently borrowed") : $('<p class="notBorrowedStyle">').text("Available")),
                         $('<p>').text("ISBN:"+result.isbn),
-                        $('<p>').text("Published:"+result.year)
+                        $('<p>').text("Published:"+result.year),
                         // TODO author and Categories are missing
+                        $('<div>').append(
+                            // TODO create ajax funxtion that listens on reserveBook(book_id)
+                            // TODO on successful reservation, show message that book was reserved successfully and update availability status on page
+                            $('<button onclick="reserveBook('+result.book_id+')" id="borrowBookBtn" class="btn btn-primary col-sm-3" type="button">').text("Borrow this book")
+                        )
                     )
                 ),
                 $('<div class="bookInfoDescription">').append(
                     $('<p>').text(result.description)
-                )
+                ),
+                // TODO get the previous comments of the book and print them in a list/table
+                // TODO make a for each (see example in loadBooks.js and print each entry
+                // TODO design the comments in a way they are fitting onto the page
+                $('<div class="bookComment">')
+                // TODO create method who checks if you are the one currently borrowing the book, if you are the one currently borrowing the book add a button with the option to add a new comment
             );
         })
     }

@@ -8,6 +8,8 @@ $(document).ready(function() {
             $("#currentlyBorrowed").hide();
             // button to add new book
             $("#addNewBook").hide();
+            // button to edit book
+            $("#editBook").hide();
         }
     })
 });
