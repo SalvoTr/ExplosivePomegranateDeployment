@@ -35,4 +35,7 @@ public class IndexController {
      * */
     @GetMapping("/bookDetails/{id}")
     public String bookDetail(@PathVariable Long id) { return "../Admin/book-information-admin.html"; }
+
+    @GetMapping("/createNewBook")
+    public String createBook() { return "Admin/add-new-book.html"; }
 }

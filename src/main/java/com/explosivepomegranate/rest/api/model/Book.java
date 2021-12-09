@@ -13,6 +13,7 @@ import java.util.Set;
 @Entity
 @Table(name = "book")
 public class Book {
+    // when you want to automatically save a user take the system id Identity
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int book_id;
     private String ISBN;

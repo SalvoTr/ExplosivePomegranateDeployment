@@ -2,6 +2,7 @@ package com.explosivepomegranate.rest.api.controller;
 
 import com.explosivepomegranate.rest.api.model.*;
 import com.explosivepomegranate.rest.api.service.BookService;
+import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -98,4 +99,18 @@ public class BookController {
      * */
     @GetMapping (path = "/allBorrowed", produces = "application/json")
     public List<Borrowed> getBorrowed() { return bookService.getAllBorrowed(); }
+
+    /**
+     * @author: Clelia
+     * save new book (UC10)
+     * */
+    @PostMapping (path = "/newBook", produces = "application/json")
+    public ResponseEntity<JsonNode> postNewBook(@RequestBody JsonNode jsonNode) {
+        try {
+            bookService.saveNewBook(jsonNode);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, e.getMessage());
+        }
+        return ResponseEntity.accepted().body(jsonNode);
+    }
 }
