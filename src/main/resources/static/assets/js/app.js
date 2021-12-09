@@ -1,16 +1,6 @@
-serviceEndpointURL = window.location.protocol + "//" + window.location.host;
+// ############################# AJAX calls #####################################################
 
-$(document).ready(function() {
-    isUserAdmin(function (isAdmin){
-        // if user is no admin = ROLE_ADMIN = true, hide a few elements on the page
-        if(!isAdmin) {
-            //navigation of currently borrowed
-            $("#currentlyBorrowed").hide();
-            // button to add new book
-            $("#addNewBook").hide();
-        }
-    })
-})
+serviceEndpointURL = window.location.protocol + "//" + window.location.host;
 
 // make a Get reguest to "/allBooks" and get the json with all books back
 function getAllBooks(callback) {
@@ -63,6 +53,18 @@ function postNewUser(firstname, lastname, email, password, callbackSuccess, call
         error: function (jqXHR, textStatus, errorThrown) {
             console.log(jqXHR, textStatus, errorThrown);
             callbackError(jqXHR.responseJSON.message);
+        }
+    });
+}
+
+// get bookInformation
+function getBookInfo(bookId, callback){
+    $.ajax({
+        type: "GET",
+        contentType: "application/json",
+        url: serviceEndpointURL+"/bookInfo/"+bookId,
+        success: function (data) {
+            callback(data);
         }
     });
 }

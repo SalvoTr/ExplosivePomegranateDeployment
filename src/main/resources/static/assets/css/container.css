@@ -14,9 +14,38 @@
 .input-group-text{
   background: rgb(245, 221, 25);
 }
+.rowLogin {
+  background: #f5f5f5;
+  position: relative;
+}
 
 .row {
   background: #f5f5f5;
+}
+
+.rowList:hover {
+  transform: scale(1.01);
+  border-color: burlywood;
+  border-style: solid;
+}
+/* to make the card Item on the book overview clickable we need to set the absolute positon
+on the a element in the rowList and say that the link lays 100% over the card */
+.rowList a {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.bookInfoBanner {
+  width: 100%;
+  height: 100%;
+  padding: 2%;
+  margin-bottom: 2%;
+}
+
+.bookInfoImage {
+  width: 200px;
+  height: 300px;
 }
 
 .col-sm-2 img {
@@ -38,3 +67,8 @@
   color: #343a40;
   font-style: italic;
 }
+
+/*
+TODO style footer so it is not floating in the middle of the screen but is fixated at the bottom of the page
+TODO make design more scalable for small screens
+*/

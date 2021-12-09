@@ -2,7 +2,7 @@ package com.explosivepomegranate.rest.api.controller;
 
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller //the actual controller that serves the HTML pages
 public class IndexController {
@@ -26,4 +26,13 @@ public class IndexController {
 
     @GetMapping("/myBorrowedBooks")
     public String myBorrowed() { return "Admin/my-borrowed-books-overview.html"; }
+
+    /**
+     * @author: Clelia
+     * when adding an ID as parameter the system adds a "folder"
+     * this means when you want to access your file you need to add "../" in addition
+     * to your url to the html file you want to display
+     * */
+    @GetMapping("/bookDetails/{id}")
+    public String bookDetail(@PathVariable Long id) { return "../Admin/book-information-admin.html"; }
 }
