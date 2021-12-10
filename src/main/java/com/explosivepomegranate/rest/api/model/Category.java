@@ -15,7 +15,7 @@ public class Category {
     private int id;
     private String category_name;
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "categories", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "categories", cascade = {CascadeType.PERSIST, CascadeType.MERGE}) @JsonIgnore
     private List<Book> books;
 
     public int getId() {

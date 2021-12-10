@@ -1,5 +1,7 @@
 package com.explosivepomegranate.rest.api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -12,7 +14,7 @@ public class Author {
     private String author_firstname;
     private String author_lastname;
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "authors", cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "authors", cascade = {CascadeType.MERGE, CascadeType.PERSIST}) @JsonIgnore
     private List<Book> books;
 
     public List<Book> getBooks() {
