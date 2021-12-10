@@ -48,7 +48,7 @@ $(document).ready(function() {
         const dropdown = $(".authorSelect");
         dropdown.empty();
         $.each(authors, function (key, author) {
-            dropdown.append($('<option value="'+author.id+'" >').text(author.authorFirstname+" "+ author.authorLastname));
+            dropdown.append($('<option>').text(author.authorFirstname+" "+ author.authorLastname));
         })
         // from script choices.min.js
         let multipleCancelButton = new Choices('#author-selection', {removeItemButton: true});
@@ -76,15 +76,20 @@ $(document).ready(function() {
         object.description = $('textarea[name=description]').val();
         object.year = $('input[name=year]').val();
 
+        // get selected authors from the dropdown
+        let fullnames = $("#author-selection option:selected").map(function(){
+            return this.value.split(" ") }).get()
+
+
         //object.category = [$("option:selected").map(function(){ return this.value }).get().join(", ")];
-        registerNewBook(JSON.stringify(object),  function (result) {
+        /*registerNewBook(JSON.stringify(object),  function (result) {
             // TODO add confirmation modal that new book was successfully saved before going back home
             window.location.replace("/home");
         }, function (error){
             $("#error-modal").modal('show');
             $("#error-text").text(error);
         });
-        event.preventDefault();
+        event.preventDefault();*/
     })
 
 });

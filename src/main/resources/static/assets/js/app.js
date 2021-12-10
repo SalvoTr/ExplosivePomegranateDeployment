@@ -56,6 +56,22 @@ function postNewUser(firstname, lastname, email, password, callbackSuccess, call
         }
     });
 }
+// save new book
+function registerNewBook(newBookInfo, callback, callbackError) {
+    $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        url: serviceEndpointURL +"/newBook",
+        data: newBookInfo,
+        success: function () {
+            callbackSuccess(true);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR, textStatus, errorThrown);
+            callbackError(jqXHR.responseJSON.message);
+        }
+    });
+}
 
 // get bookInformation
 function getBookInfo(bookId, callback){
@@ -65,6 +81,30 @@ function getBookInfo(bookId, callback){
         url: serviceEndpointURL+"/bookInfo/"+bookId,
         success: function (data) {
             callback(data);
+        }
+    });
+}
+
+// get categories
+function getCategories(callback){
+    $.ajax({
+        type: "GET",
+        contentType: "application/json",
+        url: serviceEndpointURL+"/allCategories",
+        success: function (data) {
+            callback(data)
+        }
+    });
+}
+
+// get authors
+function getAuthors(callback){
+    $.ajax({
+        type: "GET",
+        contentType: "application/json",
+        url: serviceEndpointURL+"/allAuthors",
+        success: function (data) {
+            callback(data)
         }
     });
 }
