@@ -33,10 +33,10 @@
 <div class="col-sm-9" id="newBook" style="padding: 69px;">
     <form id="new-book-form" method="post">
         <h2 class="text-center"><strong>Add</strong> new book</h2>
-        <div class="mb-3"><input class="form-control" type="text" name="isbn" placeholder="ISBN"></div>
-        <div class="mb-3"><input class="form-control" type="text" name="title" placeholder="Book Title"/></div>
-        <div class="mb-3"><textarea class="form-control" type="text" name="description" placeholder="Book description"></textarea></div>
-        <div class="mb-3"><input type="text" name="year" class="form-control" id="datepicker" value="Select Publishing Year" /></div>
+        <div class="mb-3"><input class="form-control" type="text" name="isbn" placeholder="ISBN" required></div>
+        <div class="mb-3"><input class="form-control" type="text" name="title" placeholder="Book Title" required/></div>
+        <div class="mb-3"><textarea class="form-control" type="text" name="description" placeholder="Book description" required></textarea></div>
+        <div class="mb-3"><input type="text" name="year" class="form-control" id="datepicker" value="Select Publishing Year" required /></div>
     </form>
     <div class="input-group" id="author-group">
         <select form="new-book-form" id="author-selection" class="mb-3 authorSelect" placeholder="Select author(s)" multiple></select>

@@ -64,11 +64,10 @@ function registerNewBook(newBookInfo, callback, callbackError) {
         url: serviceEndpointURL +"/newBook",
         data: newBookInfo,
         success: function () {
-            callbackSuccess(true);
+            callback(true);
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log(jqXHR, textStatus, errorThrown);
-            callbackError(jqXHR.responseJSON.message);
         }
     });
 }

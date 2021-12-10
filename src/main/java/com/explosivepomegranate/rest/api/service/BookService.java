@@ -103,6 +103,7 @@ public class BookService {
         newBook.setISBN(jsonNode.get("isbn").asText());
         newBook.setTitle(jsonNode.get("title").asText());
         newBook.setDescription(jsonNode.get("description").asText());
+        newBook.setYear(jsonNode.get("year").asInt());
         newBook.setCurrentlyBorrowed(false);
         bookRepository.save(newBook);
 
