@@ -1,6 +1,25 @@
 $(document).ready(function () {
     //getUrlParameter function defined in app.js
     const bookId = getUrlParameter();
+
+    function listAuthors(authors){
+        let authorarray = [];
+        $.each(authors, function(key, author){
+            let aauthor = author.authorFirstname+" "+author.authorLastname;
+            authorarray.push(aauthor);
+        });
+        return authorarray.join(" , ");
+    }
+
+    function listCategories(categories){
+        let categoryarray = [];
+        $.each(categories, function(key, categories){
+            let ccategory = categories.categoryName;
+            categoryarray.push(ccategory);
+        });
+        return categoryarray.join(" , ");
+    }
+
     $(loadData());
     function loadData() {
         // call the function getBookInfo defined in app.js and get the json back
@@ -17,16 +36,8 @@ $(document).ready(function () {
                         $('<h1 class="bookInfoTitle">').text(result.title),
                         // if book is currently borrowed show text "currently borrowed" if not then show it is available
                         $(result.currentlyBorrowed ? $('<p class="BorrowedStyle">').text("Currently borrowed") : $('<p class="notBorrowedStyle">').text("Available")),
-                        $('<p>').text("Author: " +
-                            alert(JSON.stringify(authors),)
-                            $.each(result.authors,
-                            function (key, author) {
-                                let authorname = author.authorFirstname+" "+author.authorLastname;
-                                console.log( authorname);
-                                return authorname;
-                            }
-                        ).join(" , ")
-                        ),
+                        $('<p>').text("Author(s): " + listAuthors(result.authors)),
+                        $('<p>').text("Category: " + listCategories(result.categories)),
                         $('<p>').text("ISBN: "+result.isbn),
                         $('<p>').text("Published: "+result.year),
                         // TODO author and Categories are missing
