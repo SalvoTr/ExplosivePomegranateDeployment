@@ -39,6 +39,8 @@ function mapBookList(placeholderID, booklist) {
                     $('<div class="col-sm-9">').append(
                         $(book.currentlyBorrowed ? $('<p class="BorrowedStyle">').text("Currently borrowed") : $('<p class="notBorrowedStyle">').text("Available")),
                         $("<h3>").text(book.title),
+                        $('<p>').text("Author(s): " + listAuthors(book.authors)),
+                        $('<p>').text("Category: " + listCategories(book.categories)),
                         // if text description lenght is over 200 replace the remaining text with '...'
                         $(book.description.length > 200 ? $("<p>").text(book.description.substring(0,200)+"...") : $("<p>").text(book.description) )
                     )
@@ -47,4 +49,21 @@ function mapBookList(placeholderID, booklist) {
             );
 
     })
+}
+function listAuthors(authors){
+    let authorarray = [];
+    $.each(authors, function(key, author){
+        let aauthor = author.authorFirstname+" "+author.authorLastname;
+        authorarray.push(aauthor);
+    });
+    return authorarray.join(" , ");
+}
+
+function listCategories(categories){
+    let categoryarray = [];
+    $.each(categories, function(key, categories){
+        let ccategory = categories.categoryName;
+        categoryarray.push(ccategory);
+    });
+    return categoryarray.join(" , ");
 }
