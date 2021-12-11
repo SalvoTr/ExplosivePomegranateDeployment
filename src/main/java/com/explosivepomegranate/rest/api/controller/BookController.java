@@ -60,20 +60,6 @@ public class BookController {
         return bookService.getBookByAuthor(Integer.parseInt(authorId));
     }
 
-    /**
-     * @author: Clelia
-     * try to add a new book, body expected to be json format
-     * */
-    @PostMapping(path = "/addBook")
-    public @ResponseBody ResponseEntity<Book> addNewBook(@RequestBody Book sendBookInfo) {
-        Book book = null;
-        try {
-            book = bookService.addNewBook(sendBookInfo);
-        } catch (Exception e) {
-        throw new ResponseStatusException(HttpStatus.CONFLICT, e.getMessage());
-        }
-        return ResponseEntity.accepted().body(book);
-    }
 
     /**
      * @author Sonja

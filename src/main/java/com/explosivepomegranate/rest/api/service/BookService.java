@@ -47,22 +47,6 @@ public class BookService {
     public List<Book> getAllBooks() { return bookRepository.findAll(); }
 
     /**
-     * @author Clelia
-     * add a new book --------still a draft, model is still incomplete and this method will require some work
-     * */
-    public @ResponseBody
-    Book addNewBook(Book sendBookInfo) {
-        Book book = new Book();
-        book.setISBN(sendBookInfo.getISBN());
-        book.setTitle(sendBookInfo.getTitle());
-        book.setDescription(sendBookInfo.getDescription());
-        book.setYear(sendBookInfo.getYear());
-
-        bookRepository.save(book);
-        return book;
-    }
-
-    /**
      * @author Sonja
      * UC6 find book by id
      * @return Book object found with given id
