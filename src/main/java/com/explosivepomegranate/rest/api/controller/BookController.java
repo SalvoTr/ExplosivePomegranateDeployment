@@ -104,6 +104,7 @@ public class BookController {
      * @author: Clelia
      * save new book (UC10)
      * */
+    @Secured("ROLE_ADMIN")
     @PostMapping (path = "/newBook", produces = "application/json")
     public ResponseEntity<JsonNode> postNewBook(@RequestBody JsonNode jsonNode) {
         try {
