@@ -17,8 +17,18 @@ $(document).ready(function () {
                         $('<h1 class="bookInfoTitle">').text(result.title),
                         // if book is currently borrowed show text "currently borrowed" if not then show it is available
                         $(result.currentlyBorrowed ? $('<p class="BorrowedStyle">').text("Currently borrowed") : $('<p class="notBorrowedStyle">').text("Available")),
-                        $('<p>').text("ISBN:"+result.isbn),
-                        $('<p>').text("Published:"+result.year),
+                        $('<p>').text("Author: " +
+                            alert(JSON.stringify(authors),)
+                            $.each(result.authors,
+                            function (key, author) {
+                                let authorname = author.authorFirstname+" "+author.authorLastname;
+                                console.log( authorname);
+                                return authorname;
+                            }
+                        ).join(" , ")
+                        ),
+                        $('<p>').text("ISBN: "+result.isbn),
+                        $('<p>').text("Published: "+result.year),
                         // TODO author and Categories are missing
                         $('<div>').append(
                             // TODO create ajax funxtion that listens on reserveBook(book_id)
