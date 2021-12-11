@@ -5,12 +5,15 @@ import com.explosivepomegranate.rest.api.repository.AuthorRepository;
 import com.explosivepomegranate.rest.api.repository.BookRepository;
 import com.explosivepomegranate.rest.api.repository.BorrowedRepository;
 import com.explosivepomegranate.rest.api.repository.CategoryRepository;
+import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class BookService {
@@ -89,5 +92,58 @@ public class BookService {
      * */
     public List<Book> getBookByAuthor(int authorId){
         return bookRepository.findByAuthors_Id(authorId);
+    }
+
+    /**
+     * @author Clelia
+     * save new book (UC10)
+     * */
+    public void saveNewBook(JsonNode jsonNode) throws Exception {
+        Book newBook = new Book();
+        newBook.setISBN(jsonNode.get("isbn").asText());
+        newBook.setTitle(jsonNode.get("title").asText());
+        newBook.setDescription(jsonNode.get("description").asText());
+        newBook.setYear(jsonNode.get("year").asInt());
+        newBook.setCurrentlyBorrowed(false);
+        bookRepository.save(newBook);
+
+        Set<Author> authors = new HashSet<>();
+        Set<Category> categories = new HashSet<>();
+
+        // check if author already exists, if yes save to list, if no create one
+        // get authors from node
+        // go through author array
+        for(JsonNode node : jsonNode.get("authors")){
+            Author author = new Author();
+            author.setAuthorFirstname(node.get("firstname").asText());
+            author.setAuthorLastname(node.get("lastname").asText());
+            // check if the author already is saved
+            List<Author> existingAuthors = authorRepository.findAllByAuthorFirstnameAndAndAuthorLastname(author.getAuthorFirstname(), author.getAuthorLastname());
+            if(existingAuthors.size() > 0) {
+                authors.add(existingAuthors.get(0));
+            } else {
+               authorRepository.save(author);
+               authors.add(author);
+            }
+        }
+        // check if category already exists, if yes save to list, if no create one
+        // get categories from node
+        // go through categories array
+        for(JsonNode node : jsonNode.get("categories")){
+            Category category = new Category();
+            category.setCategoryName(node.get("name").asText());
+            // check if the category already is saved
+            List<Category> existingCategory = categoryRepository.findCategoryByCategoryName(category.getCategoryName());
+            if(existingCategory.size() > 0) {
+                categories.add(existingCategory.get(0));
+            } else {
+                categoryRepository.save(category);
+                categories.add(category);
+            }
+        }
+        // save authors and categories to new book and then update the book
+        newBook.setAuthors(authors);
+        newBook.setCategories(categories);
+        bookRepository.save(newBook);
     }
 }

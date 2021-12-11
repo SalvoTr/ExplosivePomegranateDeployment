@@ -5,6 +5,9 @@ import com.explosivepomegranate.rest.api.model.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 
+import java.util.List;
+
 //Salvatore - Interface for CURD functionality
 public interface CategoryRepository extends JpaRepository<Category, Integer> {
+    public List<Category> findCategoryByCategoryName(String categoryName);
 }

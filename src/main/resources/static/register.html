@@ -60,6 +60,7 @@
                     $('input[name=email]').val(),
                     $('input[name=password]').val(),
                     function (result) {
+                        //TODO this should go back to the login, the user needs to login after registration
                         window.location.replace("/myProfile"); //Where it puts us after successful register
                     },
                     function (error) {
