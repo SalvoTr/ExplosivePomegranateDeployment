@@ -5,10 +5,14 @@
   padding-top: var(--bs-gutter-x, 3rem);
   margin-right: auto;
   margin-left: auto;
+  transform-origin: center;
 }
 
 .col-sm-9 {
+  float:left;
+  width: 80%;
   padding: 30px;
+  transform-origin: center;
 }
 
 .input-group-text{
@@ -28,7 +32,7 @@
   border-color: burlywood;
   border-style: solid;
 }
-/* to make the card Item on the book overview clickable we need to set the absolute positon
+/* to make the card Item on the book overview clickable we need to set the absolute position
 on the a element in the rowList and say that the link lays 100% over the card */
 .rowList a {
   position: absolute;
@@ -44,18 +48,23 @@ on the a element in the rowList and say that the link lays 100% over the card */
 }
 
 .bookInfoImage {
-  width: 200px;
-  height: 300px;
+  width: 75%;
+  height:auto;
+  position:center;
 }
 
 .col-sm-2 img {
-  width: 150px;
-  height: 200px;
+  width: 75%;
+  height: auto;
+  resize: both;
+  margin-top: 10%;
+  margin-left: 10%;
 }
 
 .placeholder-empty {
-  height: 19px;
+  height: 10%;
   background: #ffffff;
+  resize: both;
 }
 
 .BorrowedStyle {
@@ -80,6 +89,15 @@ on the a element in the rowList and say that the link lays 100% over the card */
   padding-right: 5px;
   background-color: slategrey;
   border-color: burlywood;
+}
+
+.footer{
+  position:fixed;
+  left:40%;
+  right:40%;
+  bottom:0;
+  text-align: center;
+  background: light-grey;
 }
 
 
