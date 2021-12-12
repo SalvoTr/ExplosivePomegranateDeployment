@@ -1,6 +1,6 @@
 .register-photo {
   background: #f1f7fc;
-  padding: 80px 0;
+  padding: 5em 0;
 }
 
 .register-photo .image-holder {
@@ -12,57 +12,57 @@
 
 .register-photo .form-container {
   display: table;
-  max-width: 1000px;
+  max-width: 62.5em;
   width: 90%;
   margin: 0 auto;
-  box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+  box-shadow: 0.0625em 0.0625em 0.3125em rgba(0,0,0,0.1);
 }
 
 .register-photo form {
   display: table-cell;
-  width: 400px;
+  width: 25em;
   background-color: #ffffff;
-  padding: 40px 60px;
+  padding: 2.5em 3.75em;
   color: #505e6c;
 }
 
-@media (max-width:991px) {
+@media (max-width:61.9375em) {
   .register-photo form {
-    padding: 40px;
+    padding: 2.5em;
   }
 }
 
 .register-photo form h2 {
-  font-size: 24px;
+  font-size: 1.5em;
   line-height: 1.5;
-  margin-bottom: 30px;
+  margin-bottom: 1.875em;
 }
 
 .register-photo form .form-control {
   background: #f7f9fc;
   border: none;
-  border-bottom: 1px solid #dfe7f1;
+  border-bottom: 0.0625em solid #dfe7f1;
   border-radius: 0;
   box-shadow: none;
   outline: none;
   color: inherit;
-  text-indent: 6px;
-  height: 40px;
+  text-indent: 0.375em;
+  height: 2.5em;
 }
 
 .register-photo form .form-check {
-  font-size: 13px;
-  line-height: 20px;
+  font-size: 0.875em;
+  line-height: 1.25em;
 }
 
 .register-photo form .btn-primary {
   background: #f5dd19;
   color: black;
   border: none;
-  border-radius: 4px;
-  padding: 11px;
+  border-radius: 0.25em;
+  padding: 0.6875em;
   box-shadow: none;
-  margin-top: 35px;
+  margin-top: 2.1875em;
   text-shadow: none;
   outline: none !important;
 }
@@ -72,13 +72,13 @@
 }
 
 .register-photo form .btn-primary:active {
-  transform: translateY(1px);
+  transform: translateY(0.0625em);
 }
 
 .register-photo form .already {
   display: block;
   text-align: center;
-  font-size: 12px;
+  font-size: 0.75em;
   color: #6f7a85;
   opacity: 0.9;
   text-decoration: none;
