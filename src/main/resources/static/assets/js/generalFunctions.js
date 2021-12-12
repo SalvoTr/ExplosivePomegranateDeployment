@@ -36,7 +36,7 @@ function mapBookList(placeholderID, booklist) {
                     $('<div class="col-sm-2">').append(
                         $('<img src="../assets/img/sample-book-cover.png">')
                     ),
-                    $('<div class="col-sm-9">').append(
+                    $('<div class="col-sm-9" id="bookListItem">').append(
                         $(book.currentlyBorrowed ? $('<p class="BorrowedStyle">').text("Currently borrowed") : $('<p class="notBorrowedStyle">').text("Available")),
                         $("<h3>").text(book.title),
                         $('<p>').text("Author(s): " + listAuthors(book.authors)),
