@@ -92,15 +92,18 @@ on the a element in the rowList and say that the link lays 100% over the card */
 }
 
 .footer{
-  border-top: solid 6.25%;
+  border-top: solid 0;
   background: rgba(245, 221, 25);
   width: 100%;
-  height: 1em;
-  padding-top: 0.125em;
   position: fixed;
   bottom: 0;
   left: 0;
   text-align: center;
+}
+
+#footer .footer{
+  padding-top:1rem;
+  padding-bottom: 2rem;
 }
 
 
