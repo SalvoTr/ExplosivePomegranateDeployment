@@ -34,7 +34,7 @@ function postNewUser(firstname, lastname, email, password, callbackSuccess, call
     $.ajax({
         type: "POST",
         contentType: "application/json",
-        url: serviceEndpointURL + "/register",
+        url: serviceEndpointURL + "/myNewUser",
         data: JSON.stringify({
             "firstname": firstname,
             "lastname": lastname,

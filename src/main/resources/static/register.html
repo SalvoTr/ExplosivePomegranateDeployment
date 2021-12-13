@@ -34,7 +34,7 @@
                     <div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox">I agree to the license terms</label></div>
                 </div>
                 <div class="mb-3">
-                    <button class="btn btn-primary d-block w-100" type="submit">Sign Up</button>
+                    <button class="btn btn-primary d-blosck w-100" type="submit">Sign Up</button>
                 </div><a class="already" href="/">Already have an account? Login here</a>
             </form>
         </div><footer id="footer">
@@ -59,7 +59,6 @@
                     $('input[name=email]').val(),
                     $('input[name=password]').val(),
                     function (result) {
-                        //TODO this should go back to the login, the user needs to login after registration
                         window.location.replace("/"); //Where it puts us after successful register
                     },
                     function (error) {
