@@ -48,20 +48,19 @@
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/bootstrap/js/app.js"></script>
-    <script src="../assets/bootstrap/js/webapp.js"></script>
+    <script src="assets/js/app.js"></script>
 
     <script>
         $(document).ready(function () {
             $("#register-form").submit(function (event) {
-                registerNewUser(
+                postNewUser(
                     $('input[name=first-name]').val(),
                     $('input[name=last-name]').val(),
                     $('input[name=email]').val(),
                     $('input[name=password]').val(),
                     function (result) {
                         //TODO this should go back to the login, the user needs to login after registration
-                        window.location.replace("/myProfile"); //Where it puts us after successful register
+                        window.location.replace("/"); //Where it puts us after successful register
                     },
                     function (error) {
                         $("#error-modal").modal('show');

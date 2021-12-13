@@ -29,17 +29,11 @@ function isUserAdmin(callback) {
     });
 }
 
-/**
- * @author Salvatore
- * for registering new user
- * */
+//registers new user
 function postNewUser(firstname, lastname, email, password, callbackSuccess, callbackError) {
     $.ajax({
         type: "POST",
         contentType: "application/json",
-        headers: {
-            "X-XSRF-TOKEN": getCookie("XSRF-TOKEN") // TODO I HAVE NO CLUE ABOUT THIS
-        },
         url: serviceEndpointURL + "/register",
         data: JSON.stringify({
             "firstname": firstname,
@@ -47,7 +41,7 @@ function postNewUser(firstname, lastname, email, password, callbackSuccess, call
             "email": email,
             "password": password
         }),
-        success: function () {
+        success: function(){
             callbackSuccess(true);
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -56,6 +50,7 @@ function postNewUser(firstname, lastname, email, password, callbackSuccess, call
         }
     });
 }
+
 // save new book
 function registerNewBook(newBookInfo, callback, callbackError) {
     $.ajax({
