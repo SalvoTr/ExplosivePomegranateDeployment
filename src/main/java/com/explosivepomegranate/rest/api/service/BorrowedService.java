@@ -19,10 +19,6 @@ public class BorrowedService {
     @Autowired
     private BookRepository bookRepository;
     @Autowired
-    private AuthorRepository authorRepository;
-    @Autowired
-    private CategoryRepository categoryRepository;
-    @Autowired
     private BorrowedRepository borrowedRepository;
     @Autowired
     private UserRepository userRepository;
@@ -34,11 +30,17 @@ public class BorrowedService {
      */
 
     public @ResponseBody
-    Borrowed reserveBook(Borrowed sendReservationInfo, Integer bookID) {
+    Borrowed reserveBook(Borrowed sendReservationInfo, Integer bookID, Authentication authentication) {
+        CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
+        userDetails.getUserId();
+        User user = userRepository.findById(userDetails.getUserId());
+
         Borrowed borrow = new Borrowed();
         borrow.setBook(bookRepository.getOne(bookID));
         borrow.setBookStatus(sendReservationInfo.isBookStatus());
         borrowedRepository.save(sendReservationInfo);
+        borrow.setUser(user);
+
         return borrow;
     }
 
