@@ -61,7 +61,7 @@ public class BookService {
      * Fetches all books from a given category ID(UC5)
      * */
     public List<Book> getBookByCategory(int categoryId){
-        return bookRepository.findByCategories_Id(categoryId);
+        return bookRepository.findDistinctByCategories_Id(categoryId);
     }
 
     /**
@@ -69,7 +69,7 @@ public class BookService {
      * Fetches all books from a given author ID(UC5)
      * */
     public List<Book> getBookByAuthor(int authorId){
-        return bookRepository.findByAuthors_Id(authorId);
+        return bookRepository.findDistinctByAuthors_Id(authorId);
     }
 
     /**

@@ -39,7 +39,8 @@ public class Book {
     private Set<Author> authors;
 
     //Connects the book with borrowed
-    @OneToMany(mappedBy = "book", fetch = FetchType.EAGER, cascade = CascadeType.ALL) @JsonIgnore
+    @OneToMany(mappedBy = "book", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonIgnore
     @OrderBy(value = "init_end_date")
     private List<Borrowed> borrowed;
 
