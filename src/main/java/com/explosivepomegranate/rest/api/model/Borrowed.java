@@ -25,7 +25,7 @@ public class Borrowed {
     private Book book;
 
     //Connects to user
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL) @JsonIgnore
     @JoinColumn(name = "user_id")
     private User user;
 
