@@ -3,10 +3,8 @@ package com.explosivepomegranate.rest.api.service;
 import com.explosivepomegranate.rest.api.controller.BookController;
 import com.explosivepomegranate.rest.api.model.Book;
 import com.explosivepomegranate.rest.api.model.Borrowed;
-import com.explosivepomegranate.rest.api.repository.AuthorRepository;
-import com.explosivepomegranate.rest.api.repository.BookRepository;
-import com.explosivepomegranate.rest.api.repository.BorrowedRepository;
-import com.explosivepomegranate.rest.api.repository.CategoryRepository;
+import com.explosivepomegranate.rest.api.model.User;
+import com.explosivepomegranate.rest.api.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.Authentication;
@@ -26,6 +24,8 @@ public class BorrowedService {
     private CategoryRepository categoryRepository;
     @Autowired
     private BorrowedRepository borrowedRepository;
+    @Autowired
+    private UserRepository userRepository;
 
 
     /**
@@ -48,9 +48,9 @@ public class BorrowedService {
      */
     public List<Borrowed> getMyBorrows (Authentication authentication) {
         CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
-
         userDetails.getUserId();
-        return borrowedRepository.findByUser_User_id(userDetails.getUserId());
+        User user = userRepository.findById(userDetails.getUserId());
+        return borrowedRepository.findByUser(user);
     }
 
     /**

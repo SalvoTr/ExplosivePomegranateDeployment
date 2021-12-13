@@ -16,9 +16,9 @@ public interface BorrowedRepository extends JpaRepository<Borrowed, Integer> {
      * @author Sonja
      * Methode for returing user id
      */
-  //List<Borrowed> findByUserId (Integer user_id);
+    List<Borrowed> findByUser(User user);
 
-    List<Borrowed> findByUser_User_id(int user_id);
+    List<Borrowed> findById(int user_id);
     // https://www.netsurfingzone.com/jpa/how-to-write-custom-method-in-repository-in-spring-data-jpa/
 
 }

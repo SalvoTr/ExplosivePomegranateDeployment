@@ -55,5 +55,5 @@ public class CustomUserDetails implements UserDetails {
 
     //@Override
     public int getUserId() {
-        return user.getUser_id(); }
+        return user.getId(); }
 }
