@@ -4,22 +4,24 @@ import com.explosivepomegranate.rest.api.model.*;
 import com.explosivepomegranate.rest.api.service.BookService;
 import com.explosivepomegranate.rest.api.service.BorrowedService;
 import com.explosivepomegranate.rest.api.service.CustomUserDetails;
+import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
-@RestController
+@RestController //Book Endpoint
 public class BookController {
 
-@Autowired
+    @Autowired
     BookService bookService;
 @Autowired
     BorrowedService borrowedService;
@@ -66,21 +68,6 @@ public class BookController {
         return bookService.getBookByAuthor(Integer.parseInt(authorId));
     }
 
-
-    /**
-     * @author: Clelia
-     * try to add a new book, body expected to be json format
-     * */
-    @PostMapping(path = "/addBook")
-    public @ResponseBody ResponseEntity<Book> addNewBook(@RequestBody Book sendBookInfo) {
-        Book book = null;
-        try {
-            book = bookService.addNewBook(sendBookInfo);
-        } catch (Exception e) {
-        throw new ResponseStatusException(HttpStatus.CONFLICT, e.getMessage());
-        }
-        return ResponseEntity.accepted().body(book);
-    }
 
     /**
      * @author Sonja
@@ -155,6 +142,21 @@ public class BookController {
         }
         return ResponseEntity.accepted().body(book_comment);
     }*/
+
+    /**
+     * @author: Clelia
+     * save new book (UC10)
+     * */
+    @Secured("ROLE_ADMIN")
+    @PostMapping (path = "/newBook", produces = "application/json")
+    public ResponseEntity<JsonNode> postNewBook(@RequestBody JsonNode jsonNode) {
+        try {
+            bookService.saveNewBook(jsonNode);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, e.getMessage());
+        }
+        return ResponseEntity.accepted().body(jsonNode);
+    }
 }
 
 

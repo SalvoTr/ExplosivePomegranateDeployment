@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>FHNW_Library</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <!-- add stylesheet for multiselect dropdown-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.css">
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
+    <!-- add stylesheet for datepicker -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/css/container.css">
+    <link rel="stylesheet" href="../assets/css/Login.css">
+    <link rel="stylesheet" href="../assets/css/Pretty-Search-Form.css">
+    <link rel="stylesheet" href="../assets/css/Registration-Form.css">
+    <link rel="stylesheet" href="../assets/css/Social-Icons.css">
+    <link rel="stylesheet" href="../assets/css/Vertical-Nav.css">
+</head>
+<!-- I had some issues creating this form. I need to dynamicly add input fields depending on demand, but a button click within a form is forbidden
+ which means that I needed to put the input fields for categories and authors outside of the form field. It is still associated with the form field when I give the
+ attribute 'form="new-book-form" , just to be careful, this form association is not supported in all browsers, see https://html.com/input-form/ -->
+
+<body>
+<div class="col-sm-3" id="navigation"></div>
+
+<div class="col-sm-9" id="newBook" style="padding: 69px;">
+    <form id="new-book-form" method="post">
+        <h2 class="text-center"><strong>Add</strong> new book</h2>
+        <div class="mb-3"><input class="form-control" type="text" name="isbn" placeholder="ISBN" required></div>
+        <div class="mb-3"><input class="form-control" type="text" name="title" placeholder="Book Title" required/></div>
+        <div class="mb-3"><textarea class="form-control" type="text" name="description" placeholder="Book description" required></textarea></div>
+        <div class="mb-3"><input type="text" name="year" class="form-control" id="datepicker" value="Select Publishing Year" required /></div>
+    </form>
+    <div class="input-group" id="author-group">
+        <select form="new-book-form" id="author-selection" class="mb-3 authorSelect" placeholder="Select author(s)" multiple></select>
+        <button id="addAuthor" class="btn btn-primary d-block"/>Add new Author</button>
+    </div>
+    <div class="input-group" id="category-group">
+        <!--load Categories-->
+        <select form="new-book-form" id="category-selection" class="mb-3 categorySelect" placeholder="Select categories" multiple></select>
+        <button id="addCategory" class="btn btn-primary d-block">Add new Category</button>
+    </div>
+    <div class="mb-3">
+        <button form="new-book-form" class="btn btn-primary d-block w-100" type="submit">Save new Book</button>
+    </div>
+</div>
+<div id="footer"></div>
+<script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="../assets/js/loadHTML.js"></script>
+<script src="../assets/js/app.js"></script>
+<script src="../assets/js/generalFunctions.js"></script>
+<!-- load js for the datepicker -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
+<!-- load js for multiselect categroy -->
+<script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
+
+
+<script src="../assets/js/addNewBook.js"></script>
+
+</body>
+
+</html>

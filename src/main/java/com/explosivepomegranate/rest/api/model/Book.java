@@ -14,6 +14,7 @@ import java.util.Set;
 @Table(name = "book")
 @SecondaryTable(name = "borrowed")
 public class Book {
+    // when you want to automatically save a user take the system id Identity
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int book_id;
     private String ISBN;
@@ -24,14 +25,14 @@ public class Book {
     private boolean currentlyBorrowed; //TODO the sql doesn't have that attribute
 
     //Connects the Book table with the Category table
-    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE}) @JsonIgnore
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "book_category",
             joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id", referencedColumnName = "category_id"))
     private Set<Category> categories;
 
     //Connects the Book table with the Author table
-    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE}) @JsonIgnore
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "book_author",
             joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id", referencedColumnName = "author_id"))
