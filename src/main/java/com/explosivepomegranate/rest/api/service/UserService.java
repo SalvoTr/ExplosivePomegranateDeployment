@@ -68,4 +68,10 @@ public class UserService {
        if(userRole.equals("[ROLE_ADMIN]")) return true;
        return false;
     }
+
+    public User getProfileInformation(Authentication authentication) {
+        CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
+       // User user = userRepository.findById(userDetails.getId());
+        return null;
+    }
 }

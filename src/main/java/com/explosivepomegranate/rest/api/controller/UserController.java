@@ -13,6 +13,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -56,6 +57,17 @@ public class UserController {
         return userService.isAdminRole(authentication);
     }
 
+    /**
+     * @author Clelia
+     * return User information*
+     * */
+    @GetMapping(path="/myProfile", produces = "application/json")
+    public User getUser(Authentication authentication){ return userService.getProfileInformation(authentication);
+    }
+
+
+
+    // TODO remove these unused and dangerous methods after testing
     /**
     * @author: Salvatore
      * returns list of all users, roles, logins (for testing purposes)
