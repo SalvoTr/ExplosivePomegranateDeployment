@@ -25,8 +25,7 @@ public class BookService {
     private AuthorRepository authorRepository;
     @Autowired
     private CategoryRepository categoryRepository;
-    @Autowired
-    private BorrowedRepository borrowedRepository;
+
 
     /**
      * @author: Salvatore
@@ -53,14 +52,9 @@ public class BookService {
      **/
     public Book getBookByID (int bookId){
         //todo error handling?
-        return bookRepository.findById(bookId).get();
+        Book book = bookRepository.findById(bookId).get();
+        return book;
     }
-
-    /**
-     * @author: Salvatore
-     * returns list of all borrowed books (UC11)
-     * */
-    public List<Borrowed> getAllBorrowed() { return borrowedRepository.findAll(); }
 
     /**
      * @author: Salvatore

@@ -2,14 +2,20 @@ package com.explosivepomegranate.rest.api.controller;
 
 import com.explosivepomegranate.rest.api.model.*;
 import com.explosivepomegranate.rest.api.service.BookService;
+import com.explosivepomegranate.rest.api.service.BorrowedService;
+import com.explosivepomegranate.rest.api.service.CustomUserDetails;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 @RestController //Book Endpoint
@@ -17,6 +23,8 @@ public class BookController {
 
     @Autowired
     BookService bookService;
+@Autowired
+    BorrowedService borrowedService;
 
     /**
      * @author: Salvatore
@@ -80,11 +88,60 @@ public class BookController {
     }
 
     /**
+     * @author Sonja
+     * UC7 reserve book
+     */
+    @PostMapping(path = "/reserveBook/{book_id}", produces = "application/json")
+    public @ResponseBody
+    ResponseEntity<Borrowed> reserveBook(@RequestBody Borrowed sendReservationInfo,
+                                         @PathVariable(value = "book_id") String bookId) {
+        //CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
+        Borrowed borrow;
+        try {
+            borrow = borrowedService.reserveBook(sendReservationInfo, Integer.parseInt(bookId));
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, e.getMessage());
+        }
+        return ResponseEntity.accepted().body(borrow);
+    }
+
+    /**
+     * @author Sonja
+     * UC8 my borrowed books
+     */
+
+    @GetMapping(path = "/myBorrows")
+    public List<Borrowed> myBorrows(Authentication authentication) {
+        //CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
+        //borrowedService.getMyBorrows(authentication);
+        return borrowedService.getMyBorrows(authentication);
+
+    }
+
+    /**
      * @author: Salvatore
      * returns list of all borrowed books (UC11)
      * */
     @GetMapping (path = "/allBorrowed", produces = "application/json")
-    public List<Borrowed> getBorrowed() { return bookService.getAllBorrowed(); }
+    public List<Borrowed> getBorrowed() { return borrowedService.getAllBorrowed();}
+
+    /**
+     * @author Sonja
+     * UC18 add a comment to a book
+     **/
+
+ /*   @PostMapping(path = "/addComment/{book_id}")
+    public @ResponseBody
+    ResponseEntity<Borrowed> addNewComment(@RequestBody String addComment, //Authentication authentication
+                                           @PathVariable(value = "book_id") String bookId) {
+        Borrowed book_comment;
+        try {
+            book_comment = borrowedService.addNewComment(addComment, Integer.parseInt(bookId));
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, e.getMessage());
+        }
+        return ResponseEntity.accepted().body(book_comment);
+    }*/
 
     /**
      * @author: Clelia
@@ -101,3 +158,5 @@ public class BookController {
         return ResponseEntity.accepted().body(jsonNode);
     }
 }
+
+
