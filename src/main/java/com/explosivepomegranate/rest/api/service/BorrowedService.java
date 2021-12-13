@@ -58,7 +58,8 @@ public class BorrowedService {
      * returns list of all borrowed books (UC11)
      * */
     public List<Borrowed> getAllBorrowed() {
-        return borrowedRepository.findAll();
+        return (List<Borrowed>) borrowedRepository.findAll();
+       // return borrowedRepository.findAll();
     }
 
 
