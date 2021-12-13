@@ -37,7 +37,7 @@ public class UserController {
      * @author: Salvatore
      * Registers a new account (UC3)
      * */
-    @PostMapping(path = "/myNewUser")
+    @PostMapping(path = "/myNewUser", produces = "application/json", consumes = "application/json")
     public ResponseEntity<JsonNode> postNewUser(@RequestBody JsonNode jsonNode) {
         try{
             userService.saveNewUser(jsonNode);
