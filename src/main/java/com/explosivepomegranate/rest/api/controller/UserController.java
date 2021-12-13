@@ -1,6 +1,5 @@
 package com.explosivepomegranate.rest.api.controller;
 
-import com.explosivepomegranate.rest.api.model.Borrowed;
 import com.explosivepomegranate.rest.api.model.Login;
 import com.explosivepomegranate.rest.api.model.Role;
 import com.explosivepomegranate.rest.api.model.User;
@@ -9,11 +8,9 @@ import com.explosivepomegranate.rest.api.repository.RoleRepository;
 import com.explosivepomegranate.rest.api.repository.UserRepository;
 import com.explosivepomegranate.rest.api.service.UserService;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.security.core.Authentication;
@@ -56,6 +53,26 @@ public class UserController {
         return userService.isAdminRole(authentication);
     }
 
+    /**
+     * @author Clelia
+     * return User information*
+     * */
+    @GetMapping(path="/myUserProfile", produces = "application/json")
+    public User getUser(Authentication authentication){
+        return userService.getProfileInformation(authentication);
+    }
+
+    /**
+     * @author Clelia
+     * return User information*
+     * @return*/
+    @PostMapping(path="/updateMyUserProfile", produces = "application/json", consumes = "application/json")
+    public User updateUser(@RequestBody User updatedUser, Authentication authentication){
+        return userService.updateProfileInformation(updatedUser, authentication);
+    }
+
+
+    // TODO remove these unused and dangerous methods after testing
     /**
     * @author: Salvatore
      * returns list of all users, roles, logins (for testing purposes)

@@ -21,34 +21,14 @@
 
 <body>
     <div class="col-sm-3" id="navigation"></div>
-    <div class="col-sm-9" style="padding: 69px;">
-        <h1 style="font-size: 48px;height: 90px;">Profile</h1>
-        <div style="background: #ffffff;">
-            <div class="row">
-                <div class="col-sm-3">
-                    <p style="width: 400px;font-size: 20px;">First Name:</p>
-                </div>
-                <div class="col-sm-9">
-                    <p style="width: 377px;font-size: 20px;">YourNameHere</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-3">
-                    <p style="font-size: 20px;">Last Name:&nbsp;</p>
-                </div>
-                <div class="col-sm-9">
-                    <p style="font-size: 20px;">YourLastNameHere</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-3">
-                    <p style="font-size: 20px;">E-Mail:</p>
-                </div>
-                <div class="col-sm-9">
-                    <p style="font-size: 20px;">YourEmailHere</p>
-                </div>
-            </div><button class="btn btn-primary" type="button">Update Profile</button>
-            <div></div><button class="btn btn-primary" type="button">Delete Profile&nbsp;</button>
+    <div class="col-sm-9" style="padding: 69px; padding-bottom: 1%;">
+        <h1 class="text-center">Profile</h1>
+        <div class="col-sm-9" id="profile-information" style="padding: 69px;">
+        </div>
+        <div class="col-sm-9">
+            <button class="btn btn-primary" type="button" id="edit" name="edit">Edit</button>
+            <button class="btn btn-primary" type="submit" id="save" name="save" hidden>Save</button>
+            <button class="btn btn-secondary" type="button" id="cancel" name="cancel" hidden>Cancel</button>
         </div>
     </div>
     <div id="footer"></div>
@@ -57,7 +37,7 @@
     <script src="../assets/js/loadHTML.js"></script>
     <script src="../assets/js/app.js"></script>
     <script src="../assets/js/generalFunctions.js"></script>
-    <script src="../assets/js/loadBooks.js"></script>
+    <script src="../assets/js/loadProfile.js"></script>
 </body>
 
 </html>
