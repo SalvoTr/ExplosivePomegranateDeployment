@@ -12,6 +12,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "book")
+@SecondaryTable(name = "borrowed")
 public class Book {
     // when you want to automatically save a user take the system id Identity
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,6 +21,7 @@ public class Book {
     private String title;
     private String description;
     private int year;
+    @Column(name = "book_status", table = "borrowed")
     private boolean currentlyBorrowed; //TODO the sql doesn't have that attribute
 
     //Connects the Book table with the Category table
@@ -37,7 +39,8 @@ public class Book {
     private Set<Author> authors;
 
     //Connects the book with borrowed
-    @OneToMany(mappedBy = "book", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "book", fetch = FetchType.EAGER, cascade = CascadeType.ALL) @JsonIgnore
+    @OrderBy(value = "init_end_date")
     private List<Borrowed> borrowed;
 
 
@@ -103,7 +106,7 @@ public class Book {
     }
 
     public void setCurrentlyBorrowed(boolean currentlyBorrowed) {
-        this.currentlyBorrowed = currentlyBorrowed;
+        this.currentlyBorrowed = getBorrowed().get(this.getBook_id()).isBookStatus();
     }
 
     public List<Borrowed> getBorrowed() {

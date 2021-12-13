@@ -17,7 +17,7 @@ public class Borrowed {
     private Date init_end_date;
     private Date extend_end_date;
     private String book_comment;
-    private boolean book_status ;
+    private boolean book_status; // true means book is borrowed, false means available
 
     //Connects to book
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -25,7 +25,7 @@ public class Borrowed {
     private Book book;
 
     //Connects to user
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL) @JsonIgnore
     @JoinColumn(name = "user_id")
     private User user;
 
@@ -75,5 +75,21 @@ public class Borrowed {
 
     public void setBookStatus(boolean book_status) {
         this.book_status = book_status;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
