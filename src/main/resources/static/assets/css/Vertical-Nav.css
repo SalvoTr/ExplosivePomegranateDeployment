@@ -8,10 +8,9 @@
 
 #sidebar {
   position: fixed;
-  right: -31.25em;
+  right: -31em;
   background: rgb(245, 221, 25);
   width: 25vh;
-  /*text-align: center;*/
   z-index: 10000;
   font-size: 1.1621288125em;
   font-family: 'Ubuntu';
@@ -78,6 +77,33 @@ a:visited {
   -o-transition: all 400ms linear;
   right: 0.625em;
   bottom: 0;
+}
+
+#buttonposition1{
+  position: fixed;
+  right: 0;
+  top:0;
+  background: #4E565C;
+}
+
+#buttonposition2{
+  position: fixed;
+  right: 0;
+  top:0;
+}
+
+#buttonposition3{
+  position: fixed;
+  right: 1em;
+  bottom:0;
+  color: black;
+  z-index: 2000;
+  text-decoration: none;
+  transition-duration: 0.4s;
+}
+
+#buttonposition3:hover{
+  font:bold;
 }
 
 @media (max-width: 34.375em) {

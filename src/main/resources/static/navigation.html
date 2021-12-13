@@ -1,18 +1,31 @@
 <div id="sidebar" class="active">
-
-    <ul>
-        <img src="../assets/img/fhnw-logo.png" class="card-img-top w-100 d-block" alt="fhnw logo" title="fhnw logo"/>
-        <li><b class="here">Navigation</b></li>
-        <li><a href="/home">Books</a></li>
-        <li><a href="/myProfile">My Profile</a></li>
-        <li><a href="/myBorrowedBooks">My Borrowed Books</a></li>
-        <li id="currentlyBorrowed"><a href="/currentlyBorrowed">Borrowed Books</a></li>
-
-        <div class="contact-info">
-            <small>Logout</small>
-            <button class="btn btn-primary btn-lg d-block  w-100"><a href="/logout">Exit</a></button>
-            <p></p>
-        </div>
-
-    </ul>
+    <img src="../assets/img/fhnw-logo.png" class="card-img-top w-100 d-block" alt="fhnw logo" title="fhnw logo"/>
+    <button onclick="w3_close()" class="btn btn-light" id="buttonposition1">&times;</button>
+    <li><b class="here">&nbsp Navigation</b></a></li>
+    <li><a href="/home">&nbsp&nbsp Books</a></li>
+    <li><a href="/myProfile">&nbsp&nbsp My Profile</a></li>
+    <li><a href="/myBorrowedBooks">&nbsp&nbsp My Borrowed Books</a></li>
+    <li>  <a id="currentlyBorrowed" href="/currentlyBorrowed">&nbsp&nbsp Borrowed Books</a></li>
 </div>
+
+<div class="contact-info" id="buttonposition3">
+    <button class="btn btn-primary btn-lg d-block  w-100"><a href="/logout">Exit</a></button>
+    <p></p>
+</div>
+
+<div class="btn btn-light" id="buttonposition2">
+    <button class="btn btn-primary btn-lg d-block  w-100" onclick="w3_open()">☰</button>
+    </div>
+</div>
+
+
+
+<script>
+    function w3_open() {
+        document.getElementById("sidebar").style.display = "block";
+    }
+
+    function w3_close() {
+        document.getElementById("sidebar").style.display = "none";
+    }
+</script>
