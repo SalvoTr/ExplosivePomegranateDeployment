@@ -50,7 +50,7 @@ public class BorrowedService {
         CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
 
         userDetails.getUserId();
-        return borrowedRepository.findByUserId(userDetails.getUserId());
+        return borrowedRepository.findByUser_User_id(userDetails.getUserId());
     }
 
     /**

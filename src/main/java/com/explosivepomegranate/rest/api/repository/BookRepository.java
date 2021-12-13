@@ -16,5 +16,4 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
     List<Book> findByAuthors_Id(int id);
 
 
-
 }

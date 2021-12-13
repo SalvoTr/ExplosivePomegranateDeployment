@@ -23,8 +23,7 @@ public class BookService {
     private AuthorRepository authorRepository;
     @Autowired
     private CategoryRepository categoryRepository;
-    @Autowired
-    private BorrowedRepository borrowedRepository;
+
 
     /**
      * @author: Salvatore

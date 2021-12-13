@@ -10,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -107,7 +106,7 @@ public class BookController {
      */
     @PostMapping(path = "/reserveBook/{book_id}", produces = "application/json")
     public @ResponseBody
-    ResponseEntity<Borrowed> reserveBook(@RequestBody Borrowed sendReservationInfo, @AuthenticationPrincipal
+    ResponseEntity<Borrowed> reserveBook(@RequestBody Borrowed sendReservationInfo,
                                          @PathVariable(value = "book_id") String bookId) {
         //CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
         Borrowed borrow;
@@ -126,9 +125,10 @@ public class BookController {
 
     @GetMapping(path = "/myBorrows")
     public List<Borrowed> myBorrows(Authentication authentication) {
-        CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
-        borrowedService.getMyBorrows(authentication);
-        return null; //borrowedService.getMyBorrows();
+        //CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
+        //borrowedService.getMyBorrows(authentication);
+        return borrowedService.getMyBorrows(authentication);
+
     }
 
     /**
