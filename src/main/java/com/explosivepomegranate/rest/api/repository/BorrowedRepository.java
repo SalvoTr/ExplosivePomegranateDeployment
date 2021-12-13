@@ -21,6 +21,4 @@ public interface BorrowedRepository extends JpaRepository<Borrowed, Integer> {
     List<Borrowed> findByUser_User_id(int user_id);
     // https://www.netsurfingzone.com/jpa/how-to-write-custom-method-in-repository-in-spring-data-jpa/
 
-
-
 }
