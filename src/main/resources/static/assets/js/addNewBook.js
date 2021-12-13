@@ -67,8 +67,6 @@ $(document).ready(function() {
 
     });
 
-
-
     $("#new-book-form").submit(function (event) {
         let object = new Object();
         object.isbn =  $('input[name=isbn]').val();
@@ -126,7 +124,6 @@ $(document).ready(function() {
                 result.preventDefault();
                 return false;
             }
-            // TODO add confirmation modal that new book was successfully saved before going back home
             window.location.replace("/home");
             alert("You successfully saved the book to your database")
         }, function (error){

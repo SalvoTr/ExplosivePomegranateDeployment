@@ -79,6 +79,30 @@ function getBookInfo(bookId, callback){
     });
 }
 
+// get profile information
+function getProfileInfo(callback){
+    $.ajax({
+        type: "GET",
+        contentType: "application/json",
+        url: serviceEndpointURL+"/myUserProfile",
+        success: function (data) {
+            callback(data);
+        }
+    });
+}
+// update profile information
+function updateUser(user, callback){
+    $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        url: serviceEndpointURL+"/updateMyUserProfile",
+        data: user,
+        success: function (data) {
+            callback(data);
+        }
+    });
+}
+
 // get categories
 function getCategories(callback){
     $.ajax({

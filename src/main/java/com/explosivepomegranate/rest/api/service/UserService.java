@@ -69,9 +69,22 @@ public class UserService {
        return false;
     }
 
+    /**
+     * @author Clelia
+     * get the user information of the logged in user
+     * */
     public User getProfileInformation(Authentication authentication) {
         CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
-       // User user = userRepository.findById(userDetails.getId());
-        return null;
+        User user = userRepository.findById(userDetails.getUserId());
+        return user;
+    }
+
+    public User updateProfileInformation(User updatedUserInfo, Authentication authentication) {
+        CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
+        User savedUser = userRepository.findById(userDetails.getUserId());
+        savedUser.setFirstname(updatedUserInfo.getFirstname());
+        savedUser.setLastname(updatedUserInfo.getLastname());
+        savedUser.setEmail(updatedUserInfo.getEmail());
+        return userRepository.save(savedUser);
     }
 }
