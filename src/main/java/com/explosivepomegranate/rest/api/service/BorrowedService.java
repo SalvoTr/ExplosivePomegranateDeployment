@@ -11,6 +11,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.sql.Date;
+import java.time.LocalDate;
+import java.util.Optional;
 import java.util.List;
 
 @Service
@@ -32,8 +35,8 @@ public class BorrowedService {
     public @ResponseBody
     Borrowed reserveBook(Borrowed sendReservationInfo, Integer bookID, Authentication authentication) {
         CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
-        userDetails.getUserId();
-        User user = userRepository.findById(userDetails.getUserId());
+        //userDetails.getUserId();
+        User userId = userRepository.findById(userDetails.getUserId());
 
         Borrowed borrow = new Borrowed();
         borrow.setBook(bookRepository.getOne(bookID));
