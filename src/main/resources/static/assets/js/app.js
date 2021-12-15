@@ -107,3 +107,15 @@ function getAuthors(callback){
         }
     });
 }
+
+function reserveThisBook(bookId, callback) {
+    $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        url: serviceEndpointURL+"/reserveBook/"+bookId,
+        success: function (data) {
+            callback(data);
+        }
+    });
+
+}
