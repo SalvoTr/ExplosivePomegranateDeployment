@@ -17,15 +17,14 @@ public class Borrowed {
     private Date init_end_date;
     private Date extend_end_date;
     private String book_comment;
-    private boolean book_status; // true means book is borrowed, false means available
 
     //Connects to book
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "book_id")
     private Book book;
 
     //Connects to user
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL) @JsonIgnore
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE) @JsonIgnore
     @JoinColumn(name = "user_id")
     private User user;
 
@@ -70,11 +69,11 @@ public class Borrowed {
     }
 
     public boolean isBookStatus() {
-        return book_status;
+        return this.book.isCurrentlyBorrowed();
     }
 
     public void setBookStatus(boolean book_status) {
-        this.book_status = book_status;
+        this.book.setCurrentlyBorrowed(book_status);
     }
 
     public Book getBook() {

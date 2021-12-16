@@ -20,6 +20,21 @@ $(document).ready(function () {
         return categoryarray.join(" , ");
     }
 
+    function reserveBook (book_id){
+        console.log("test");
+        reserveThisBook(book_id, function (result){
+            alert("This book was reserved successfully");
+        })
+    }
+
+    $(document).on('click', '#borrowBookBtn', function() {
+        let bookId = $(this).attr("name");
+        console.log(bookId);
+        reserveThisBook(bookId, function (result){
+            alert("This book was reserved successfully");
+        })
+    });
+
     $(loadData());
     function loadData() {
         // call the function getBookInfo defined in app.js and get the json back
@@ -44,7 +59,7 @@ $(document).ready(function () {
                         $('<div>').append(
                             // TODO create ajax funxtion that listens on reserveBook(book_id)
                             // TODO on successful reservation, show message that book was reserved successfully and update availability status on page
-                            $('<button onclick="reserveBook('+result.book_id+')" id="borrowBookBtn" class="btn btn-primary col-sm-3" type="button">').text("Borrow this book")
+                            $('<button id="borrowBookBtn" name="'+result.book_id+'" class="btn btn-primary col-sm-3" type="button">' ).text("Borrow this book")
                         )
                     )
                 ),

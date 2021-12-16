@@ -93,12 +93,10 @@ public class BookController {
      */
     @PostMapping(path = "/reserveBook/{book_id}", produces = "application/json")
     public @ResponseBody
-    ResponseEntity<Borrowed> reserveBook(@RequestBody Borrowed sendReservationInfo,
-                                         @PathVariable(value = "book_id") String bookId) {
-        //CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
+    ResponseEntity<Borrowed> reserveBook( @PathVariable(value = "book_id") String bookId, Authentication authentication) {
         Borrowed borrow;
         try {
-            borrow = borrowedService.reserveBook(sendReservationInfo, Integer.parseInt(bookId));
+            borrow = borrowedService.reserveBook(Integer.parseInt(bookId), authentication);
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, e.getMessage());
         }
@@ -112,10 +110,7 @@ public class BookController {
 
     @GetMapping(path = "/myBorrows")
     public List<Borrowed> myBorrows(Authentication authentication) {
-        //CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
-        //borrowedService.getMyBorrows(authentication);
         return borrowedService.getMyBorrows(authentication);
-
     }
 
     /**

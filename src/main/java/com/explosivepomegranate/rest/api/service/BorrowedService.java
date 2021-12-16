@@ -11,6 +11,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.sql.Date;
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Optional;
 import java.util.List;
 
 @Service
@@ -18,10 +22,6 @@ public class BorrowedService {
 
     @Autowired
     private BookRepository bookRepository;
-    @Autowired
-    private AuthorRepository authorRepository;
-    @Autowired
-    private CategoryRepository categoryRepository;
     @Autowired
     private BorrowedRepository borrowedRepository;
     @Autowired
@@ -33,12 +33,29 @@ public class BorrowedService {
      * UC7 borrow a book, set start date is today + 14 days for end date, SQL date format
      */
 
-    public @ResponseBody
-    Borrowed reserveBook(Borrowed sendReservationInfo, Integer bookID) {
+    public Borrowed reserveBook(Integer bookID, Authentication authentication) {
+        CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
+
+        User user = userRepository.findById(userDetails.getUserId());
         Borrowed borrow = new Borrowed();
-        borrow.setBook(bookRepository.getOne(bookID));
-        borrow.setBookStatus(sendReservationInfo.isBookStatus());
-        borrowedRepository.save(sendReservationInfo);
+        Book book = bookRepository.findById(bookID).get();
+        Calendar calendar = Calendar.getInstance();
+
+        // todays date
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        Date today = new Date(calendar.getTimeInMillis());
+        // date in two weeks
+        calendar.add(Calendar.DATE, 14);
+        Date twoWeeks = new Date(calendar.getTimeInMillis());
+
+        borrow.setBook(book);
+        borrow.setBookStatus(true);
+        borrow.setUser(user);
+        borrow.setStartDate(today);
+        borrow.setInitEndDate(twoWeeks);
+        borrowedRepository.save(borrow);
+        // to save the new book status we need to save the changes in book too
+        bookRepository.save(book);
         return borrow;
     }
 
