@@ -20,9 +20,7 @@ $(document).ready(function () {
                 $(this).show(); // MY CHANGE
                 count++;
             }
-
         });
-
     });
 
     function loadData() {
@@ -32,8 +30,17 @@ $(document).ready(function () {
             mapBookList("allBooks", result);
         })
 
-        // TODO call function to load filter data into some mutliclickable dropdown
-    }
+        // load category dropdown
+        getCategories( function (categories) {
+            const dropdown = $(".categorySelectSearch");
+            dropdown.empty();
+            $.each(categories, function (key, category) {
+                dropdown.append($('<option value="'+category.categoryName+'">').text(category.categoryName));
+            })
+            // from script choices.min.js
+            let multipleCancelButton = new Choices('#category-selection-search', {removeItemButton: true});
 
+        });
+    }
 })
 
