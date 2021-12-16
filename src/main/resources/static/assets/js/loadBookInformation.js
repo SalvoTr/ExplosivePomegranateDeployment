@@ -57,8 +57,8 @@ $(document).ready(function () {
                         $('<p>').text("Published: "+result.year),
                         // TODO author and Categories are missing
                         $('<div>').append(
-                            // TODO create ajax funxtion that listens on reserveBook(book_id)
-                            // TODO on successful reservation, show message that book was reserved successfully and update availability status on page
+                            // create ajax function that listens on reserveBook(book_id)
+                            // on successful reservation, show message that book was reserved successfully and update availability status on page
                             $('<button id="borrowBookBtn" name="'+result.book_id+'" class="btn btn-primary col-sm-3" type="button">' ).text("Borrow this book")
                         )
                     )

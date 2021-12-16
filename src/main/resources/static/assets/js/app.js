@@ -127,11 +127,25 @@ function getAuthors(callback){
     });
 }
 
+// reserve selected book
 function reserveThisBook(bookId, callback) {
     $.ajax({
         type: "POST",
         contentType: "application/json",
         url: serviceEndpointURL+"/reserveBook/"+bookId,
+        success: function (data) {
+            callback(data);
+        }
+    });
+
+}
+
+// all borrowed books by this user
+function getMyBorrows(callback) {
+    $.ajax({
+        type: "GET",
+        contentType: "application/json",
+        url: serviceEndpointURL+"/myBorrows/",
         success: function (data) {
             callback(data);
         }

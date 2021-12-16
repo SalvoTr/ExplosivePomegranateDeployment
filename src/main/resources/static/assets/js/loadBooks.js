@@ -32,6 +32,9 @@ $(document).ready(function () {
             mapBookList("allBooks", result);
         })
 
+        getMyBorrows(function (result){
+            listMyBorrows("myBorrows" , result)
+        })
         // TODO call function to load filter data into some mutliclickable dropdown
     }
 
