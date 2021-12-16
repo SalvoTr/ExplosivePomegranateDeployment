@@ -23,6 +23,17 @@ $(document).ready(function () {
         });
     });
 
+    $("#search-form").submit(function (event) {
+        //TODO retrieve category name from selected option
+
+        //TODO pass it to function "getBookFromCategoryName"
+
+        //TODO make sure the displaying of the corresponding books works
+
+    });
+
+
+
     function loadData() {
         // call the function getAllBooks defined in app.js and get the json list of books back
         // take the result and form a div book element for each list item and then display those newly created html items on the page
@@ -39,8 +50,7 @@ $(document).ready(function () {
             })
             // from script choices.min.js
             let multipleCancelButton = new Choices('#category-selection-search', {removeItemButton: true});
-
         });
     }
-})
+});
 

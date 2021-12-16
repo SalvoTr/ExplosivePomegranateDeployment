@@ -79,6 +79,19 @@ function getBookInfo(bookId, callback){
     });
 }
 
+//TODO SALVATORE
+// get book information with given category name
+function getBookFromCategoryName(categoryName, callback){
+    $.ajax({
+        type: "GET",
+        contentType: "application/json",
+        url: serviceEndpointURL+"/categoryBooks/name/"+categoryName,
+        success: function (data) {
+            callback(data);
+        }
+    });
+}
+
 // get profile information
 function getProfileInfo(callback){
     $.ajax({
