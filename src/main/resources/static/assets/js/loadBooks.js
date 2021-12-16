@@ -33,7 +33,11 @@ $(document).ready(function () {
         })
 
         getMyBorrows(function (result){
-            listMyBorrows("myBorrows" , result)
+            listMyBorrows("myBorrows", result);
+        })
+
+        getAllBorrows(function (result){
+            listAllBorrows("allBorrowed", result);
         })
         // TODO call function to load filter data into some mutliclickable dropdown
     }

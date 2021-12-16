@@ -140,7 +140,7 @@ function reserveThisBook(bookId, callback) {
 
 }
 
-// all borrowed books by this user
+// borrowed books by this user
 function getMyBorrows(callback) {
     $.ajax({
         type: "GET",
@@ -150,5 +150,15 @@ function getMyBorrows(callback) {
             callback(data);
         }
     });
-
+}
+// all borrowed books
+function getAllBorrows(callback) {
+    $.ajax({
+        type: "GET",
+        contentType: "application/json",
+        url: serviceEndpointURL+"/allBorrowed/",
+        success: function (data) {
+            callback(data);
+        }
+    });
 }
