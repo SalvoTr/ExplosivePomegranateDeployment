@@ -58,6 +58,10 @@ public class BookController {
     public List<Book> getBookByCategory(@PathVariable(value = "category_id") String categoryId){
         return bookService.getBookByCategory(Integer.parseInt(categoryId));
     }
+    @GetMapping (path="/categoryBooks/name/{category_name}", produces = "application/json")
+    public List<Book> getBookByCategoryName(@PathVariable(value = "category_name") String categoryName){
+        return bookService.getBookByCategoryName(categoryName);
+    }
 
     /**
      * @author: Salvatore
