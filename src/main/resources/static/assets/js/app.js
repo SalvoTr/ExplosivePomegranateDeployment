@@ -79,7 +79,6 @@ function getBookInfo(bookId, callback){
     });
 }
 
-//TODO SALVATORE
 // get book information with given category name
 function getBookFromCategoryName(categoryName, callback){
     $.ajax({
@@ -91,7 +90,6 @@ function getBookFromCategoryName(categoryName, callback){
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log(jqXHR, textStatus, errorThrown);
-            console.log('testerror');
         }
     });
 }

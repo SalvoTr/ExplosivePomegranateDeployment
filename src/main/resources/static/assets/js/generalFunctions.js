@@ -47,7 +47,6 @@ function mapBookList(placeholderID, booklist) {
                 ),
                 $('<div class="placeholder-empty">')
             );
-
     })
 }
 function listAuthors(authors){

@@ -24,25 +24,26 @@ $(document).ready(function () {
 
     // by clicking the search button, all books with the given category are returned
     $("#search-form").submit(function (event) {
+        // helped solve issue where site would be reloaded after submitting and thus overwriting the result
         // https://stackoverflow.com/questions/27759380/how-to-stop-refreshing-page-after-ajax-call
         event.preventDefault();
         event.stopPropagation();
+
         let catName = '';
         $("#category-selection-search option:selected").map(function(){
             catName = this.value;
         })
-        getBookFromCategoryName(catName, function (result) {
-            mapBookList("allBooks", result);
-        })
-
+        //if search button is clicked with no category, the page will reset (i.e., display all books)
+        if (catName === ''){
+            getAllBooks( function (result) {
+                mapBookList("allBooks", result);
+            })
+        } else {
+            getBookFromCategoryName(catName, function (result) {
+                mapBookList("allBooks", result);
+            })
+        }
     });
-/*
-    $('#loginForm').on('submit', function(e) {
-        e.preventDefault();
-        e.stopPropagation(); // only neccessary if something above is listening to the (default-)event too
-
-        [YOUR CODE GOES HERE]
-    });*/
 
 
     $(loadData());
@@ -52,7 +53,6 @@ $(document).ready(function () {
         getAllBooks( function (result) {
             mapBookList("allBooks", result);
         })
-
 
         // load category dropdown
         getCategories( function (categories) {
@@ -64,7 +64,6 @@ $(document).ready(function () {
             // from script choices.min.js
             let multipleCancelButton = new Choices('#category-selection-search', {maxItemCount: 1});
         });
-
     }
 });
 
