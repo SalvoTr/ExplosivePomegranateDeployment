@@ -63,6 +63,9 @@ public class BookService {
     public List<Book> getBookByCategory(int categoryId){
         return bookRepository.findDistinctByCategories_Id(categoryId);
     }
+    public List<Book> getBookByCategoryName(String categoryName){
+        return bookRepository.findByCategories_CategoryName(categoryName);
+    }
 
     /**
      * @author: Salvatore
