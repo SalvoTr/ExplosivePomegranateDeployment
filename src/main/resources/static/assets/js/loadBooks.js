@@ -53,6 +53,7 @@ $(document).ready(function () {
             mapBookList("allBooks", result);
         })
 
+
         // load category dropdown
         getCategories( function (categories) {
             const dropdown = $(".categorySelectSearch");
@@ -63,6 +64,7 @@ $(document).ready(function () {
             // from script choices.min.js
             let multipleCancelButton = new Choices('#category-selection-search', {maxItemCount: 1});
         });
+
     }
 });
 

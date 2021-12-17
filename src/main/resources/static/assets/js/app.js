@@ -155,3 +155,36 @@ function reserveThisBook(bookId, callback) {
     });
 
 }
+
+function bookedByMe(bookId, callback) {
+    $.ajax({
+        type: "GET",
+        contentType: "application/json",
+        url: serviceEndpointURL+"/bookedByMe/"+bookId,
+        success: function (data) {
+            callback(data);
+        }
+    });
+}
+function addNewCommentToBook(bookId, comment, callback) {
+    $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        url: serviceEndpointURL+"/addComment/"+bookId,
+        data: comment,
+        success: function (data) {
+            callback(data);
+        }
+    });
+}
+
+function getAllComments(bookId, callback) {
+    $.ajax({
+        type: "GET",
+        contentType: "application/json",
+        url: serviceEndpointURL+"/allComments/"+bookId,
+        success: function (data) {
+            callback(data);
+        }
+    });
+}
