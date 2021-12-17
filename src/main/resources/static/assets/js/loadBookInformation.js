@@ -2,6 +2,41 @@ $(document).ready(function () {
     //getUrlParameter function defined in app.js
     const bookId = getUrlParameter();
 
+    /**
+     * @author Clelia
+     * get all comment previously made on the book
+     * */
+    getAllComments(bookId, function (commentList){
+        $('.bookComment').empty();
+        if(commentList.length > 0) {
+            $('.bookComment').append(
+                $('<h2>').text('Comments about book health'),
+                $('<table class="table">').append(
+                    $('<thead>').append(
+                        $('<tr>').append(
+                            $('<th>').text("Start Borrowing Date"),
+                            $('<th>').text("Comment")
+                        )
+                    ),
+                    $('<tbody class="commenList">')
+                )
+            );
+            $.each(commentList, function (i, comment) {
+                $('.commenList').append(
+                    $('<tr>').append(
+                        $('<td>').text(comment.startDate),
+                        $('<td>').text(comment.bookComment)
+                    )
+                );
+            })
+        }
+
+    })
+
+    /**
+     * @author Clelia
+     * get all Authors listed in one line
+     * */
     function listAuthors(authors){
         let authorarray = [];
         $.each(authors, function(key, author){
@@ -11,6 +46,10 @@ $(document).ready(function () {
         return authorarray.join(" , ");
     }
 
+    /**
+     * @author Clelia
+     * get all Categories listed in one line
+     * */
     function listCategories(categories){
         let categoryarray = [];
         $.each(categories, function(key, categories){
@@ -20,20 +59,50 @@ $(document).ready(function () {
         return categoryarray.join(" , ");
     }
 
-    function reserveBook (book_id){
-        console.log("test");
-        reserveThisBook(book_id, function (result){
-            alert("This book was reserved successfully");
-        })
-    }
-
     $(document).on('click', '#borrowBookBtn', function() {
-        let bookId = $(this).attr("name");
-        console.log(bookId);
         reserveThisBook(bookId, function (result){
             alert("This book was reserved successfully");
         })
     });
+
+    $(document).on('click', '#addCommentButton', function (){
+        $('#input-new-comment').append(
+            $('<input type="text" class="form-control" name="comment" placeholder="Category name" required/>'),
+            $('<button class="btn btn_save saveNewComment">').text("Save")
+        )
+    });
+
+    $(document).on('click', '.saveNewComment', function() {
+        let comment = $('input[name=comment]').val();
+        addNewCommentToBook(bookId, comment,function (){
+            alert("The comment was successfully added to the book, to view please reload the page");
+        });
+    });
+
+    /**
+     * @author Clelia
+     * Check button option, you only can add a comment
+     * when you are the one that has the book and you
+     * cannot reserve a book that is already borrowed to someone
+     * */
+    function buttonOption(result) {
+        let myBooking = false;
+        bookedByMe(result.book_id, function (data) {
+            myBooking = data;
+            // if currentlybooked = false
+            if(!result.currentlyBorrowed) {
+                $('#borrowBookBtn').prop("disabled", false);
+                $('#addCommentButton').hide();
+            }// if booked by me, have the option to add a comment to a book
+            else if (myBooking) {
+                $('#addCommentButton').attr('name', result.book_id).show();
+                $('#borrowBookBtn').prop("disabled", true);
+            } // else show button to borrow disabled and have the message with it when it will be back available
+            else {
+                $('#borrowBookBtn').prop("disabled", true);
+            }
+        });
+    }
 
     $(loadData());
     function loadData() {
@@ -55,22 +124,19 @@ $(document).ready(function () {
                         $('<p>').text("Category: " + listCategories(result.categories)),
                         $('<p>').text("ISBN: "+result.isbn),
                         $('<p>').text("Published: "+result.year),
-                        // TODO author and Categories are missing
                         $('<div>').append(
-                            // TODO create ajax funxtion that listens on reserveBook(book_id)
-                            // TODO on successful reservation, show message that book was reserved successfully and update availability status on page
-                            $('<button id="borrowBookBtn" name="'+result.book_id+'" class="btn btn-primary col-sm-3" type="button">' ).text("Borrow this book")
+                            $('<button id="borrowBookBtn" name="'+result.book_id+'" class="btn btn-primary col-sm-3" type="button">' ).text("Borrow this book"),
+                            $('<button id="addCommentButton" name="'+result.book_id+'" class="btn btn-primary col-sm-3" type="button">' ).text("Add a comment about the book status"),
+                            buttonOption(result)
                         )
                     )
                 ),
                 $('<div class="bookInfoDescription">').append(
                     $('<p>').text(result.description)
                 ),
-                // TODO get the previous comments of the book and print them in a list/table
-                // TODO make a for each (see example in loadBooks.js and print each entry
-                // TODO design the comments in a way they are fitting onto the page
+
+                $('<div class="input-group mb-3" id="input-new-comment">'),
                 $('<div class="bookComment">')
-                // TODO create method who checks if you are the one currently borrowing the book, if you are the one currently borrowing the book add a button with the option to add a new comment
             );
         })
     }

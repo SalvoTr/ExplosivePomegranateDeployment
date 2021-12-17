@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Optional;
 import java.util.List;
@@ -64,10 +65,7 @@ public class BorrowedService {
      * UC8 my borrowed books
      */
     public List<Borrowed> getMyBorrows (Authentication authentication) {
-        CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
-        userDetails.getUserId();
-        User user = userRepository.findById(userDetails.getUserId());
-        return borrowedRepository.findByUser(user);
+        return borrowedRepository.findByUser(findAuthenticatedUser(authentication));
     }
 
     /**
@@ -84,14 +82,63 @@ public class BorrowedService {
      * @author Sonja
      * UC18 add a comment to a book
      **/
+    public Borrowed addNewComment(String book_comment, Integer bookId, Authentication authentication) {
+        Book book = bookRepository.findById(bookId).get();
+        List<Borrowed> allBorrowed = borrowedRepository.findByUserAndBook(findAuthenticatedUser(authentication),book);
+        // get the last entry ( newest one added)
+        Borrowed borrowed = allBorrowed.get(allBorrowed.size()-1);
+        // if there is already a comment from the same user on the same borrowing then just combine the content
+        if(borrowed.getBookComment()== null) {
+            borrowed.setBookComment(book_comment);
+        } else {
+            borrowed.setBookComment(borrowed.getBookComment() +" , "+ book_comment);
+        }
+        borrowedRepository.save(borrowed);
 
-    public @ResponseBody
-    Borrowed addNewComment(String book_comment, Integer bookId) {
-        Borrowed borrow = new Borrowed();
-        borrow.setBook(bookRepository.getOne(bookId));
-        borrow.setBookComment(book_comment);
-        return borrow;
+        return borrowed;
     }
+    /**
+     * @author Clelia
+     * check if the book with the id is reserved by me
+     * */
+    public Boolean checkIfBookedByMe(int bookId, Authentication authentication) {
+        Book book = bookRepository.findById(bookId).get();
+        List<Borrowed> allBorrowsOfBook = borrowedRepository.findByBook(book);
+        // get the last entry ( newest one added)
+        Borrowed borrowed = allBorrowsOfBook.get(allBorrowsOfBook.size()-1);
+        User user = findAuthenticatedUser(authentication);
+        if(borrowed.getUser().getId() == user.getId()) {
+            return true;
+        } else
+            return false;
+    }
+
+    /**
+     * @author Clelia
+     * get all comments on a booking
+     * */
+    public List<Borrowed> allCommentsOnBook(int bookId) {
+        Book book = bookRepository.findById(bookId).get();
+        List<Borrowed> allBorrowsOfBook = borrowedRepository.findByBook(book);
+        List<Borrowed> allWithComments = new ArrayList<>();
+        for (Borrowed borrowed: allBorrowsOfBook) {
+            if(borrowed.getBookComment() != null) {
+                allWithComments.add(borrowed);
+            }
+        }
+        return allWithComments;
+    }
+
+    /**
+     * @author Clelia
+     * give the user back based on authentication
+     * */
+    public User findAuthenticatedUser(Authentication authentication) {
+        CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
+        userDetails.getUserId();
+        return userRepository.findById(userDetails.getUserId());
+    }
+
 
 }
 

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.persistence.criteria.CriteriaBuilder;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController //Book Endpoint
@@ -125,18 +126,18 @@ public class BookController {
      * UC18 add a comment to a book
      **/
 
- /*   @PostMapping(path = "/addComment/{book_id}")
+   @PostMapping(path = "/addComment/{book_id}")
     public @ResponseBody
     ResponseEntity<Borrowed> addNewComment(@RequestBody String addComment, //Authentication authentication
-                                           @PathVariable(value = "book_id") String bookId) {
+                                           @PathVariable(value = "book_id") String bookId,  Authentication authentication) {
         Borrowed book_comment;
         try {
-            book_comment = borrowedService.addNewComment(addComment, Integer.parseInt(bookId));
+            book_comment = borrowedService.addNewComment(addComment, Integer.parseInt(bookId), authentication);
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, e.getMessage());
         }
         return ResponseEntity.accepted().body(book_comment);
-    }*/
+    }
 
     /**
      * @author: Clelia
@@ -151,6 +152,36 @@ public class BookController {
             throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, e.getMessage());
         }
         return ResponseEntity.accepted().body(jsonNode);
+    }
+
+    /**
+     * @author Clelia
+     * check if the book with the id is reserved by me
+     * */
+    @GetMapping (path = "/bookedByMe/{bookId}", produces = "application/json")
+    public Boolean bookedByMe(@PathVariable(value = "bookId") String bookId, Authentication authentication) {
+        Boolean isBorrowedByMe = false;
+        try {
+            isBorrowedByMe = borrowedService.checkIfBookedByMe(Integer.parseInt(bookId), authentication);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, e.getMessage());
+        }
+        return isBorrowedByMe;
+    }
+
+    /**
+     * @author Clelia
+     * get all previous comments on a book
+     * */
+    @GetMapping(path = "/allComments/{bookId}", produces = "application/json")
+    public List<Borrowed> borrowedComment(@PathVariable(value = "bookId") String bookId) {
+        List<Borrowed> commentList = new ArrayList<>();
+        try {
+            commentList = borrowedService.allCommentsOnBook(Integer.parseInt(bookId));
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, e.getMessage());
+        }
+        return commentList;
     }
 }
 
