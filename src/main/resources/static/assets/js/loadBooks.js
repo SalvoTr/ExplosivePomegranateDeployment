@@ -1,5 +1,4 @@
 $(document).ready(function () {
-    $(loadData());
 
     $("#searchFor").keyup(function() {
 
@@ -23,17 +22,30 @@ $(document).ready(function () {
         });
     });
 
+    // by clicking the search button, all books with the given category are returned
     $("#search-form").submit(function (event) {
-        //TODO retrieve category name from selected option
-
-        //TODO pass it to function "getBookFromCategoryName"
-
-        //TODO make sure the displaying of the corresponding books works
+        // https://stackoverflow.com/questions/27759380/how-to-stop-refreshing-page-after-ajax-call
+        event.preventDefault();
+        event.stopPropagation();
+        let catName = '';
+        $("#category-selection-search option:selected").map(function(){
+            catName = this.value;
+        })
+        getBookFromCategoryName(catName, function (result) {
+            mapBookList("allBooks", result);
+        })
 
     });
+/*
+    $('#loginForm').on('submit', function(e) {
+        e.preventDefault();
+        e.stopPropagation(); // only neccessary if something above is listening to the (default-)event too
+
+        [YOUR CODE GOES HERE]
+    });*/
 
 
-
+    $(loadData());
     function loadData() {
         // call the function getAllBooks defined in app.js and get the json list of books back
         // take the result and form a div book element for each list item and then display those newly created html items on the page
@@ -49,7 +61,7 @@ $(document).ready(function () {
                 dropdown.append($('<option value="'+category.categoryName+'">').text(category.categoryName));
             })
             // from script choices.min.js
-            let multipleCancelButton = new Choices('#category-selection-search', {removeItemButton: true});
+            let multipleCancelButton = new Choices('#category-selection-search', {maxItemCount: 1});
         });
     }
 });

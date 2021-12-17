@@ -2,7 +2,7 @@
 
 serviceEndpointURL = window.location.protocol + "//" + window.location.host;
 
-// make a Get reguest to "/allBooks" and get the json with all books back
+// make a Get request to "/allBooks" and get the json with all books back
 function getAllBooks(callback) {
     $.ajax({
         type: "GET",
@@ -88,6 +88,10 @@ function getBookFromCategoryName(categoryName, callback){
         url: serviceEndpointURL+"/categoryBooks/name/"+categoryName,
         success: function (data) {
             callback(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR, textStatus, errorThrown);
+            console.log('testerror');
         }
     });
 }
