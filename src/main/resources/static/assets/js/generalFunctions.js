@@ -73,7 +73,11 @@ function mapBorrowList(placeholderId, borrowList) {
                         // if text description lenght is over 200 replace the remaining text with '...'
                         $(borrow.book.description.length > 200 ? $("<p>").text(borrow.book.description.substring(0,200)+"...") : $("<p>").text(borrow.book.description) ),
                         // when button within div is clicked, do not go to the div link but stay on the page - event.stopPropagation()
-                        $('<button id="returnBook" onclick="event.stopPropagation();console.log(`Hello`)" type="button">').text("This book was returned")
+                        $('<button id="'+borrow.book.book_id+'" onclick="' +
+                            'event.stopPropagation(); ' +
+                            'returnBook($(this).attr(`id`), function (result){ alert(`This book was returned successfully`)});' +
+                            'console.log(`Hello`)" ' +
+                            'type="button">').text("This book was returned")
                     )
                 ),
         $('<div class="placeholder-empty">')
