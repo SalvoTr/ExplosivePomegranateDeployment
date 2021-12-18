@@ -59,8 +59,9 @@ function mapBorrowList(placeholderId, borrowList) {
         //add new item into div with id allBooks
         $('#'+placeholderId)
             .append(
-                $('<div class="row rowList">').append(
-                    $('<a href="/bookDetails/'+borrow.book.book_id+'">'),
+                // we cannot have a button within a link; for that we need to make the div clickable with the onclick method and then add a separate button
+                $('<div class="row rowList" id="'+borrow.book.book_id+'" onclick="location.href=`/bookDetails/`+$(this).attr(`id`)">').append(
+                    //$('<a href="/bookDetails/'+borrow.book.book_id+'">'),
                     $('<div class="col-sm-2">').append(
                         $('<img src="../assets/img/sample-book-cover.png">')
                     ),
@@ -71,10 +72,12 @@ function mapBorrowList(placeholderId, borrowList) {
                         $('<p>').text("Author(s): " + listAuthors(borrow.book.authors)),
                         $('<p>').text("Category: " + listCategories(borrow.book.categories)),
                         // if text description lenght is over 200 replace the remaining text with '...'
-                        $(borrow.book.description.length > 200 ? $("<p>").text(borrow.book.description.substring(0,200)+"...") : $("<p>").text(borrow.book.description) )
+                        $(borrow.book.description.length > 200 ? $("<p>").text(borrow.book.description.substring(0,200)+"...") : $("<p>").text(borrow.book.description) ),
+                        // when button within div is clicked, do not go to the div link but stay on the page - event.stopPropagation()
+                        $('<button id="returnBook" onclick="event.stopPropagation();console.log(`Hello`)" type="button">').text("This book was returned")
                     )
                 ),
-                $('<div class="placeholder-empty">')
+        $('<div class="placeholder-empty">')
             );
 
     })
