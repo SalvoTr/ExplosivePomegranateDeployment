@@ -5,6 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>FHNW_Library</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <!-- add stylesheet for multiselect dropdown-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.css">
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
@@ -28,10 +31,14 @@
                 <a href="/createNewBook"><button id="addNewBook"  class="btn btn-primary col-sm-3" type="button">Add Book to Library</button></a>
             </div>
         </div>
-        <form class="search-form">
+        <div class="placeholder-empty"></div>
+        <form class="search-form2" id="search-form">
             <div class="input-group"><span class="input-group-text" style="background: rgb(245, 221, 25);"><i class="fa fa-search"></i></span>
-                <input class="form-control" id="searchFor" type="text" placeholder="I am looking for..">
-                <button class="btn btn-light" type="button" style="background: rgb(245, 221, 25);">Search </button>
+                <input class="form-control" id="searchFor" type="text" placeholder="I am looking for ...">
+            </div>
+            <div class="input-group" id="category-group">
+                <select form="search-form" id="category-selection-search" class="categorySelectSearch" placeholder="Select categories" multiple></select>
+                <button class="btn h-25" type="submit" style="background: rgb(245, 221, 25);">Search </button>
             </div>
         </form>
         <div id="allBooks" style="height: 420px;">
@@ -45,6 +52,8 @@
     <script src="../assets/js/app.js"></script>
     <script src="../assets/js/generalFunctions.js"></script>
     <script src="../assets/js/loadBooks.js"></script>
+    <!-- load js for multiselect category -->
+    <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
 </body>
 
 </html>
