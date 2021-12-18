@@ -1,0 +1,5 @@
+{
+  "name": "fhnwlibrary",
+  "description": "FHNW Library WebApp",
+  "website": "https://andreasmartin.ch",
+  "addons": [ "heroku-cleardb" ]
