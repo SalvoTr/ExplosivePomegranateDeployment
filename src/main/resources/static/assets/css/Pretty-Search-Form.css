@@ -3,6 +3,11 @@
   font: normal 0.75em sans-serif;
   box-shadow: 0.0625em 0.125em 0.25em 0 rgba(0, 0, 0, 0.08);
 }
+.search-form2 {
+  margin: 2.5em 0.3125em;
+  font: normal 0.75em sans-serif;
+  box-shadow: 0.0625em 0.125em 0.25em 0 rgba(0, 0, 0, 0.08);
+}
 
 .search-form div.input-group-addon {
   background: #fff;

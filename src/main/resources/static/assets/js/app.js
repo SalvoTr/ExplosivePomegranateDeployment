@@ -2,7 +2,7 @@
 
 serviceEndpointURL = window.location.protocol + "//" + window.location.host;
 
-// make a Get reguest to "/allBooks" and get the json with all books back
+// make a Get request to "/allBooks" and get the json with all books back
 function getAllBooks(callback) {
     $.ajax({
         type: "GET",
@@ -79,6 +79,21 @@ function getBookInfo(bookId, callback){
     });
 }
 
+// get book information with given category name
+function getBookFromCategoryName(categoryName, callback){
+    $.ajax({
+        type: "GET",
+        contentType: "application/json",
+        url: serviceEndpointURL+"/categoryBooks/name/"+categoryName,
+        success: function (data) {
+            callback(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR, textStatus, errorThrown);
+        }
+    });
+}
+
 // get profile information
 function getProfileInfo(callback){
     $.ajax({
@@ -140,6 +155,38 @@ function reserveThisBook(bookId, callback) {
 
 }
 
+function bookedByMe(bookId, callback) {
+    $.ajax({
+        type: "GET",
+        contentType: "application/json",
+        url: serviceEndpointURL+"/bookedByMe/"+bookId,
+        success: function (data) {
+            callback(data);
+        }
+    });
+}
+function addNewCommentToBook(bookId, comment, callback) {
+    $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        url: serviceEndpointURL+"/addComment/"+bookId,
+        data: comment,
+        success: function (data) {
+            callback(data);
+        }
+    });
+}
+
+function getAllComments(bookId, callback) {
+    $.ajax({
+        type: "GET",
+        contentType: "application/json",
+        url: serviceEndpointURL+"/allComments/"+bookId,
+        success: function (data) {
+            callback(data);
+        }
+    });
+}
 // borrowed books by this user
 function getMyBorrows(callback) {
     $.ajax({
