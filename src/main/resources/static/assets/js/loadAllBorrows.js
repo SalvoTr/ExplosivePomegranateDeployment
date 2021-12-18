@@ -4,7 +4,7 @@ $(document).ready(function () {
     function loadData() {
 
         getAllBorrows(function (result) {
-            mapBookList("allBooks", result);
+            mapBorrowList("allBorrows", result);
         })
     }
 })

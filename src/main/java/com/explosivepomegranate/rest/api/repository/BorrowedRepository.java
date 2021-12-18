@@ -19,6 +19,10 @@ public interface BorrowedRepository extends JpaRepository<Borrowed, Integer> {
     List<Borrowed> findByUser(User user);
 
     List<Borrowed> findById(int user_id);
+
+    List<Borrowed> findByBook_CurrentlyBorrowed(boolean currentlyBorrowed);
     // https://www.netsurfingzone.com/jpa/how-to-write-custom-method-in-repository-in-spring-data-jpa/
+
+
 
 }

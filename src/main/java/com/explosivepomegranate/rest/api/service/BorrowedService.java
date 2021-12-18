@@ -12,10 +12,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.sql.Date;
-import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Optional;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class BorrowedService {
@@ -75,8 +75,9 @@ public class BorrowedService {
      * returns list of all borrowed books (UC11)
      * */
     public List<Borrowed> getAllBorrowed() {
-        return (List<Borrowed>) borrowedRepository.findAll();
-       // return borrowedRepository.findAll();
+        List<Borrowed> allBorrowed = borrowedRepository.findByBook_CurrentlyBorrowed(true);
+
+        return allBorrowed;
     }
 
 

@@ -66,7 +66,7 @@ function mapBorrowList(placeholderId, borrowList) {
                     ),
                     $('<div class="col-sm-9" id="bookListItem">').append(
                         $(borrow.book.currentlyBorrowed ? $('<p class="BorrowedStyle">').text("Currently borrowed") : $('<p class="notBorrowedStyle">').text("Available")),
-                        $(borrow.book.currentlyBorrowed ? $('<p>').text("This book needs to be returned at"+ borrow.initEndDate):  $('<p>').text("Was returned at "+borrow.initEndDate)),
+                        $(borrow.book.currentlyBorrowed ? $('<p>').text("This book needs to be returned at: "+ borrow.initEndDate):  $('<p>').text("Was returned at: "+borrow.initEndDate)),
                         $("<h3>").text(borrow.book.title),
                         $('<p>').text("Author(s): " + listAuthors(borrow.book.authors)),
                         $('<p>').text("Category: " + listCategories(borrow.book.categories)),
@@ -77,32 +77,6 @@ function mapBorrowList(placeholderId, borrowList) {
                 $('<div class="placeholder-empty">')
             );
 
-    })
-}
-
-function listAllBorrows() {
-    // go through result list
-    $.each(booklist, function (i, book) {
-        //add new item into div with id allBooks
-        $("#allBorrowed").append(
-            $('<div class="row rowList">').append(
-                $('<a href="/currentlyBorrowed/">'),
-                $('<div class="col-sm-2">').append(
-                    $('<img src="../assets/img/sample-book-cover.png">')
-                ),
-                $('<div class="col-sm-9" id="bookBorrowItem">').append(
-                    $(book.currentlyBorrowed),
-                    $("<h3>").text(book.title),
-                    $(book.description.length > 200 ? $("<p>").text(book.description.substring(0, 200) + "...") : $("<p>").text(book.description)),
-                    //$("<p>").text("Due: " + myBorrows(borrowed.dueDate)),
-                    //$("<p>").text("Date: " + myBorrows(borrowed.today)),
-                $('<div>').append(
-                    // on borrowed books show possibility to send reminder
-                    $('<button id="sendReminder" name="' + result + '" class="btn btn-primary col-sm-3" type="button">').text("Send reminder")
-                )
-            )
-        )
-    )
     })
 }
 
