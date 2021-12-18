@@ -142,6 +142,7 @@ function getAuthors(callback){
     });
 }
 
+// reserve selected book
 function reserveThisBook(bookId, callback) {
     $.ajax({
         type: "POST",
@@ -181,6 +182,28 @@ function getAllComments(bookId, callback) {
         type: "GET",
         contentType: "application/json",
         url: serviceEndpointURL+"/allComments/"+bookId,
+        success: function (data) {
+            callback(data);
+        }
+    });
+}
+// borrowed books by this user
+function getMyBorrows(callback) {
+    $.ajax({
+        type: "GET",
+        contentType: "application/json",
+        url: serviceEndpointURL+"/myBorrows",
+        success: function (data) {
+            callback(data);
+        }
+    });
+}
+// all borrowed books
+function getAllBorrows(callback) {
+    $.ajax({
+        type: "GET",
+        contentType: "application/json",
+        url: serviceEndpointURL+"/allBorrowed/",
         success: function (data) {
             callback(data);
         }

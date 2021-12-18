@@ -23,4 +23,7 @@ public interface BorrowedRepository extends JpaRepository<Borrowed, Integer> {
 
     List<Borrowed> findByBook(Book book);
 
+    List<Borrowed> findById(int user_id);
+
+    List<Borrowed> findByBook_CurrentlyBorrowed(boolean currentlyBorrowed);
 }
