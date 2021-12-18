@@ -142,5 +142,10 @@ public class BorrowedService {
     }
 
 
+    public void returnBook(int bookId) {
+        Book book = bookRepository.findById(bookId).get();
+        book.setCurrentlyBorrowed(false);
+        bookRepository.save(book);
+    }
 }
 
