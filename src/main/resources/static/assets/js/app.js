@@ -145,7 +145,7 @@ function getMyBorrows(callback) {
     $.ajax({
         type: "GET",
         contentType: "application/json",
-        url: serviceEndpointURL+"/myBorrows/",
+        url: serviceEndpointURL+"/myBorrows",
         success: function (data) {
             callback(data);
         }

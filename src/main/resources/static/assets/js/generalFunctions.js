@@ -51,27 +51,32 @@ function mapBookList(placeholderID, booklist) {
     })
 }
 
-function listMyBorrows(booklist) {
+function mapBorrowList(placeholderId, borrowList) {
+    // delete content of the dom element with id
+    $('#'+placeholderId).empty();
     // go through result list
-    $.each(booklist, function (i, book) {
+    $.each(borrowList, function (i, borrow) {
         //add new item into div with id allBooks
-        $("#myBorrows")
+        $('#'+placeholderId)
             .append(
                 $('<div class="row rowList">').append(
-                    $('<a href="/bookDetails/'+book.book_id+'">'),
+                    $('<a href="/bookDetails/'+borrow.book.book_id+'">'),
                     $('<div class="col-sm-2">').append(
                         $('<img src="../assets/img/sample-book-cover.png">')
                     ),
-                    $('<div class="col-sm-9" id="bookBorrowItem">').append(
-                        $(book.currentlyBorrowed),
-                        $("<h3>").text(book.title),
-                        $(book.description.length > 200 ? $("<p>").text(book.description.substring(0,200)+"...") : $("<p>").text(book.description) )
-                        //$("<p>").text("Due: " + myBorrows(borrowed.dueDate)),
-                        //$("<p>").text("Date: " + myBorrows(borrowed.today)),
+                    $('<div class="col-sm-9" id="bookListItem">').append(
+                        $(borrow.book.currentlyBorrowed ? $('<p class="BorrowedStyle">').text("Currently borrowed") : $('<p class="notBorrowedStyle">').text("Available")),
+                        $(borrow.book.currentlyBorrowed ? $('<p>').text("This book needs to be returned at"+ borrow.initEndDate):  $('<p>').text("Was returned at "+borrow.initEndDate)),
+                        $("<h3>").text(borrow.book.title),
+                        $('<p>').text("Author(s): " + listAuthors(borrow.book.authors)),
+                        $('<p>').text("Category: " + listCategories(borrow.book.categories)),
+                        // if text description lenght is over 200 replace the remaining text with '...'
+                        $(borrow.book.description.length > 200 ? $("<p>").text(borrow.book.description.substring(0,200)+"...") : $("<p>").text(borrow.book.description) )
                     )
                 ),
                 $('<div class="placeholder-empty">')
             );
+
     })
 }
 
