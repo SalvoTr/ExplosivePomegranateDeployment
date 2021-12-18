@@ -50,6 +50,57 @@ function mapBookList(placeholderID, booklist) {
 
     })
 }
+
+function listMyBorrows(booklist) {
+    // go through result list
+    $.each(booklist, function (i, book) {
+        //add new item into div with id allBooks
+        $("#myBorrows")
+            .append(
+                $('<div class="row rowList">').append(
+                    $('<a href="/bookDetails/'+book.book_id+'">'),
+                    $('<div class="col-sm-2">').append(
+                        $('<img src="../assets/img/sample-book-cover.png">')
+                    ),
+                    $('<div class="col-sm-9" id="bookBorrowItem">').append(
+                        $(book.currentlyBorrowed),
+                        $("<h3>").text(book.title),
+                        $(book.description.length > 200 ? $("<p>").text(book.description.substring(0,200)+"...") : $("<p>").text(book.description) )
+                        //$("<p>").text("Due: " + myBorrows(borrowed.dueDate)),
+                        //$("<p>").text("Date: " + myBorrows(borrowed.today)),
+                    )
+                ),
+                $('<div class="placeholder-empty">')
+            );
+    })
+}
+
+function listAllBorrows() {
+    // go through result list
+    $.each(booklist, function (i, book) {
+        //add new item into div with id allBooks
+        $("#allBorrowed").append(
+            $('<div class="row rowList">').append(
+                $('<a href="/currentlyBorrowed/">'),
+                $('<div class="col-sm-2">').append(
+                    $('<img src="../assets/img/sample-book-cover.png">')
+                ),
+                $('<div class="col-sm-9" id="bookBorrowItem">').append(
+                    $(book.currentlyBorrowed),
+                    $("<h3>").text(book.title),
+                    $(book.description.length > 200 ? $("<p>").text(book.description.substring(0, 200) + "...") : $("<p>").text(book.description)),
+                    //$("<p>").text("Due: " + myBorrows(borrowed.dueDate)),
+                    //$("<p>").text("Date: " + myBorrows(borrowed.today)),
+                $('<div>').append(
+                    // on borrowed books show possibility to send reminder
+                    $('<button id="sendReminder" name="' + result + '" class="btn btn-primary col-sm-3" type="button">').text("Send reminder")
+                )
+            )
+        )
+    )
+    })
+}
+
 function listAuthors(authors){
     let authorarray = [];
     $.each(authors, function(key, author){
@@ -66,4 +117,13 @@ function listCategories(categories){
         categoryarray.push(ccategory);
     });
     return categoryarray.join(" , ");
+}
+
+function myBorrows(borrowed){
+    let borrowedarray = [];
+    $.each(borrowed, function(key, borrowed){
+        let bborrowed = borrowed;
+        borrowedarray.push(bborrowed);
+    });
+    return borrowedarray.join(" , ");
 }
