@@ -13,10 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.sql.Date;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Optional;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -65,8 +62,12 @@ public class BorrowedService {
      * @author Sonja
      * UC8 my borrowed books
      */
-    public List<Borrowed> getMyBorrows (Authentication authentication) {
-        return borrowedRepository.findByUser(findAuthenticatedUser(authentication));
+    public List<Borrowed> getMyBorrows(Authentication authentication) {
+        // get books borrowed by this user
+        List<Borrowed> b = borrowedRepository.findByUser(findAuthenticatedUser(authentication));
+        // sorts borrowed books in reversed order
+        b = b.stream().sorted(Comparator.comparing(Borrowed::getStartDate).reversed()).collect(Collectors.toList());
+        return b;
     }
 
     /**
