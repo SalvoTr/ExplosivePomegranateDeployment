@@ -187,6 +187,20 @@ public class BookController {
         }
         return commentList;
     }
+
+    /**
+     * @author Clelia
+     * return book with id
+     * */
+    @Secured("ROLE_ADMIN")
+    @PostMapping(path = "/returnBook/{bookId}", produces = "application/json")
+    public void returnBook(@PathVariable(value="bookId") String bookId) {
+        try {
+            borrowedService.returnBook(Integer.parseInt(bookId));
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, e.getMessage());
+        }
+    }
 }
 
 
