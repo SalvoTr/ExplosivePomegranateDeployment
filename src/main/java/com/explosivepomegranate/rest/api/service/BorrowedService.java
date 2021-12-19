@@ -75,7 +75,7 @@ public class BorrowedService {
      * returns list of all borrowed books (UC11)
      * */
     public List<Borrowed> getAllBorrowed() {
-        List<Borrowed> allBorrowed = borrowedRepository.findByBook_CurrentlyBorrowed(true);
+        List<Borrowed> allBorrowed = borrowedRepository.findByBook_CurrentlyBorrowedOrderByIdDesc(true);
 
         // https://newbedev.com/remove-duplicates-from-a-list-of-objects-based-on-property-in-java-8
         // Had to adjust the code: as you need to have comparingInt for the new TreeSet, I couldn't simply compare

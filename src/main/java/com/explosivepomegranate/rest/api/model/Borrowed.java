@@ -12,7 +12,8 @@ public class Borrowed {
 
     //with camel case initially didn't work - had to change names here and in SQL with underscores
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int borrow_id;
+    @Column(name = "borrow_id", nullable = false)
+    private int id;
     private Date start_date;
     private Date init_end_date;
     private Date extend_end_date;
@@ -28,12 +29,12 @@ public class Borrowed {
     @JoinColumn(name = "user_id")
     private User user;
 
-    public int getBorrow_id() {
-        return borrow_id;
+    public int getId() {
+        return id;
     }
 
     public void setBorrowed_id(int borrow_id) {
-        this.borrow_id = borrow_id;
+        this.id = borrow_id;
     }
 
     public Date getStartDate() {
