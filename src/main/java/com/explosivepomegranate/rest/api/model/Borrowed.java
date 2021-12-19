@@ -91,4 +91,6 @@ public class Borrowed {
     public void setUser(User user) {
         this.user = user;
     }
+
+    public int getBookIdFromBorrowed(){ return book.getBook_id();}
 }

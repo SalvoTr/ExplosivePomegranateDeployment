@@ -11,12 +11,14 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import static java.util.Comparator.comparing;
+import static java.util.Comparator.comparingInt;
+import static java.util.stream.Collectors.collectingAndThen;
+import static java.util.stream.Collectors.toCollection;
+
 import java.sql.Date;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Optional;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -34,7 +36,6 @@ public class BorrowedService {
      * @author Sonja
      * UC7 borrow a book, set start date is today + 14 days for end date, SQL date format
      */
-
     public Borrowed reserveBook(Integer bookID, Authentication authentication) {
         CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
 
@@ -76,7 +77,15 @@ public class BorrowedService {
     public List<Borrowed> getAllBorrowed() {
         List<Borrowed> allBorrowed = borrowedRepository.findByBook_CurrentlyBorrowed(true);
 
-        return allBorrowed;
+        // https://newbedev.com/remove-duplicates-from-a-list-of-objects-based-on-property-in-java-8
+        // Had to adjust the code: as you need to have comparingInt for the new TreeSet, I couldn't simply compare
+        // the Borrowed_ID to filter duplicate Books because each Borrowed object has a unique ID but still might have the same Book
+        // work around: created getBookIdFromBorrowed() in Borrowed model
+        List<Borrowed> filteredAllBorrowed = allBorrowed.stream()
+                .collect(collectingAndThen(toCollection(() -> new TreeSet<>(comparingInt(Borrowed::getBookIdFromBorrowed))),
+                        ArrayList::new));
+
+       return filteredAllBorrowed;
     }
 
 
