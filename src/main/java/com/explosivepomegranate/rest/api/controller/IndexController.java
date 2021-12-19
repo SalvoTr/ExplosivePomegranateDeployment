@@ -1,6 +1,7 @@
 package com.explosivepomegranate.rest.api.controller;
 
 
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +22,7 @@ public class IndexController {
     @GetMapping("/myProfile")
     public String profile() { return "Admin/profile-admin.html"; }
 
+    @Secured("ROLE_ADMIN")
     @GetMapping("/currentlyBorrowed")
     public String borrowed() { return "Admin/borrowed-books-overview.html"; }
 
@@ -36,6 +38,7 @@ public class IndexController {
     @GetMapping("/bookDetails/{id}")
     public String bookDetail(@PathVariable Long id) { return "../Admin/book-information-admin.html"; }
 
+    @Secured("ROLE_ADMIN")
     @GetMapping("/createNewBook")
     public String createBook() { return "Admin/add-new-book.html"; }
 }

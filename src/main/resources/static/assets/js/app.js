@@ -209,3 +209,15 @@ function getAllBorrows(callback) {
         }
     });
 }
+
+// return book to library
+function returnBook(bookId, callback) {
+    $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        url: serviceEndpointURL+"/returnBook/"+bookId,
+        success: function (data) {
+            callback(data);
+        }
+    });
+}
