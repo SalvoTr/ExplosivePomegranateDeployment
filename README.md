@@ -1,6 +1,10 @@
 # ExplosivePomegranate
 
 ### Use Case diagram
+
+The initial Use case diagram shows the basis for the whole set-up of the website.
+During the run of the project, some requirements have changed and may not be applicable anymore. 
+
 https://lucid.app/lucidchart/4c7d5f12-b21d-4bff-988e-84bd686c2cd3/edit?viewport_loc=108%2C-247%2C1111%2C777%2C0_0&invitationId=inv_3a662d3c-c919-4256-8e0d-2f78abadef9b
 
 ![UML user stories](documentation-resources/UML-usecases.png?raw=true "Title")
@@ -30,6 +34,7 @@ https://lucid.app/lucidchart/4c7d5f12-b21d-4bff-988e-84bd686c2cd3/edit?viewport_
 16. UC15: As a Libriarian, I want to add a image of the book cover to the book information.
 17. UC16: As a Libraran, I want a reporting functionality about all the borrowed books so that I can easily search for return dates for specific items and overdo books
 18. UC17: As a Librarian, I want that the "return reminder" for borrowed books is send automatically so that I save time and can focus on keeping the library up to date.
+19. UC19: As a Libriarian, I can delete book records.
 
 ### Class diagram
 https://lucid.app/lucidchart/invitations/accept/inv_dc1b4624-c4b7-4b75-be56-0053b5493778?viewport_loc=-8%2C1248%2C2048%2C1085%2C0_0
