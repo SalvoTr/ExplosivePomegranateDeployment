@@ -1,5 +1,10 @@
 # ExplosivePomegranate
 
+This project deemed to deploy a website based on Java, HTML+CSS and a mySQL database. The backend is supported by Springboot and the source codes/artefacts can be found on GitLab: https://gitlab.fhnw.ch/clelia.meneghin/explosivepomegranate/.
+To see the final result, you can refer to: https://library-fhnw.herokuapp.com/
+The basic idea is a library, where FHNW students can borrow books or their studies and librarians administer the books in their admin role.
+The project team consisted the 4 members: Salvatore Trupia, Clelia Meneghin, Sonja Nussbaumer and Rebecca Beutling.
+
 ### Use Case diagram
 
 The initial Use case diagram shows the basis for the whole set-up of the website.
@@ -43,14 +48,14 @@ UC20: As a Librarian, I can mark books as returned.
 [Edit class diagram in lucid](https://lucid.app/lucidchart/invitations/accept/inv_dc1b4624-c4b7-4b75-be56-0053b5493778?viewport_loc=-8%2C1248%2C2048%2C1085%2C0_0)
 ![Class Diagram](documentation-resources/Class-Diagram.png?raw=true "Title")
 
-###Layers and Tiers diagram
+### Layers and Tiers diagram
 We used the Bootstrap library, jQuery and JavaScript for the Presentation layer
 On the  Business and Persistence Layer Java Spring Boot is used and on the DB tier runs a Mysql database
 
 <em>from Salvatore and designed by Sonja</em>
 ![Layers and Tiers](documentation-resources/Layers-and-Tiers.png?raw=true "Title")
 
-##Mockup
+## Mockup
 ### Mockup draft
 <em>Mockup draft from Sonja</em>
 ![Class Diagram](documentation-resources/Mockup-draft.png?raw=true "Title")
