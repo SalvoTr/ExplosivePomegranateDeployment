@@ -63,29 +63,36 @@ https://lucid.app/lucidchart/7dc561be-ccba-475d-8fea-9955b0b630bb/edit?viewport_
 
 ### Reinstallation of Database with IntelliJ
 Go into your project folder - when you are in the folder explosivepomegranate/ then run:
-mysql -u root -p library < src/main/resources/db/exposivePomegranate-db.sql
+mysql -u root -p library < src/main/resources/db/explosivePomegranate-db.sql
 in the IntelliJ Terminal / Terminal
 
 You will need to insert your mysql root password after you hit enter; the database should be installed on your local environment.
-Alternatively you can open the exposivePomegranate-db.sql file and just run it in the mysql interface.
+Alternatively you can open the explosivePomegranate-db.sql file and just run it in the mysql interface.
 
 ## API request documentation
 | Use Case | Request type | Request      | Content |
 |----------|--------------|--------------|---------|
 | UC3      | POST         | /myNewUser     | firstname, lastname, email, password |
+| UC3      | GET         | /userRole     | role |
 | UC4      | POST         | /login       | email, password |
+| UC4      | GET         | /myUserProfile       | firstname, lastname, email |
+| UC4      | POST         | /updateMyUserProfile       | firstname, lastname, email |
 | UC5      | GET          | /allCategories| categories |
-| UC5      | GET          | /allAuthors  | authors |
-| UC5/6    | GET          | /allBooks    | isbn, title, description, year, (image), category(ies), author(s), bookStatus |
-| UC5      | GET          | /categoryBooks/<category_id>|  isbn, title, description, year, (image), category(ies), author(s), bookStatus |
-| UC5      | GET          | /authorBooks/<author_id>|  isbn, title, description, year, (image), category(ies), author(s), bookStatus |
-| UC6      | GET          | /bookInfo/<book_id>  | isbn, title, description, year, (image), category(ies), author(s), bookStatus, bookComment, startDate, initEndDate, (extendEndDate)|
-| UC7      | POST         | /reserveBook/<book_id> | book_id, bookStatus |
-| UC8      | GET          | /myBorrows   | isbn, title, description, year, (image), category(ies), author(s), bookStatus , initEndDate |
-| UC10     | POST         | /newBook     | isbn, title, description, year, (image), category, author |
-| UC11     | GET          | /allBorrowed |  isbn, title, description, year, (image), category(ies), author(s), bookStatus , startDate,initEndDate |
+| UC5      | GET          | /allAuthors  | authorFirstname, authorLastname |
+| UC5/6    | GET          | /allBooks    | title, description, year, currentlyBorrowed, category(ies), author(s), isbn |
+| UC5      | GET          | /categoryBooks/<category_id>|  title, description, year, currentlyBorrowed, category(ies), author(s), isbn |
+| UC5      | GET          | /categoryBooks/name/<category_id>|  categoryName |
+| UC5      | GET          | /authorBooks/<author_id>|  title, description, year, currentlyBorrowed, category(ies), author(s), isbn |
+| UC6      | GET          | /bookInfo/<book_id>  | title, description, year, currentlyBorrowed, category(ies), author(s), isbn|
+| UC7      | POST         | /reserveBook/<book_id> | book_id, currentlyBorrowed |
+| UC8      | GET          | /myBorrows   | title, description, year, currentlyBorrowed, category(ies), author(s), isbn , startDate, initEndDate, bookComment |
+| UC8      | GET          | /bookedByMe/{bookId}   | currentlyBorrowed |
+| UC10     | POST         | /newBook     | isbn, title, description, year, category, author |
+| UC11/12     | GET          | /allBorrowed | title, description, year, currentlyBorrowed, category(ies), author(s), isbn , startDate, initEndDate, bookComment |
 | UC12     | POST         | /addNewUser  | firstname, lastname, email, password, role |
 | UC18     | POST         | /addComment/<book_id> | comment|
+| UC18     | GET         | /allComments/{bookId} | comment|
+| UC20     | POST         | /returnBook/<book_id> | isbn, title, description, year, category(ies), author(s), currentlyBorrowed, startDate, initEndDate |
 
 # Start developing
 Build your application by importing the maven dependencies
