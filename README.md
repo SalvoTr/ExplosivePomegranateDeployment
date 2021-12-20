@@ -32,16 +32,19 @@ https://lucid.app/lucidchart/4c7d5f12-b21d-4bff-988e-84bd686c2cd3/edit?viewport_
 18. UC17: As a Librarian, I want that the "return reminder" for borrowed books is send automatically so that I save time and can focus on keeping the library up to date.
 
 ### Class diagram
-https://lucid.app/lucidchart/invitations/accept/inv_dc1b4624-c4b7-4b75-be56-0053b5493778?viewport_loc=-8%2C1248%2C2048%2C1085%2C0_0
+[Edit class diagram in lucid](https://lucid.app/lucidchart/invitations/accept/inv_dc1b4624-c4b7-4b75-be56-0053b5493778?viewport_loc=-8%2C1248%2C2048%2C1085%2C0_0)
 ![Class Diagram](documentation-resources/Class-Diagram.png?raw=true "Title")
 
 ###Layers and Tiers diagram
-from Salvatore and designed by Sonja
+We used the Bootstrap library, jQuery and JavaScript for the Presentation layer
+On the  Business and Persistence Layer Java Spring Boot is used and on the DB tier runs a Mysql database
+
+<em>from Salvatore and designed by Sonja</em>
 ![Layers and Tiers](documentation-resources/Layers-and-Tiers.png?raw=true "Title")
 
 ##Mockup
 ### Mockup draft
-Mockup draft from Sonja
+<em>Mockup draft from Sonja</em>
 ![Class Diagram](documentation-resources/Mockup-draft.png?raw=true "Title")
 
 ### Mockup refined
