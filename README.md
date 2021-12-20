@@ -10,7 +10,7 @@ The project team consisted the 4 members: Salvatore Trupia, Clelia Meneghin, Son
 The initial Use case diagram shows the basis for the whole set-up of the website.
 During the run of the project, some requirements have changed and may not be applicable anymore. 
 
-https://lucid.app/lucidchart/4c7d5f12-b21d-4bff-988e-84bd686c2cd3/edit?viewport_loc=108%2C-247%2C1111%2C777%2C0_0&invitationId=inv_3a662d3c-c919-4256-8e0d-2f78abadef9b
+[Edit UML in the Lucid App](https://lucid.app/lucidchart/4c7d5f12-b21d-4bff-988e-84bd686c2cd3/edit?viewport_loc=108%2C-247%2C1111%2C777%2C0_0&invitationId=inv_3a662d3c-c919-4256-8e0d-2f78abadef9b)
 
 ![UML user stories](documentation-resources/UML-usecases.png?raw=true "Title")
 
@@ -66,7 +66,7 @@ The Librarian should have the main views of his/her profile, being able to look 
 The Student must get a overview of all books, where he/she can also search for a specific one; look at book information of books and get an overview of the profile. As they are not administrating, some buttons/functionalities do not have to be applicable. 
 
 ## DB structure
-https://lucid.app/lucidchart/7dc561be-ccba-475d-8fea-9955b0b630bb/edit?viewport_loc=-168%2C-223%2C2130%2C1129%2C0_0&invitationId=inv_95025269-9fc5-4c7f-b6da-3e6556c2a036
+[Edit DB diagram on lucid ](https://lucid.app/lucidchart/7dc561be-ccba-475d-8fea-9955b0b630bb/edit?viewport_loc=-168%2C-223%2C2130%2C1129%2C0_0&invitationId=inv_95025269-9fc5-4c7f-b6da-3e6556c2a036)
 ![DB Structure](documentation-resources/DB-Diagram.png?raw=true "Title")
 
 ### Reinstallation of Database with IntelliJ
