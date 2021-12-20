@@ -13,9 +13,11 @@ public class Category {
     @Column(name = "category_name", nullable = false)
     private String categoryName;
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "categories", cascade = {CascadeType.PERSIST, CascadeType.MERGE}) @JsonIgnore
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "categories", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JsonIgnore
     private List<Book> books;
 
+    //Getters and Setters
     public int getId() {
         return id;
     }
@@ -24,16 +26,13 @@ public class Category {
         this.id = id;
     }
 
-
-    //Getters and Setters
     public List<Book> getBooks() {
-       return books;
+        return books;
     }
 
     public void setBooks(List<Book> books) {
         this.books = books;
     }
-
 
     public String getCategoryName() {
         return categoryName;
@@ -43,4 +42,4 @@ public class Category {
         this.categoryName = category_name;
     }
 
-    }
+}

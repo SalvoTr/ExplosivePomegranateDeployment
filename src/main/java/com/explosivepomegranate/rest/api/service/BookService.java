@@ -3,14 +3,10 @@ package com.explosivepomegranate.rest.api.service;
 import com.explosivepomegranate.rest.api.model.*;
 import com.explosivepomegranate.rest.api.repository.AuthorRepository;
 import com.explosivepomegranate.rest.api.repository.BookRepository;
-import com.explosivepomegranate.rest.api.repository.BorrowedRepository;
 import com.explosivepomegranate.rest.api.repository.CategoryRepository;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -30,27 +26,33 @@ public class BookService {
     /**
      * @author: Salvatore
      * returns list of all categories (UC5)
-     * */
-    public List<Category> getAllCategories() { return categoryRepository.findAll(); }
+     */
+    public List<Category> getAllCategories() {
+        return categoryRepository.findAll();
+    }
 
     /**
      * @author: Salvatore
      * returns list of all authors (UC5)
-     * */
-    public List<Author> getAllAuthors() { return authorRepository.findAll(); }
+     */
+    public List<Author> getAllAuthors() {
+        return authorRepository.findAll();
+    }
 
     /**
      * @author: Salvatore
      * returns list of all books (UC5/6)
-     * */
-    public List<Book> getAllBooks() { return bookRepository.findAll(); }
+     */
+    public List<Book> getAllBooks() {
+        return bookRepository.findAll();
+    }
 
     /**
-     * @author Sonja
-     * UC6 find book by id
      * @return Book object found with given id
+     * @author Sonja
+     * find book by id (uc6)
      **/
-    public Book getBookByID (int bookId){
+    public Book getBookByID(int bookId) {
         //todo error handling?
         Book book = bookRepository.findById(bookId).get();
         return book;
@@ -58,7 +60,7 @@ public class BookService {
 
     /**
      * @author: Salvatore
-     * Fetches all books from a given category ID(UC5)
+     * Fetches all books from a given category ID (UC5)
      * */
     public List<Book> getBookByCategory(int categoryId){
         return bookRepository.findDistinctByCategories_Id(categoryId);
@@ -69,7 +71,7 @@ public class BookService {
 
     /**
      * @author: Salvatore
-     * Fetches all books from a given author ID(UC5)
+     * Fetches all books from a given author ID (UC5)
      * */
     public List<Book> getBookByAuthor(int authorId){
         return bookRepository.findDistinctByAuthors_Id(authorId);
@@ -78,8 +80,8 @@ public class BookService {
     /**
      * @author Clelia
      * save new book (UC10)
-     * */
-    public void saveNewBook(JsonNode jsonNode) throws Exception {
+     */
+    public void saveNewBook(JsonNode jsonNode) {
         Book newBook = new Book();
         newBook.setISBN(jsonNode.get("isbn").asText());
         newBook.setTitle(jsonNode.get("title").asText());
@@ -94,28 +96,28 @@ public class BookService {
         // check if author already exists, if yes save to list, if no create one
         // get authors from node
         // go through author array
-        for(JsonNode node : jsonNode.get("authors")){
+        for (JsonNode node : jsonNode.get("authors")) {
             Author author = new Author();
             author.setAuthorFirstname(node.get("firstname").asText());
             author.setAuthorLastname(node.get("lastname").asText());
             // check if the author already is saved
             List<Author> existingAuthors = authorRepository.findAllByAuthorFirstnameAndAndAuthorLastname(author.getAuthorFirstname(), author.getAuthorLastname());
-            if(existingAuthors.size() > 0) {
+            if (existingAuthors.size() > 0) {
                 authors.add(existingAuthors.get(0));
             } else {
-               authorRepository.save(author);
-               authors.add(author);
+                authorRepository.save(author);
+                authors.add(author);
             }
         }
         // check if category already exists, if yes save to list, if no create one
         // get categories from node
         // go through categories array
-        for(JsonNode node : jsonNode.get("categories")){
+        for (JsonNode node : jsonNode.get("categories")) {
             Category category = new Category();
             category.setCategoryName(node.get("name").asText());
             // check if the category already is saved
             List<Category> existingCategory = categoryRepository.findCategoryByCategoryName(category.getCategoryName());
-            if(existingCategory.size() > 0) {
+            if (existingCategory.size() > 0) {
                 categories.add(existingCategory.get(0));
             } else {
                 categoryRepository.save(category);

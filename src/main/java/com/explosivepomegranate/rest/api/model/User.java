@@ -1,11 +1,8 @@
 package com.explosivepomegranate.rest.api.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "user")
@@ -19,11 +16,11 @@ public class User {
     private String email;
 
     //Connects the user with borrowed books
-    @OneToMany(mappedBy="user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Borrowed> borrowers;
 
     @ManyToOne
-    @JoinColumn(name="role_id")
+    @JoinColumn(name = "role_id")
     private Role role;
 
     @OneToOne(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -46,6 +43,7 @@ public class User {
     public User(String email, String password) {
     }
 
+    //Getters and Setters
     public Integer getId() {
         return id;
     }
@@ -86,9 +84,13 @@ public class User {
         this.role = role;
     }
 
-    public Login getLogin() { return login; }
+    public Login getLogin() {
+        return login;
+    }
 
-    public void setLogin(Login login){ this.login = login; }
+    public void setLogin(Login login) {
+        this.login = login;
+    }
 
     public List<Borrowed> getBorrowers() {
         return borrowers;
