@@ -1,10 +1,8 @@
 package com.explosivepomegranate.rest.api.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.sql.Date;
-
 
 @Entity
 @Table(name = "borrowed")
@@ -29,6 +27,7 @@ public class Borrowed {
     @JoinColumn(name = "user_id")
     private User user;
 
+    //Getters and Setters
     public int getId() {
         return id;
     }

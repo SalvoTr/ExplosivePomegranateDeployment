@@ -1,7 +1,5 @@
 package com.explosivepomegranate.rest.api.controller;
 
-import com.explosivepomegranate.rest.api.model.Login;
-import com.explosivepomegranate.rest.api.model.Role;
 import com.explosivepomegranate.rest.api.model.User;
 import com.explosivepomegranate.rest.api.repository.LoginRepository;
 import com.explosivepomegranate.rest.api.repository.RoleRepository;
@@ -14,8 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.security.core.Authentication;
-
-import java.util.List;
 
 @RestController
 public class UserController {
@@ -70,20 +66,4 @@ public class UserController {
     public User updateUser(@RequestBody User updatedUser, Authentication authentication){
         return userService.updateProfileInformation(updatedUser, authentication);
     }
-
-
-    // TODO remove these unused and dangerous methods after testing
-    /**
-    * @author: Salvatore
-     * returns list of all users, roles, logins (for testing purposes)
-     * */
-    @GetMapping (path = "/allUserAccounts", produces = "application/json")
-    public List<User> getUsers() { return userRepository.findAll(); }
-
-    @GetMapping (path = "/allLogins", produces = "application/json")
-    public List<Login> getLogins() { return loginRepository.findAll(); }
-
-    @GetMapping (path = "/allRoles", produces = "application/json")
-    public List<Role> getRoles() { return roleRepository.findAll(); }
-
 }

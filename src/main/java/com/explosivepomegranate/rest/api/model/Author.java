@@ -1,7 +1,6 @@
 package com.explosivepomegranate.rest.api.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -16,7 +15,8 @@ public class Author {
     @Column(name = "author_lastname", nullable = false)
     private String authorLastname;
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "authors", cascade = {CascadeType.MERGE, CascadeType.PERSIST}) @JsonIgnore
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "authors", cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JsonIgnore
     private List<Book> books;
 
     public List<Book> getBooks() {
@@ -26,8 +26,10 @@ public class Author {
     public void setBooks(List<Book> books) {
         this.books = books;
     }
-//Salvatore - connects the Book table with the Author table
+    //Salvatore - connects the Book table with the Author table
 
+
+    //Getters and Setters
     public int getId() {
         return id;
     }
@@ -51,6 +53,5 @@ public class Author {
     public void setAuthorLastname(String author_lastname) {
         this.authorLastname = author_lastname;
     }
-
 
 }
