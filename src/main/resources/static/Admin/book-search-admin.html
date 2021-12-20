@@ -30,13 +30,11 @@
 <body>
     <div class="col-sm-3" id="navigation"></div>
     <div class="col-sm-9">
-        <div class="row">
-            <h1 class="col-sm-9">Filter Books</h1>
-            <div>
-                <a href="/createNewBook"><button id="addNewBook"  class="btn btn-primary col-sm-3" type="button">Add Book to Library</button></a>
-            </div>
+        <div class="row" style="background: white;">
+            <h1 class="col-sm-9-custom">Welcome to the FHNW Library</h1>
+            <h2>Search Books</h2>
         </div>
-        <div class="placeholder-empty"></div>
+        <div class="placeholder-empty  col-sm-9-custom"></div>
         <form class="search-form2" id="search-form">
             <div class="input-group"><span class="input-group-text" style="background: rgb(245, 221, 25);"><i class="fa fa-search"></i></span>
                 <input class="form-control" id="searchFor" type="text" placeholder="I am looking for ...">
@@ -46,6 +44,12 @@
                 <button class="btn h-25" type="submit" style="background: rgb(245, 221, 25);">Search </button>
             </div>
         </form>
+        <div>
+            <a href="/createNewBook"><button id="addNewBook"  class="btn btn-primary " type="button">Add Book to Library</button></a>
+        </div>
+
+        <div class="placeholder-empty  col-sm-9-custom"></div>
+        <p></p>
         <div id="allBooks" style="height: 420px;">
 
         </div>
