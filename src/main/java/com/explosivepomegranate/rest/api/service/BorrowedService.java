@@ -113,12 +113,16 @@ public class BorrowedService {
         Book book = bookRepository.findById(bookId).get();
         List<Borrowed> allBorrowsOfBook = borrowedRepository.findByBook(book);
         // get the last entry ( newest one added)
-        Borrowed borrowed = allBorrowsOfBook.get(allBorrowsOfBook.size() - 1);
-        User user = findAuthenticatedUser(authentication);
-        if (borrowed.getUser().getId() == user.getId()) {
-            return true;
-        } else
+        if(allBorrowsOfBook.size() > 0) {
+            Borrowed borrowed = allBorrowsOfBook.get(allBorrowsOfBook.size() - 1);
+            User user = findAuthenticatedUser(authentication);
+            if (borrowed.getUser().getId() == user.getId()) {
+                return true;
+            } else
+                return false;
+        } else {
             return false;
+        }
     }
 
     /**
