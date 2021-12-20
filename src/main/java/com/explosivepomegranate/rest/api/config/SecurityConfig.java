@@ -66,11 +66,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .logout().deleteCookies("JSESSIONID")// on logout, delete cookie
                     .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                     .logoutSuccessUrl("/");
-               // .and().httpBasic().realmName("REALM_EXPLOSIVE").authenticationEntryPoint(entryPoint());
+                //.and().httpBasic().realmName("REALM_EXPLOSIVE").authenticationEntryPoint(entryPoint());
     }
 
     /**
      * Add entry point for postman to access with basic authentication configurations
+     * for deplyoment this is commented out in the configure method but for future projects, if you want to use postmen after implementing
+     * the login you need an entry point
      * @author Clelia
      * */
     public BasicAuthenticationEntryPoint entryPoint(){
