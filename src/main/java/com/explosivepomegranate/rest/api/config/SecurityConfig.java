@@ -65,8 +65,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                     .logout().deleteCookies("JSESSIONID")// on logout, delete cookie
                     .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                    .logoutSuccessUrl("/")
-                .and().httpBasic().realmName("REALM_EXPLOSIVE").authenticationEntryPoint(entryPoint());
+                    .logoutSuccessUrl("/");
+               // .and().httpBasic().realmName("REALM_EXPLOSIVE").authenticationEntryPoint(entryPoint());
     }
 
     /**
