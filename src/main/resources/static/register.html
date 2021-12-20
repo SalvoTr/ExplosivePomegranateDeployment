@@ -42,11 +42,11 @@
                 </div><a class="already" href="/">Already have an account? Login here</a>
             </form>
         </div><footer id="footer">
-    
-    <div style= "text-align: center; margin: 0px; padding:0.125em">
-        <p style= "color:grey; font-family: raleway">© 2021 Explosive Pomegrenade</p>
-    </div>
-</footer>
+
+        <div style="text-align: center; margin: 0px; padding:0.125em">
+            <p style="color:grey; font-family: raleway">© 2021 Explosive Pomegrenade</p>
+        </div>
+    </footer>
     </section>
 
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
@@ -56,26 +56,25 @@
 
 </body>
 <script>
-        //registration of a new user
-        $(document).ready(function () {
-            $("#register-form").submit(function (event) {
-                postNewUser(
-
-                    $('input[name=first-name]').val(),
-                    $('input[name=last-name]').val(),
-                    $('input[name=email]').val(),
-                    $('input[name=password]').val(),
-                    function (result) {
-                        window.location.replace("/"); //Where it puts us after successful register
-                    },
-                    function (error) {
-                        $("#error-modal").modal('show');
-                        $("#error-text").text(error);
+    //registration of a new user
+    $(document).ready(function () {
+        $("#register-form").submit(function (event) {
+            postNewUser(
+                $('input[name=first-name]').val(),
+                $('input[name=last-name]').val(),
+                $('input[name=email]').val(),
+                $('input[name=password]').val(),
+                function (result) {
+                    window.location.replace("/"); //Where it puts us after successful register
+                },
+                function (error) {
+                    $("#error-modal").modal('show');
+                    $("#error-text").text(error);
                 });
-                event.preventDefault();
-            });
+            event.preventDefault();
         });
+    });
 
-    </script>
+</script>
 
 </html>

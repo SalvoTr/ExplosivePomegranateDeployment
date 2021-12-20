@@ -58,7 +58,6 @@ CREATE TABLE borrowed(
                          book_id INT,
                          start_date DATE,
                          init_end_date DATE,
-                         extend_end_date DATE,
                          book_comment VARCHAR (600),
                          FOREIGN KEY (user_id) REFERENCES user(user_id),
                          FOREIGN KEY (book_id) REFERENCES book(book_id)
@@ -179,36 +178,36 @@ INSERT INTO heroku_3c7f4e16f461975.user VALUES(8, 'Devid','Montecchiari', 'devid
 INSERT INTO heroku_3c7f4e16f461975.user VALUES(9, 'Charuta','Pande', 'charuta.pande@fhnw.ch', 1);
 
 /* add content to borrowed, done by Clelia */
-INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(1,9,5,'2021-01-03','2021-01-30',NULL,NULL);
-INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(2,8,14,'2021-01-03','2021-01-10',NULL,'Coffe stain on first page');
-INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(3,7,1,'2021-01-15','2021-02-01',NULL,NULL);
-INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(4,6,2,'2021-02-01','2021-02-20',NULL,'Comment added with ink on some of the pages');
-INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(5,5,3,'2021-03-01','2021-03-05',NULL,NULL);
-INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(6,4,4,'2021-01-01','2021-03-25',NULL,NULL);
-INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(7,3,5,'2021-04-01','2021-04-02',NULL,'Book cover is instable');
-INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(8,2,6,'2021-04-25','2021-05-07',NULL,'someone folded the edged');
-INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(9,1,7,'2021-05-07','2021-05-010',NULL,NULL);
-INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(10,1,8,'2021-05-07','2021-05-19',NULL,NULL);
-INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(11,2,9,'2021-05-11','2021-06-04',NULL,'Last page is ripped out- nothing important, all important pages are there');
-INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(12,3,10,'2021-06-02','2021-06-29',NULL,NULL);
-INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(13,4,11,'2021-06-03','2021-06-17',NULL,NULL);
-INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(14,5,12,'2021-06-14','2021-06-28',NULL,NULL);
-INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(15,6,13,'2021-06-23','2021-07-12',NULL,NULL);
-INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(16,7,14,'2021-07-01','2021-07-11',NULL,NULL);
-INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(17,8,14,'2021-07-02','2021-07-13',NULL,NULL);
-INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(18,9,13,'2021-07-05','2021-07-30',NULL,NULL);
-INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(19,9,12,'2021-07-07','2021-07-13',NULL,'Ink stain in chapter 5');
-INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(20,8,11,'2021-08-01','2021-08-17',NULL,NULL);
-INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(21,7,10,'2021-08-04','2021-08-20',NULL,NULL);
-INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(22,6,9,' 2021-08-09','2021-08-28',NULL,NULL);
-INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(23,5,8,'2021-09-01','2021-09-12',NULL,NULL);
-INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(24,4,7,'2021-09-02','2021-09-13',NULL,'Someone drew a funny face on the author image');
-INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(25,3,6,'2021-09-15','2021-10-01',NULL,NULL);
-INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(26,2,5,'2021-09-20','2021-10-17',NULL,'Book cover is damaged');
-INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(27,1,4,'2021-10-01','2021-10-22',NULL,NULL);
-INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(28,1,3,'2021-10-01','2021-10-12',NULL,NULL);
-INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(29,2,2,'2021-10-22','2021-10-28',NULL,NULL);
-INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(30,3,1,'2021-10-14','2021-11-05',NULL,NULL);
+INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(1,9,5,'2021-01-03','2021-01-30',NULL);
+INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(2,8,14,'2021-01-03','2021-01-10','Coffe stain on first page');
+INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(3,7,1,'2021-01-15','2021-02-01',NULL);
+INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(4,6,2,'2021-02-01','2021-02-20','Comment added with ink on some of the pages');
+INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(5,5,3,'2021-03-01','2021-03-05',NULL);
+INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(6,4,4,'2021-01-01','2021-03-25',NULL);
+INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(7,3,5,'2021-04-01','2021-04-02','Book cover is instable');
+INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(8,2,6,'2021-04-25','2021-05-07','someone folded the edged');
+INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(9,1,7,'2021-05-07','2021-05-010',NULL);
+INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(10,1,8,'2021-05-07','2021-05-19',NULL);
+INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(11,2,9,'2021-05-11','2021-06-04','Last page is ripped out- nothing important, all important pages are there');
+INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(12,3,10,'2021-06-02','2021-06-29',NULL);
+INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(13,4,11,'2021-06-03','2021-06-17',NULL);
+INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(14,5,12,'2021-06-14','2021-06-28',NULL);
+INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(15,6,13,'2021-06-23','2021-07-12',NULL);
+INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(16,7,14,'2021-07-01','2021-07-11',NULL);
+INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(17,8,14,'2021-07-02','2021-07-13',NULL);
+INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(18,9,13,'2021-07-05','2021-07-30',NULL);
+INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(19,9,12,'2021-07-07','2021-07-13','Ink stain in chapter 5');
+INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(20,8,11,'2021-08-01','2021-08-17',NULL);
+INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(21,7,10,'2021-08-04','2021-08-20',NULL);
+INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(22,6,9,' 2021-08-09','2021-08-28',NULL);
+INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(23,5,8,'2021-09-01','2021-09-12',NULL);
+INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(24,4,7,'2021-09-02','2021-09-13','Someone drew a funny face on the author image');
+INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(25,3,6,'2021-09-15','2021-10-01',NULL);
+INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(26,2,5,'2021-09-20','2021-10-17','Book cover is damaged');
+INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(27,1,4,'2021-10-01','2021-10-22',NULL);
+INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(28,1,3,'2021-10-01','2021-10-12',NULL);
+INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(29,2,2,'2021-10-22','2021-10-28',NULL);
+INSERT INTO heroku_3c7f4e16f461975.borrowed VALUES(30,3,1,'2021-10-14','2021-11-05',NULL);
 
 /* add content to login, done by Clelia */
 /*Password2021. via Bycrypt round 12 encoder*/

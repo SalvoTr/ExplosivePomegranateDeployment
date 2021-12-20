@@ -9,7 +9,8 @@
     <!-- add stylesheet for multiselect dropdown-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.css">
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
@@ -28,41 +29,45 @@
 </head>
 
 <body>
-    <div class="col-sm-3" id="navigation"></div>
-    <div class="col-sm-9">
-        <div class="row" style="background: white;">
-            <h1 class="col-sm-9-custom">Welcome to the FHNW Library</h1>
-            <h2>Search Books</h2>
-        </div>
-        <div class="placeholder-empty  col-sm-9-custom"></div>
-        <form class="search-form2" id="search-form">
-            <div class="input-group"><span class="input-group-text" style="background: rgb(245, 221, 25);"><i class="fa fa-search"></i></span>
-                <input class="form-control" id="searchFor" type="text" placeholder="I am looking for ...">
-            </div>
-            <div class="input-group" id="category-group">
-                <select form="search-form" id="category-selection-search" class="categorySelectSearch" placeholder="Select categories" multiple></select>
-                <button class="btn h-25" type="submit" style="background: rgb(245, 221, 25);">Search </button>
-            </div>
-        </form>
-        <div>
-            <a href="/createNewBook"><button id="addNewBook"  class="btn btn-primary " type="button">Add Book to Library</button></a>
-        </div>
-
-        <div class="placeholder-empty  col-sm-9-custom"></div>
-        <p></p>
-        <div id="allBooks" style="height: 420px;">
-
-        </div>
+<div class="col-sm-3" id="navigation"></div>
+<div class="col-sm-9">
+    <div class="row" style="background: white;">
+        <h1 class="col-sm-9-custom">Welcome to the FHNW Library</h1>
+        <h2>Search Books</h2>
     </div>
-    <div id="footer"></div>
-    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="../assets/js/loadHTML.js"></script>
-    <script src="../assets/js/app.js"></script>
-    <script src="../assets/js/generalFunctions.js"></script>
-    <script src="../assets/js/loadBooks.js"></script>
-    <!-- load js for multiselect category -->
-    <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
+    <div class="placeholder-empty  col-sm-9-custom"></div>
+    <form class="search-form2" id="search-form">
+        <div class="input-group"><span class="input-group-text" style="background: rgb(245, 221, 25);"><i
+                class="fa fa-search"></i></span>
+            <input class="form-control" id="searchFor" type="text" placeholder="I am looking for ...">
+        </div>
+        <div class="input-group" id="category-group">
+            <select form="search-form" id="category-selection-search" class="categorySelectSearch"
+                    placeholder="Select categories" multiple></select>
+            <button class="btn h-25" type="submit" style="background: rgb(245, 221, 25);">Search</button>
+        </div>
+    </form>
+    <div>
+        <a href="/createNewBook">
+            <button id="addNewBook" class="btn btn-primary " type="button">Add Book to Library</button>
+        </a>
+    </div>
+
+    <div class="placeholder-empty  col-sm-9-custom"></div>
+    <p></p>
+    <div id="allBooks" style="height: 420px;">
+
+    </div>
+</div>
+<div id="footer"></div>
+<script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="../assets/js/loadHTML.js"></script>
+<script src="../assets/js/app.js"></script>
+<script src="../assets/js/generalFunctions.js"></script>
+<script src="../assets/js/loadBooks.js"></script>
+<!-- load js for multiselect category -->
+<script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
 </body>
 
 </html>
