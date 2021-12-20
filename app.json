@@ -1,0 +1,8 @@
+{
+  "name": "fhnwlibrary",
+  "description": "FHNW Library WebApp",
+  "website": "https://library-fhnw.herokuapp.com/",
+  "addons": [
+    "heroku-cleardb"
+  ]
+}

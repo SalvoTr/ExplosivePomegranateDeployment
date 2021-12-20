@@ -1,6 +1,8 @@
 package com.explosivepomegranate.rest.api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.util.List;
@@ -8,15 +10,26 @@ import java.util.List;
 /**
  * author: Clelia
  * Role model, variables defined and methods generated
- * */
+ */
+
 @Entity
 public class Role {
     @Id
     private int role_id;
     private String name;
-    @OneToMany(mappedBy = "role")
+    @OneToMany(mappedBy = "role", fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<User> users;
 
+    public Role(int id, String name) {
+        this.role_id = id;
+        this.name = name;
+    }
+
+    public Role() {
+    }
+
+    //Getters and Setters
     public List<User> getUsers() {
         return users;
     }

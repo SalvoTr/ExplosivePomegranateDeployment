@@ -1,19 +1,22 @@
 package com.explosivepomegranate.rest.api.model;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 public class Author {
-    @Id @GeneratedValue
-    private int author_id;
-    private String author_firstname;
-    private String author_lastname;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "author_id", nullable = false)
+    private int id;
+    @Column(name = "author_firstname", nullable = false)
+    private String authorFirstname;
+    @Column(name = "author_lastname", nullable = false)
+    private String authorLastname;
 
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "authors", cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JsonIgnore
     private List<Book> books;
 
     public List<Book> getBooks() {
@@ -23,31 +26,32 @@ public class Author {
     public void setBooks(List<Book> books) {
         this.books = books;
     }
-//Salvatore - connects the Book table with the Author table
+    //Salvatore - connects the Book table with the Author table
 
-    public int getAuthor_id() {
-        return author_id;
+
+    //Getters and Setters
+    public int getId() {
+        return id;
     }
 
-    public void setAuthor_id(int author_id) {
-        this.author_id = author_id;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getAuthor_firstname() {
-        return author_firstname;
+    public String getAuthorFirstname() {
+        return authorFirstname;
     }
 
-    public void setAuthor_firstname(String author_firstname) {
-        this.author_firstname = author_firstname;
+    public void setAuthorFirstname(String authorFirstname) {
+        this.authorFirstname = authorFirstname;
     }
 
-    public String getAuthor_lastname() {
-        return author_lastname;
+    public String getAuthorLastname() {
+        return authorLastname;
     }
 
-    public void setAuthor_lastname(String author_lastname) {
-        this.author_lastname = author_lastname;
+    public void setAuthorLastname(String author_lastname) {
+        this.authorLastname = author_lastname;
     }
-
 
 }

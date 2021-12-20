@@ -1,28 +1,35 @@
 package com.explosivepomegranate.rest.api.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
+@Table(name = "user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int user_id;
+    @Column(name = "user_id", nullable = false)
+    private int id;
     private String firstname;
     private String lastname;
     private String email;
+
+    //Connects the user with borrowed books
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Borrowed> borrowers;
+
     @ManyToOne
-    @JoinColumn(name="role_id", nullable = false)
+    @JoinColumn(name = "role_id")
     private Role role;
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     @JsonIgnore
     private Login login;
 
-    public User(int user_id, String firstname, String lastname, String email, Role role, Login login) {
-        this.user_id = user_id;
+    public User(int id, String firstname, String lastname, String email, Role role, Login login) {
+        this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
@@ -31,18 +38,18 @@ public class User {
     }
 
     public User() {
-
     }
 
     public User(String email, String password) {
     }
 
-    public int getUser_id() {
-        return user_id;
+    //Getters and Setters
+    public Integer getId() {
+        return id;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirstname() {
@@ -77,7 +84,19 @@ public class User {
         this.role = role;
     }
 
-    public Login getLogin() { return login; }
+    public Login getLogin() {
+        return login;
+    }
 
-    public void setLogin(Login login){ this.login = login; }
+    public void setLogin(Login login) {
+        this.login = login;
+    }
+
+    public List<Borrowed> getBorrowers() {
+        return borrowers;
+    }
+
+    public void setBorrowers(List<Borrowed> borrowers) {
+        this.borrowers = borrowers;
+    }
 }

@@ -4,9 +4,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>FHNW_Library</title>
+    <title>FHNW Library</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <!-- add stylesheet for multiselect dropdown-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.css">
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
@@ -17,78 +21,53 @@
     <link rel="stylesheet" href="../assets/css/Registration-Form.css">
     <link rel="stylesheet" href="../assets/css/Social-Icons.css">
     <link rel="stylesheet" href="../assets/css/Vertical-Nav.css">
+    <!-- for favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../assets/favicon/site.webmanifest">
 </head>
 
 <body>
-    <div class="col-sm-3">
-<div id="sidebar" class="active">
-    
-    <ul>
-        <img src="../assets/img/fhnw-logo.png" class="card-img-top w-100 d-block" alt="fhnw logo" title="fhnw logo"/>
-        <li><b class="here">Navigation</b></li>
-        <li><a href="../Admin/book-search-admin.html">Books</a></li>
-        <li><a href="../Admin/profile-admin.html">My Profile</a></li>
-        <li><a href="../Admin/borrowed-books-overview.html">Borrowed Books</a></li>
-        
-     
-        <div class="contact-info">
-            <small>Logout</small>
-            <button class="btn btn-primary btn-lg d-block  w-100" type="submit">Exit</button>
-            <p></p>
-        </div>
-        
-        
-    </ul>
-</div>
-
-
-
-
-
-</div>
-    <div class="col-sm-9" style="padding: 69px;">
-        <div class="row">
-            <h1 class="col-sm-9">Book Search</h1><button class="btn btn-primary col-sm-3" type="button">Add Book to Library</button>
-        </div>
-        <form class="search-form">
-            <div class="input-group"><span class="input-group-text" style="background: rgb(245, 221, 25);"><i class="fa fa-search"></i></span><input class="form-control" type="text" placeholder="I am looking for.."><button class="btn btn-light" type="button" style="background: rgb(245, 221, 25);">Search </button></div>
-        </form>
-        <div style="height: 420px;">
-            <div class="row" style="background: #f5f5f5;">
-                <div class="col-sm-2"><img style="width: 150px;height: 200px;" src="../assets/img/sample-book-cover.png"></div>
-                <div class="col-sm-9">
-                    <h3>BookTitleHere</h3>
-                    <p>BookDescriptionHere -&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est</p>
-                </div>
-                <div style="height: 19px;background: #ffffff;"></div>
-            </div>
-            <div class="row" style="background: #f5f5f5;">
-                <div class="col-sm-2"><img style="width: 150px;height: 200px;" src="../assets/img/sample-book-cover.png"></div>
-                <div class="col-sm-9">
-                    <h3>BookTitleHere</h3>
-                    <p>BookDescriptionHere -&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est</p>
-                </div>
-                <div style="height: 19px;background: #ffffff;"></div>
-            </div>
-            <div class="row" style="background: #f5f5f5;">
-                <div class="col-sm-2"><img style="width: 150px;height: 200px;" src="../assets/img/sample-book-cover.png"></div>
-                <div class="col-sm-9">
-                    <h3>BookTitleHere</h3>
-                    <p>BookDescriptionHere -&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est</p>
-                </div>
-                <div style="height: 19px;background: #ffffff;"></div>
-            </div>
-            <div class="row" style="background: #f5f5f5;">
-                <div class="col-sm-2"><img style="width: 150px;height: 200px;" src="../assets/img/sample-book-cover.png"></div>
-                <div class="col-sm-9">
-                    <h3>BookTitleHere</h3>
-                    <p>BookDescriptionHere -&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est</p>
-                </div>
-                <div style="height: 19px;background: #ffffff;"></div>
-            </div>
-        </div>
+<div class="col-sm-3" id="navigation"></div>
+<div class="col-sm-9">
+    <div class="row" style="background: white;">
+        <h1 class="col-sm-9-custom">Welcome to the FHNW Library</h1>
+        <h2>Search Books</h2>
     </div>
-    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <div class="placeholder-empty  col-sm-9-custom"></div>
+    <form class="search-form2" id="search-form">
+        <div class="input-group"><span class="input-group-text" style="background: rgb(245, 221, 25);"><i
+                class="fa fa-search"></i></span>
+            <input class="form-control" id="searchFor" type="text" placeholder="I am looking for ...">
+        </div>
+        <div class="input-group" id="category-group">
+            <select form="search-form" id="category-selection-search" class="categorySelectSearch"
+                    placeholder="Select categories" multiple></select>
+            <button class="btn h-25" type="submit" style="background: rgb(245, 221, 25);">Search</button>
+        </div>
+    </form>
+    <div>
+        <a href="/createNewBook">
+            <button id="addNewBook" class="btn btn-primary " type="button">Add Book to Library</button>
+        </a>
+    </div>
+
+    <div class="placeholder-empty  col-sm-9-custom"></div>
+    <p></p>
+    <div id="allBooks" style="height: 420px;">
+
+    </div>
+</div>
+<div id="footer"></div>
+<script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="../assets/js/loadHTML.js"></script>
+<script src="../assets/js/app.js"></script>
+<script src="../assets/js/generalFunctions.js"></script>
+<script src="../assets/js/loadBooks.js"></script>
+<!-- load js for multiselect category -->
+<script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
 </body>
 
 </html>

@@ -6,14 +6,16 @@ import javax.persistence.*;
 public class Login {
 
     private @Id
-    @Column(name="user_id") int id;
+    @Column(name = "user_id")
+    int id;
     private String password;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @MapsId
-    @JoinColumn(name="user_id")
+    @JoinColumn(name = "user_id")
     private User user;
 
+    //Getters and Setters
     public int getId() {
         return id;
     }

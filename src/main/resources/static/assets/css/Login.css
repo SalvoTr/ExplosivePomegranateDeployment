@@ -1,27 +1,28 @@
 .login-card {
-  max-width: 350px;
+  max-width: 21.875em;
   /*left: auto;*/
-  padding: 40px 40px;
+  padding: 2.5em 2.5em;
   background-color: #f7f7f7;
-  margin: 0 auto 25px;
-  margin-top: 50px;
-  border-radius: 24px;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  margin: 0 auto 1.5625em;
+  margin-top: 3.125em;
+  border-radius: 1.5em;
+  box-shadow: 0px 0.125em 0.125em rgba(0, 0, 0, 0.3);
+  transform-origin: center;
 }
 
 .login-card .profile-img-card {
-  width: 96px;
-  height: 96px;
-  margin: 0 auto 10px;
+  width: 6em;
+  height: 6em;
+  margin: 0 auto 0.625em;
   display: block;
   border-radius: 50%;
 }
 
 .login-card .profile-name-card {
-  font-size: 16px;
+  font-size: 1em;
   font-weight: bold;
   text-align: center;
-  margin: 10px 0 0;
+  margin: 0.625em 0 0;
   min-height: 1em;
 }
 
@@ -29,8 +30,8 @@
   display: block;
   color: #404040;
   line-height: 2;
-  margin-bottom: 10px;
-  font-size: 14px;
+  margin-bottom: 0.625em;
+  font-size: 0.875em;
   text-align: center;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -39,11 +40,11 @@
 }
 
 .login-card .form-signin input[type=email], .login-card .form-signin input[type=password], .login-card .form-signin input[type=text], .login-card .form-signin button {
-  height: 44px;
-  font-size: 16px;
+  height: 2.75em;
+  font-size: 100%;
   width: 100%;
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 0.625em;
   z-index: 1;
   position: relative;
   box-sizing: border-box;
@@ -56,18 +57,18 @@
 .login-card .form-signin .form-control:focus {
   border-color: rgb(104, 145, 162);
   outline: 0;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
+  -webkit-box-shadow: inset 0 0.0625em 0.0625em rgba(0,0,0,.075),0 0 0.5em rgb(104, 145, 162);
+  box-shadow: inset 0 0.0625em 0.0625em rgba(0,0,0,.075),0 0 0.5em rgb(104, 145, 162);
 }
 
 .login-card .btn.btn-signin {
   font-weight: 700;
-  height: 36px;
-  line-height: 36px;
-  font-size: 14px;
+  height: 2.25em;
+  line-height: 2.25em;
+  font-size: 0.875em;
   color: black;
   background: rgb(245, 221, 25);
-  border-radius: 3px;
+  border-radius: 0.1875em;
   border: none;
   transition: all 0.218s;
   padding: 0;
@@ -92,7 +93,7 @@
   color: #000;
   border-color: black;
   background-color: rgb(245, 221, 25);
-  margin-top: 10px;
+  margin-top: 0.625em;
 }
 
 .social-media-pictures {
