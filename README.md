@@ -11,7 +11,9 @@ https://lucid.app/lucidchart/4c7d5f12-b21d-4bff-988e-84bd686c2cd3/edit?viewport_
 
 ### User Stories
 
-#### Minimal Viable Product
+The Use cases were separated between the MVP, whic has been implemented and the Future improvement steps. The latter is not in place, but are seen as next steps, in case such a website would be taken further.
+
+#### MVP - Minimal Viable Product
 
 1. UC1: As a student of the FHNW, I want to use the web app on my different devices (i.e mobile devices, laptops, and desktop
    computers) so that I can access the web app everywhere.
