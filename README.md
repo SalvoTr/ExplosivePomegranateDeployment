@@ -7,7 +7,7 @@ https://lucid.app/lucidchart/4c7d5f12-b21d-4bff-988e-84bd686c2cd3/edit?viewport_
 
 ### User Stories
 
-####MVP
+#### Minimal Viable Product
 
 1. UC1: As a student of the FHNW, I want to use the web app on my different devices (i.e mobile devices, laptops, and desktop
    computers) so that I can access the web app everywhere.
@@ -50,17 +50,13 @@ Mockup draft from Sonja
 https://lucid.app/lucidchart/7dc561be-ccba-475d-8fea-9955b0b630bb/edit?viewport_loc=-168%2C-223%2C2130%2C1129%2C0_0&invitationId=inv_95025269-9fc5-4c7f-b6da-3e6556c2a036
 ![DB Structure](documentation-resources/DB-Diagram.png?raw=true "Title")
 
-### reinstall DB with IntelliJ
-go into your project folder.
-When you are in the folder explosivepomegranate/ then run 
-
+### Reinstallation of Database with IntelliJ
+Go into your project folder - when you are in the folder explosivepomegranate/ then run:
 mysql -u root -p library < src/main/resources/db/exposivePomegranate-db.sql
-
 in the IntelliJ Terminal / Terminal
 
-you will need to insert your mysql root password after you hit enter.
-then the database should be installed on your local environment.
-alternatively you can open the exposivePomegranate-db.sql file and just run it in the mysql interface
+You will need to insert your mysql root password after you hit enter; the database should be installed on your local environment.
+Alternatively you can open the exposivePomegranate-db.sql file and just run it in the mysql interface.
 
 ## API request documentation
 | Use Case | Request type | Request      | Content |
@@ -81,17 +77,18 @@ alternatively you can open the exposivePomegranate-db.sql file and just run it i
 | UC18     | POST         | /addComment/<book_id> | comment|
 
 # Start developing
-build you application by importing the maven dependencies
+Build your application by importing the maven dependencies
 
-in the terminal it is
+Therefore, type ine the terminal:
 mvn clean install
 
-then run your application over the interlliJ start option
+Then run your application over the interlliJ 'Run' option
 
-## working with Postmen
-make a post request
+## Working with Postmen
+Postmen provides an overview, what kind of information is already existing in the background of a website; this can be helpful to understand, whether a given information could be found or if a connection to the underlying data is missing. 
+Make a post request
 ![Post Request](documentation-resources/postmen-post.png?raw=true "Title")
-make a get request
+Make a get request
 ![Get Request](documentation-resources/postmen-get.png?raw=true "Title")
 
 
