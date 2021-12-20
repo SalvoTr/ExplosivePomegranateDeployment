@@ -1,20 +1,16 @@
 package com.explosivepomegranate.rest.api.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
 import javax.persistence.*;
-import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "book")
 public class Book {
-    // when you want to automatically save a user take the system id Identity
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    // when you want to automatically save a user take the system id
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int book_id;
     private String ISBN;
     private String title;
@@ -41,7 +37,6 @@ public class Book {
     @JsonIgnore
     @OrderBy(value = "init_end_date")
     private List<Borrowed> borrowed;
-
 
     //Getters and Setters
     public Set<Author> getAuthors() {

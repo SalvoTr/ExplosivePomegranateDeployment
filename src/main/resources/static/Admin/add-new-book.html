@@ -9,12 +9,14 @@
     <!-- add stylesheet for multiselect dropdown-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.css">
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
     <!-- add stylesheet for datepicker -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css"
+          rel="stylesheet">
     <link rel="stylesheet" href="../assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="../assets/css/container.css">
     <link rel="stylesheet" href="../assets/css/Login.css">
@@ -28,8 +30,8 @@
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
     <link rel="manifest" href="../assets/favicon/site.webmanifest">
 </head>
-<!-- I had some issues creating this form. I need to dynamicly add input fields depending on demand, but a button click within a form is forbidden
- which means that I needed to put the input fields for categories and authors outside of the form field. It is still associated with the form field when I give the
+<!-- I had some issues creating this form. I need to dynamically add input fields depending on demand, but a button click within a form is forbidden
+ which means that I needed to put the input fields for categories and authors outside the form field. It is still associated with the form field when I give the
  attribute 'form="new-book-form" , just to be careful, this form association is not supported in all browsers, see https://html.com/input-form/ -->
 
 <body>
@@ -40,16 +42,21 @@
         <h2 class="text-center"><strong>Add</strong> new book</h2>
         <div class="mb-3"><input class="form-control" type="text" name="isbn" placeholder="ISBN" required></div>
         <div class="mb-3"><input class="form-control" type="text" name="title" placeholder="Book Title" required/></div>
-        <div class="mb-3"><textarea class="form-control" type="text" name="description" placeholder="Book description" required></textarea></div>
-        <div class="mb-3"><input type="text" name="year" class="form-control" id="datepicker" value="Select Publishing Year" required /></div>
+        <div class="mb-3"><textarea class="form-control" type="text" name="description" placeholder="Book description"
+                                    required></textarea></div>
+        <div class="mb-3"><input type="text" name="year" class="form-control" id="datepicker"
+                                 value="Select Publishing Year" required/></div>
     </form>
     <div class="input-group" id="author-group">
-        <select form="new-book-form" id="author-selection" class="mb-3 authorSelect" placeholder="Select author(s)" multiple></select>
-        <button id="addAuthor" class="btn btn-primary d-block"/>Add new Author</button>
+        <select form="new-book-form" id="author-selection" class="mb-3 authorSelect" placeholder="Select author(s)"
+                multiple></select>
+        <button id="addAuthor" class="btn btn-primary d-block"/>
+        Add new Author</button>
     </div>
     <div class="input-group" id="category-group">
         <!--load Categories-->
-        <select form="new-book-form" id="category-selection" class="mb-3 categorySelect" placeholder="Select categories" multiple></select>
+        <select form="new-book-form" id="category-selection" class="mb-3 categorySelect" placeholder="Select categories"
+                multiple></select>
         <button id="addCategory" class="btn btn-primary d-block">Add new Category</button>
     </div>
     <div class="mb-3">

@@ -17,7 +17,7 @@ function getAllBooks(callback) {
     });
 }
 
-// get reguest to "/userRole" and get a boolean with true back if user is ROLE_ADMIN
+// get request to "/userRole" and get a boolean with true back if user is ROLE_ADMIN
 function isUserAdmin(callback) {
     $.ajax({
         type: "GET",
@@ -52,7 +52,7 @@ function postNewUser(firstname, lastname, email, password, callbackSuccess, call
 }
 
 // save new book
-function registerNewBook(newBookInfo, callback, callbackError) {
+function registerNewBook(newBookInfo, callback) {
     $.ajax({
         type: "POST",
         contentType: "application/json",

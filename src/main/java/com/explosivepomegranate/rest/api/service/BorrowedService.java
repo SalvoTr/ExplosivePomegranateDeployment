@@ -1,23 +1,16 @@
 package com.explosivepomegranate.rest.api.service;
 
-import com.explosivepomegranate.rest.api.controller.BookController;
 import com.explosivepomegranate.rest.api.model.Book;
 import com.explosivepomegranate.rest.api.model.Borrowed;
 import com.explosivepomegranate.rest.api.model.User;
 import com.explosivepomegranate.rest.api.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import static java.util.Comparator.comparing;
 import static java.util.Comparator.comparingInt;
 import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.toCollection;
-
 import java.sql.Date;
-import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -92,37 +85,37 @@ public class BorrowedService {
        return filteredAllBorrowed;
     }
 
-
     /**
      * @author Sonja
      * UC18 add a comment to a book
      **/
+
     public Borrowed addNewComment(String book_comment, Integer bookId, Authentication authentication) {
         Book book = bookRepository.findById(bookId).get();
-        List<Borrowed> allBorrowed = borrowedRepository.findByUserAndBook(findAuthenticatedUser(authentication),book);
+        List<Borrowed> allBorrowed = borrowedRepository.findByUserAndBook(findAuthenticatedUser(authentication), book);
         // get the last entry ( newest one added)
-        Borrowed borrowed = allBorrowed.get(allBorrowed.size()-1);
+        Borrowed borrowed = allBorrowed.get(allBorrowed.size() - 1);
         // if there is already a comment from the same user on the same borrowing then just combine the content
-        if(borrowed.getBookComment()== null) {
+        if (borrowed.getBookComment() == null) {
             borrowed.setBookComment(book_comment);
         } else {
-            borrowed.setBookComment(borrowed.getBookComment() +" , "+ book_comment);
+            borrowed.setBookComment(borrowed.getBookComment() + " , " + book_comment);
         }
         borrowedRepository.save(borrowed);
-
         return borrowed;
     }
+
     /**
      * @author Clelia
      * check if the book with the id is reserved by me
-     * */
+     */
     public Boolean checkIfBookedByMe(int bookId, Authentication authentication) {
         Book book = bookRepository.findById(bookId).get();
         List<Borrowed> allBorrowsOfBook = borrowedRepository.findByBook(book);
         // get the last entry ( newest one added)
-        Borrowed borrowed = allBorrowsOfBook.get(allBorrowsOfBook.size()-1);
+        Borrowed borrowed = allBorrowsOfBook.get(allBorrowsOfBook.size() - 1);
         User user = findAuthenticatedUser(authentication);
-        if(borrowed.getUser().getId() == user.getId()) {
+        if (borrowed.getUser().getId() == user.getId()) {
             return true;
         } else
             return false;
@@ -131,13 +124,14 @@ public class BorrowedService {
     /**
      * @author Clelia
      * get all comments on a booking
-     * */
+     */
+
     public List<Borrowed> allCommentsOnBook(int bookId) {
         Book book = bookRepository.findById(bookId).get();
         List<Borrowed> allBorrowsOfBook = borrowedRepository.findByBook(book);
         List<Borrowed> allWithComments = new ArrayList<>();
-        for (Borrowed borrowed: allBorrowsOfBook) {
-            if(borrowed.getBookComment() != null) {
+        for (Borrowed borrowed : allBorrowsOfBook) {
+            if (borrowed.getBookComment() != null) {
                 allWithComments.add(borrowed);
             }
         }
@@ -147,13 +141,13 @@ public class BorrowedService {
     /**
      * @author Clelia
      * give the user back based on authentication
-     * */
+     */
+
     public User findAuthenticatedUser(Authentication authentication) {
         CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
         userDetails.getUserId();
         return userRepository.findById(userDetails.getUserId());
     }
-
 
     public void returnBook(int bookId) {
         Book book = bookRepository.findById(bookId).get();
