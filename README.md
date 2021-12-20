@@ -1,5 +1,10 @@
 # ExplosivePomegranate
 
+This project deemed to deploy a website based on Java, HTML+CSS and a mySQL database. The backend is supported by Springboot, the source code, artefacts and further documentation is available on GitLab: https://gitlab.fhnw.ch/clelia.meneghin/explosivepomegranate/. <br />
+To see the final result, you can refer to: https://library-fhnw.herokuapp.com/ <br />
+The basic idea is a library, where FHNW students can borrow books or their studies and librarians administer the books in their admin role. <br />
+The project team consisted the 4 members: Salvatore Trupia, Clelia Meneghin, Sonja Nussbaumer and Rebecca Beutling.
+
 ### Use Case diagram
 
 The initial Use case diagram shows the basis for the whole set-up of the website.
@@ -11,7 +16,7 @@ https://lucid.app/lucidchart/4c7d5f12-b21d-4bff-988e-84bd686c2cd3/edit?viewport_
 
 ### User Stories
 
-The Use cases were separated between the MVP, whic has been implemented and the Future improvement steps. The latter is not in place, but are seen as next steps, in case such a website would be taken further.
+The Use cases were separated between the MVP, which has been implemented and the Future improvement steps. The latter is not in place, but are seen as next steps, in case such a website would be taken further.
 
 #### MVP - Minimal Viable Product
 
@@ -29,33 +34,41 @@ The Use cases were separated between the MVP, whic has been implemented and the 
 11. UC11: As a Librarian, I want to have an overview over books that are currently borrowed.
 12. UC12: As a Librarian, I want to see the dates of borrowed books
 13. UC18: As a student of the FHNW, I want to add a comment about a book condition for everyone to see so that I do not get fined for mistreating the book when the librarian notices something wrong with the book.
-UC20: As a Librarian, I can mark books as returned.
+14. UC20: As a Librarian, I can mark books as returned.
 
 #### Future improvement steps
-14. UC13: As a Librarian, I want to add students accounts so that the students of the FHNW have access to the library.
-15. UC14: As a students of the FHNW, I want a shopping card like experience for books I want to lend so that I keep the overview over how many books I added already.
-16. UC15: As a Libriarian, I want to add a image of the book cover to the book information.
-17. UC16: As a Libraran, I want a reporting functionality about all the borrowed books so that I can easily search for return dates for specific items and overdo books
-18. UC17: As a Librarian, I want that the "return reminder" for borrowed books is send automatically so that I save time and can focus on keeping the library up to date.
-19. UC19: As a Libriarian, I can delete book records.
+15. UC13: As a Librarian, I want to add students accounts so that the students of the FHNW have access to the library.
+16. UC14: As a students of the FHNW, I want a shopping card like experience for books I want to lend so that I keep the overview over how many books I added already.
+17. UC15: As a Libriarian, I want to add a image of the book cover to the book information.
+18. UC16: As a Libraran, I want a reporting functionality about all the borrowed books so that I can easily search for return dates for specific items and overdo books
+19. UC17: As a Librarian, I want that the "return reminder" for borrowed books is send automatically so that I save time and can focus on keeping the library up to date.
+20. UC19: As a Libriarian, I can delete book records.
 
 ### Class diagram
 [Edit class diagram in lucid](https://lucid.app/lucidchart/invitations/accept/inv_dc1b4624-c4b7-4b75-be56-0053b5493778?viewport_loc=-8%2C1248%2C2048%2C1085%2C0_0)
 ![Class Diagram](documentation-resources/Class-Diagram.png?raw=true "Title")
 
-###Layers and Tiers diagram
+### Layers and Tiers diagram
 We used the Bootstrap library, jQuery and JavaScript for the Presentation layer
 On the  Business and Persistence Layer Java Spring Boot is used and on the DB tier runs a Mysql database
 
 <em>from Salvatore and designed by Sonja</em>
 ![Layers and Tiers](documentation-resources/Layers-and-Tiers.png?raw=true "Title")
 
-##Mockup
+## Mockup
 ### Mockup draft
 <em>Mockup draft from Sonja</em>
+
+To visualize the ideas and views, we want to generate, we created following mock-up:
 ![Class Diagram](documentation-resources/Mockup-draft.png?raw=true "Title")
+The inital log-in page would be the same regardless the role of the user. However, the upcoming screens would differentiate based on Admin user (Librarian) or Normal User (Student). Generally, a corporate design with a collapsable sidebar should be always visible. <br />
+The Librarian should have the main views of his/her profile, being able to look at book information, the "Borrow a book" page with the additional "Add book" button and see an overview of all borrowed books. <br />
+The Student must get a overview of all books, where he/she can also search for a specific one; look at book information of books and get an overview of the profile. As they are not administrating, some buttons/functionalities do not have to be applicable. 
+
 
 ### Mockup refined
+<em>Screenshots from the actually deployed homepage</em>
+![Class Diagram](documentation-resources/Actual-Website.png?raw=true "Title")
 
 ## DB structure
 https://lucid.app/lucidchart/7dc561be-ccba-475d-8fea-9955b0b630bb/edit?viewport_loc=-168%2C-223%2C2130%2C1129%2C0_0&invitationId=inv_95025269-9fc5-4c7f-b6da-3e6556c2a036
