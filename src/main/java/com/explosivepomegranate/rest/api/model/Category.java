@@ -17,6 +17,7 @@ public class Category {
     @JsonIgnore
     private List<Book> books;
 
+    //Getters and Setters
     public int getId() {
         return id;
     }
@@ -25,8 +26,6 @@ public class Category {
         this.id = id;
     }
 
-
-    //Getters and Setters
     public List<Book> getBooks() {
         return books;
     }

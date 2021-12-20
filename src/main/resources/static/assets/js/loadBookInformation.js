@@ -6,9 +6,9 @@ $(document).ready(function () {
      * @author Clelia
      * get all comment previously made on the book
      * */
-    getAllComments(bookId, function (commentList){
+    getAllComments(bookId, function (commentList) {
         $('.bookComment').empty();
-        if(commentList.length > 0) {
+        if (commentList.length > 0) {
             $('.bookComment').append(
                 $('<h2>').text('Comments about book health'),
                 $('<table class="table">').append(
@@ -37,10 +37,10 @@ $(document).ready(function () {
      * @author Clelia
      * get all Authors listed in one line
      * */
-    function listAuthors(authors){
+    function listAuthors(authors) {
         let authorarray = [];
-        $.each(authors, function(key, author){
-            let aauthor = author.authorFirstname+" "+author.authorLastname;
+        $.each(authors, function (key, author) {
+            let aauthor = author.authorFirstname + " " + author.authorLastname;
             authorarray.push(aauthor);
         });
         return authorarray.join(" , ");
@@ -50,31 +50,31 @@ $(document).ready(function () {
      * @author Clelia
      * get all Categories listed in one line
      * */
-    function listCategories(categories){
+    function listCategories(categories) {
         let categoryarray = [];
-        $.each(categories, function(key, categories){
+        $.each(categories, function (key, categories) {
             let ccategory = categories.categoryName;
             categoryarray.push(ccategory);
         });
         return categoryarray.join(" , ");
     }
 
-    $(document).on('click', '#borrowBookBtn', function() {
-        reserveThisBook(bookId, function (result){
+    $(document).on('click', '#borrowBookBtn', function () {
+        reserveThisBook(bookId, function (result) {
             alert("This book was reserved successfully");
         })
     });
 
-    $(document).on('click', '#addCommentButton', function (){
+    $(document).on('click', '#addCommentButton', function () {
         $('#input-new-comment').append(
             $('<input type="text" class="form-control" name="comment" placeholder="Category name" required/>'),
             $('<button class="btn btn_save saveNewComment">').text("Save")
         )
     });
 
-    $(document).on('click', '.saveNewComment', function() {
+    $(document).on('click', '.saveNewComment', function () {
         let comment = $('input[name=comment]').val();
-        addNewCommentToBook(bookId, comment,function (){
+        addNewCommentToBook(bookId, comment, function () {
             alert("The comment was successfully added to the book, to view please reload the page");
         });
     });
@@ -90,7 +90,7 @@ $(document).ready(function () {
         bookedByMe(result.book_id, function (data) {
             myBooking = data;
             // if currentlybooked = false
-            if(!result.currentlyBorrowed) {
+            if (!result.currentlyBorrowed) {
                 $('#borrowBookBtn').prop("disabled", false);
                 $('#addCommentButton').hide();
             }// if booked by me, have the option to add a comment to a book
@@ -105,9 +105,10 @@ $(document).ready(function () {
     }
 
     $(loadData());
+
     function loadData() {
         // call the function getBookInfo defined in app.js and get the json back
-        getBookInfo( bookId, function (result) {
+        getBookInfo(bookId, function (result) {
             // delete content of the dom element with id
             $("#bookInformation").empty();
             //build html
@@ -122,11 +123,11 @@ $(document).ready(function () {
                         $(result.currentlyBorrowed ? $('<p class="BorrowedStyle">').text("Currently borrowed") : $('<p class="notBorrowedStyle">').text("Available")),
                         $('<p>').text("Author(s): " + listAuthors(result.authors)),
                         $('<p>').text("Category: " + listCategories(result.categories)),
-                        $('<p>').text("ISBN: "+result.isbn),
-                        $('<p>').text("Published: "+result.year),
+                        $('<p>').text("ISBN: " + result.isbn),
+                        $('<p>').text("Published: " + result.year),
                         $('<div>').append(
-                            $('<button id="borrowBookBtn" name="'+result.book_id+'" class="btn btn-primary col-sm-3" type="button">' ).text("Borrow this book"),
-                            $('<button id="addCommentButton" name="'+result.book_id+'" class="btn btn-primary col-sm-3" type="button">' ).text("Add a comment about the book status"),
+                            $('<button id="borrowBookBtn" name="' + result.book_id + '" class="btn btn-primary col-sm-3" type="button">').text("Borrow this book"),
+                            $('<button id="addCommentButton" name="' + result.book_id + '" class="btn btn-primary col-sm-3" type="button">').text("Add a comment about the book status"),
                             buttonOption(result)
                         )
                     )
@@ -140,5 +141,4 @@ $(document).ready(function () {
             );
         })
     }
-
 })
