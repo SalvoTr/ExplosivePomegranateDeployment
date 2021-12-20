@@ -15,6 +15,13 @@
   transform-origin: center;
 }
 
+.col-sm-9-custom {
+  float:left;
+  width: 80%;
+  height: 2.5em;
+  transform-origin: center;
+}
+
 .input-group-text{
   background: rgb(245, 221, 25);
 }
@@ -63,6 +70,12 @@ on the a element in the rowList and say that the link lays 100% over the card */
 
 .placeholder-empty {
   height: 10%;
+  background: #ffffff;
+  resize: both;
+}
+
+.placeholder-empty-title {
+  height: 20%;
   background: #ffffff;
   resize: both;
 }
