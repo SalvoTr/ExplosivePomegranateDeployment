@@ -29,6 +29,7 @@ The Use cases were separated between the MVP, whic has been implemented and the 
 11. UC11: As a Librarian, I want to have an overview over books that are currently borrowed.
 12. UC12: As a Librarian, I want to see the dates of borrowed books
 13. UC18: As a student of the FHNW, I want to add a comment about a book condition for everyone to see so that I do not get fined for mistreating the book when the librarian notices something wrong with the book.
+UC20: As a Librarian, I can mark books as returned.
 
 #### Future improvement steps
 14. UC13: As a Librarian, I want to add students accounts so that the students of the FHNW have access to the library.
