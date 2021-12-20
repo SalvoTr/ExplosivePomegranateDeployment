@@ -65,11 +65,6 @@ The inital log-in page would be the same regardless the role of the user. Howeve
 The Librarian should have the main views of his/her profile, being able to look at book information, the "Borrow a book" page with the additional "Add book" button and see an overview of all borrowed books. <br />
 The Student must get a overview of all books, where he/she can also search for a specific one; look at book information of books and get an overview of the profile. As they are not administrating, some buttons/functionalities do not have to be applicable. 
 
-
-### Mockup refined
-<em>Screenshots from the actually deployed homepage</em>
-![Class Diagram](documentation-resources/Actual-Website.png?raw=true "Title")
-
 ## DB structure
 https://lucid.app/lucidchart/7dc561be-ccba-475d-8fea-9955b0b630bb/edit?viewport_loc=-168%2C-223%2C2130%2C1129%2C0_0&invitationId=inv_95025269-9fc5-4c7f-b6da-3e6556c2a036
 ![DB Structure](documentation-resources/DB-Diagram.png?raw=true "Title")
