@@ -1,6 +1,6 @@
 # ExplosivePomegranate
 
-This project deemed to deploy a website based on Java, HTML+CSS and a mySQL database. The backend is supported by Springboot, the source code, artefacts and further documentation is available on GitLab: https://gitlab.fhnw.ch/clelia.meneghin/explosivepomegranate/. <br />
+This project deemed to deploy a website based on Java, HTML, CSS, JavaScript and a mySQL database. The backend is supported by Springboot, the source code, artefacts and further documentation is available on GitLab: https://gitlab.fhnw.ch/clelia.meneghin/explosivepomegranate/. <br />
 To see the final result, you can refer to: https://library-fhnw.herokuapp.com/ <br />
 The basic idea is a library, where FHNW students can borrow books or their studies and librarians administer the books in their admin role. <br />
 The project team consisted the 4 members: Salvatore Trupia, Clelia Meneghin, Sonja Nussbaumer and Rebecca Beutling.
