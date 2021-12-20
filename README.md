@@ -97,7 +97,6 @@ Alternatively you can open the explosivePomegranate-db.sql file and just run it 
 | UC8      | GET          | /bookedByMe/{bookId}   | currentlyBorrowed |
 | UC10     | POST         | /newBook     | isbn, title, description, year, category, author |
 | UC11/12     | GET          | /allBorrowed | title, description, year, currentlyBorrowed, category(ies), author(s), isbn , startDate, initEndDate, bookComment |
-| UC12     | POST         | /addNewUser  | firstname, lastname, email, password, role |
 | UC18     | POST         | /addComment/<book_id> | comment|
 | UC18     | GET         | /allComments/{bookId} | comment|
 | UC20     | POST         | /returnBook/<book_id> | isbn, title, description, year, category(ies), author(s), currentlyBorrowed, startDate, initEndDate |
