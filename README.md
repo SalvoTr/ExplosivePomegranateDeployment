@@ -1,6 +1,6 @@
 # ExplosivePomegranate
 
-This project deemed to deploy a website based on Java, HTML+CSS and a mySQL database. The backend is supported by Springboot and the source codes/artefacts can be found on GitLab: https://gitlab.fhnw.ch/clelia.meneghin/explosivepomegranate/. <br />
+This project deemed to deploy a website based on Java, HTML+CSS and a mySQL database. The backend is supported by Springboot, the source code, artefacts and further documentation is available on GitLab: https://gitlab.fhnw.ch/clelia.meneghin/explosivepomegranate/. <br />
 To see the final result, you can refer to: https://library-fhnw.herokuapp.com/ <br />
 The basic idea is a library, where FHNW students can borrow books or their studies and librarians administer the books in their admin role. <br />
 The project team consisted the 4 members: Salvatore Trupia, Clelia Meneghin, Sonja Nussbaumer and Rebecca Beutling.
@@ -16,7 +16,7 @@ https://lucid.app/lucidchart/4c7d5f12-b21d-4bff-988e-84bd686c2cd3/edit?viewport_
 
 ### User Stories
 
-The Use cases were separated between the MVP, whic has been implemented and the Future improvement steps. The latter is not in place, but are seen as next steps, in case such a website would be taken further.
+The Use cases were separated between the MVP, which has been implemented and the Future improvement steps. The latter is not in place, but are seen as next steps, in case such a website would be taken further.
 
 #### MVP - Minimal Viable Product
 
