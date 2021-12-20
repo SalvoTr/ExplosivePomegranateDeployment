@@ -46,14 +46,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.
-                sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER).and()
+                sessionManagement().sessionCreationPolicy(SessionCreationPolicy.ALWAYS).and()
                 .requiresChannel().requestMatchers(r -> r.getHeader("X-Forwarded-Proto") != null).requiresSecure()
                 .and() // If the X-Forwarded-Proto header is present, redirect to HTTPS (Heroku)
                     .csrf().disable()
                    //.requireCsrfProtectionMatcher(new CSRFRequestMatcher())
                    // .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()).and()
                 .authorizeRequests()
-                    .antMatchers("/assets/**", "/", "/register").permitAll()
+                    .antMatchers("/assets/**", "/", "/register", "/myNewUser").permitAll()
                     .anyRequest().authenticated()
                     .and()
                 .formLogin()
