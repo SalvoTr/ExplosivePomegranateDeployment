@@ -17,22 +17,19 @@ https://lucid.app/lucidchart/4c7d5f12-b21d-4bff-988e-84bd686c2cd3/edit?viewport_
 5. UC5: As a student of the FHNW, I want to search for books within the library so that I can see if the library has them
 6. UC6: As a student of the FHNW, I want to be able to see whether a book is currently available so that I can borrow it
 7. UC7: As a student of the FHNW, I want to reserve/borrow books so that I can pick them up at the physical library
-8. UC8: As a student of the FHNW, I want to see which books I'm currently borrowing and when I have to return them so that I
-   always have an overview of which books are due
+8. UC8: As a student of the FHNW, I want to see which books I'm currently borrowing and the history of books, I already borrowed.
 9. UC9: As a student of the FHNW, I want to stay logged in the webinterface when I close the browser window.
-10. UC10: As a Librarian, I want to be able to add new books into the system so that students of the FHNW see what is newly
-    available.
-11. UC11: As a Librarian, I want to have an overview over books that are overdue to return so that I can remind them that they
-    need to return the book.
+10. UC10: As a Librarian, I want to be able to add new books into the system.
+11. UC11: As a Librarian, I want to have an overview over books that are currently borrowed.
 12. UC12: As a Librarian, I want to see the dates of borrowed books
-13. UC13: As a librarian, I want to add students accounts so that the students of the FHNW have access to the library. 
+13. UC18: As a student of the FHNW, I want to add a comment about a book condition for everyone to see so that I do not get fined for mistreating the book when the librarian notices something wrong with the book.
 
-#### Nice to have
-14. UC14: As a students of the FHNW, I want a shopping card like experience for books I want to lend so that I keep the overview over how many books I added already.
-15. UC15: As a student of the FHNW, I want the possibility to register myself for access to the library so that I do not need to wait to be added by the Librarian. 
-16. UC16: As a Libraran, I want a reporting functionality about all the borrowed books so that I can easily search for return dates for specific items and overdo books
-17. UC17: As a Librarian, I want that the "return reminder" for borrowed books is send automatically so that I save time and can focus on keeping the library up to date. 
-18. UC18: As a student of the FHNW, I want to add a comment about a book condition for everyone to see so that I do not get fined for mistreating the book when the librarian notices something wrong with the book.
+#### Future improvement steps
+14. UC13: As a Librarian, I want to add students accounts so that the students of the FHNW have access to the library.
+15. UC14: As a students of the FHNW, I want a shopping card like experience for books I want to lend so that I keep the overview over how many books I added already.
+16. UC15: As a Libriarian, I want to add a image of the book cover to the book information.
+17. UC16: As a Libraran, I want a reporting functionality about all the borrowed books so that I can easily search for return dates for specific items and overdo books
+18. UC17: As a Librarian, I want that the "return reminder" for borrowed books is send automatically so that I save time and can focus on keeping the library up to date.
 
 ### Class diagram
 https://lucid.app/lucidchart/invitations/accept/inv_dc1b4624-c4b7-4b75-be56-0053b5493778?viewport_loc=-8%2C1248%2C2048%2C1085%2C0_0
@@ -96,3 +93,37 @@ make a post request
 ![Post Request](documentation-resources/postmen-post.png?raw=true "Title")
 make a get request
 ![Get Request](documentation-resources/postmen-get.png?raw=true "Title")
+
+
+# Deployment to Heroku
+This web application was deployed to Heroku. 
+In order to make this work two main things needed to be done:
+### Transfer of the code from GitLab to GitHub
+Heroku supports the automatic deployment of GitHub repositories. However, as we started our work in GitLab we needed a work-around.
+For this reason we firstly created a remote linking to a GitHub project and then we pushed the code to that repository - basically mirroring it.
+```powershell 
+git remote add github https://github.com/SalvoTr/ExplosivePomegranateDeployment.git
+git push --mirror github
+```
+In case the push didn't work (403 error) this would be the solution:
+```powershell 
+git remote set-url origin https://SalvoTr@github.com/SalvoTr/ExplosivePomegranateDeployment.git 
+```
+
+Once done, it as simple as clicking a button on the Heroku web-site to connect GitHub with the Heroku project.
+
+### Using ClearDB for MySQL
+The next obstacle arose due to the fact that we opted for MySQL instead of an in-memory PostgreSQL solution.
+
+A special Add-on needed to be installed in the Heroku project. in this case we chose **ClearDB**, one of multiple possible solutions.
+Once installed, we were able to get the Confic Vars for the database from the Heroku settings tab.
+![ConfigVars-ClearDB](documentation-resources/ConfigVars-ClearDB.png?raw=true "Title")
+
+From that string starting with "mysql://" one can extract username, password, and hostname in order to create a new connection within the MySQL Workbench
+![NewMySQLconnection](documentation-resources/MySQLconnection.png?raw=true "Title")
+
+### Additional files
+Finally, two more files were added in order to make it work 
+- [Procfile](Procfile)
+- [app.json](app.json)
+ 
