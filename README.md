@@ -138,6 +138,11 @@ Once installed, we were able to get the Confic Vars for the database from the He
 From that string starting with "mysql://" one can extract username, password, and hostname in order to create a new connection within the MySQL Workbench
 ![NewMySQLconnection](documentation-resources/MySQLconnection.png?raw=true "Title")
 
+### Limitations of ClearDB
+As we are using the free version of ClearDB we are limited to 3,600 queries per hour.
+In a real scenario we would evidently opt out for a paid version as this limited amount of queries is quickly reached - especially considering how often all books from the library are fetched. Please bear this in mind when extensively testing the [deployed webpage](https://library-fhnw.herokuapp.com/) 
+
+
 ### Additional files
 Finally, two more files were added in order to make it work 
 - [Procfile](Procfile)
