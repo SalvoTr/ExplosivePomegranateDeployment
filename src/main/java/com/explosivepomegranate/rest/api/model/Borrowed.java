@@ -14,7 +14,6 @@ public class Borrowed {
     private int id;
     private Date start_date;
     private Date init_end_date;
-    private Date extend_end_date;
     private String book_comment;
 
     //Connects to book
@@ -50,14 +49,6 @@ public class Borrowed {
 
     public void setInitEndDate(Date init_end_date) {
         this.init_end_date = init_end_date;
-    }
-
-    public Date getExtendEndDate() {
-        return extend_end_date;
-    }
-
-    public void setExtendEndDate(Date extend_end_date) {
-        this.extend_end_date = extend_end_date;
     }
 
     public String getBookComment() {
