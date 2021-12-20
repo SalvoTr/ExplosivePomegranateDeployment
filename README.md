@@ -101,7 +101,7 @@ make a get request
 # Deployment to Heroku
 This web application was deployed to Heroku. 
 In order to make this work two main things needed to be done:
-###Transfer of the code from GitLab to GitHub
+### Transfer of the code from GitLab to GitHub
 Heroku supports the automatic deployment of GitHub repositories. However, as we started our work in GitLab we needed a work-around.
 For this reason we firstly created a remote linking to a GitHub project and then we pushed the code to that repository - basically mirroring it.
 ```powershell 
@@ -115,7 +115,7 @@ git remote set-url origin https://SalvoTr@github.com/SalvoTr/ExplosivePomegranat
 
 Once done, it as simple as clicking a button on the Heroku web-site to connect GitHub with the Heroku project.
 
-###Using ClearDB for MySQL
+### Using ClearDB for MySQL
 The next obstacle arose due to the fact that we opted for MySQL instead of an in-memory PostgreSQL solution.
 
 A special Add-on needed to be installed in the Heroku project. in this case we chose **ClearDB**, one of multiple possible solutions.
@@ -125,7 +125,7 @@ Once installed, we were able to get the Confic Vars for the database from the He
 From that string starting with "mysql://" one can extract username, password, and hostname in order to create a new connection within the MySQL Workbench
 ![NewMySQLconnection](documentation-resources/MySQLconnection.png?raw=true "Title")
 
-###Additional files
+### Additional files
 Finally, two more files were added in order to make it work 
 - [Procfile](Procfile)
 - [app.json](app.json)
