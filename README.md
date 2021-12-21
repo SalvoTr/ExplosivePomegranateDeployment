@@ -160,7 +160,7 @@ In a real scenario we would evidently opt out for a paid version as this limited
 
 
 ### Additional files
-Finally, two more files were added in order to make it work 
+Finally, two more files were added in order to make the deployment together with the DB work 
 - [Procfile](Procfile)
 - [app.json](app.json)
  
