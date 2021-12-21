@@ -81,7 +81,6 @@ public class BookController {
     @GetMapping(path = "/bookInfo/{book_id}")
     public @ResponseBody
     ResponseEntity<Book> getBookByID(@PathVariable(value = "book_id") String bookId) {
-        //todo error handling?
         Book book = null;
         try {
             book = bookService.getBookByID(Integer.parseInt(bookId));
@@ -191,7 +190,7 @@ public class BookController {
 
     /**
      * @author Clelia
-     * return book with id
+     * return book with id (uc20)
      */
     @Secured("ROLE_ADMIN")
     @PostMapping(path = "/returnBook/{bookId}", produces = "application/json")
