@@ -19,7 +19,7 @@ During the run of the project, some requirements have changed and may not be app
 [Edit UML in the Lucid App](https://lucid.app/lucidchart/4c7d5f12-b21d-4bff-988e-84bd686c2cd3/edit?viewport_loc=108%2C-247%2C1111%2C777%2C0_0&invitationId=inv_3a662d3c-c919-4256-8e0d-2f78abadef9b)
 
 ![UML user stories](documentation-resources/UML-usecases.png?raw=true "Title")
-
+ 
 ### User Stories
 
 The Use cases were separated between the MVP, which has been implemented and the Future improvement steps. The latter is not in place, but are seen as next steps, in case such a website would be taken further.
