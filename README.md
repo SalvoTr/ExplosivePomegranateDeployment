@@ -1,5 +1,7 @@
 # ExplosivePomegranate
 
+[![Deploy to Heroku](https://img.shields.io/badge/deploy%20to-Heroku-6762a6.svg?longCache=true)](https://heroku.com/deploy)
+
 ## Project Management
 ### Project purpose, project members
 The project team consisted of 4 members: Salvatore Trupia, Clelia Meneghin, Sonja Nussbaumer and Rebecca Beutling.<br />
@@ -58,13 +60,10 @@ The Use cases were separated between the MVP, which has been implemented and the
 We used the Bootstrap library, jQuery and JavaScript for the Presentation layer
 On the  Business and Persistence Layer Java Spring Boot is used and on the DB tier runs a Mysql database
 
-<em>from Salvatore and designed by Sonja</em>
 ![Layers and Tiers](documentation-resources/Layers-and-Tiers.png?raw=true "Title")
 
 ## Mockup
 ### Mockup draft
-<em>Mockup draft from Sonja</em>
-
 To visualize the ideas and views, we want to generate, we created following mock-up:
 ![Class Diagram](documentation-resources/Mockup-draft.png?raw=true "Title")
 The inital log-in page would be the same regardless the role of the user. However, the upcoming screens would differentiate based on Admin user (Librarian) or Normal User (Student). Generally, a corporate design with a collapsable sidebar should be always visible. <br />
