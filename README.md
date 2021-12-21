@@ -2,10 +2,10 @@
 
 ## Project Management
 ### Project purpose, project members
+The project team consisted of 4 members: Salvatore Trupia, Clelia Meneghin, Sonja Nussbaumer and Rebecca Beutling.<br />
 This project deemed to deploy a website based on Java, HTML, CSS, JavaScript and a mySQL database. The backend is supported by Springboot, the source code, artefacts and further documentation is available on GitLab: https://gitlab.fhnw.ch/clelia.meneghin/explosivepomegranate/. <br />
-To see the final result, you can refer to: https://library-fhnw.herokuapp.com/ <br />
-The basic idea is a library, where FHNW students can borrow books or their studies and librarians administer the books in their admin role. <br />
-The project team consisted the 4 members: Salvatore Trupia, Clelia Meneghin, Sonja Nussbaumer and Rebecca Beutling.
+The basic idea is a library, where FHNW students can borrow books or their studies and librarians administer the books in their admin role. To see the final result, you can refer to: https://library-fhnw.herokuapp.com/ <br />
+The knowledge preservation was ensured, by documenting major tipps and tricks in the Wiki: https://gitlab.fhnw.ch/clelia.meneghin/explosivepomegranate/-/wikis/home
 
 ### Time Management
 The time management was based on the lecture contents and given fixe dates, like the submission on 10th of January 2022.
@@ -79,14 +79,6 @@ Looking at the mockup, the final result has been realized as intended with a cor
 [Edit DB diagram on lucid ](https://lucid.app/lucidchart/7dc561be-ccba-475d-8fea-9955b0b630bb/edit?viewport_loc=-168%2C-223%2C2130%2C1129%2C0_0&invitationId=inv_95025269-9fc5-4c7f-b6da-3e6556c2a036)
 ![DB Structure](documentation-resources/DB-Diagram.png?raw=true "Title")
 
-### Reinstallation of Database with IntelliJ
-Go into your project folder - when you are in the folder explosivepomegranate/ then run:
-mysql -u root -p library < src/main/resources/db/explosivePomegranate-db.sql
-in the IntelliJ Terminal / Terminal
-
-You will need to insert your mysql root password after you hit enter; the database should be installed on your local environment.
-Alternatively you can open the explosivePomegranate-db.sql file and just run it in the mysql interface.
-
 ## API request documentation
 | Use Case | Request type | Request      | Content |
 |----------|--------------|--------------|---------|
@@ -110,21 +102,6 @@ Alternatively you can open the explosivePomegranate-db.sql file and just run it 
 | UC18     | POST         | /addComment/<book_id> | comment|
 | UC18     | GET         | /allComments/{bookId} | comment|
 | UC20     | POST         | /returnBook/<book_id> | isbn, title, description, year, category(ies), author(s), currentlyBorrowed, startDate, initEndDate |
-
-# Start developing
-Build your application by importing the maven dependencies
-
-Therefore, type ine the terminal:
-mvn clean install
-
-Then run your application over the interlliJ 'Run' option
-
-## Working with Postmen
-Postmen provides an overview, what kind of information is already existing in the background of a website; this can be helpful to understand, whether a given information could be found or if a connection to the underlying data is missing. 
-Make a post request
-![Post Request](documentation-resources/postmen-post.png?raw=true "Title")
-Make a get request
-![Get Request](documentation-resources/postmen-get.png?raw=true "Title")
 
 
 # Deployment to Heroku
