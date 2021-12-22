@@ -1,6 +1,5 @@
 # ExplosivePomegranate
 
-[![Deploy to Heroku](https://img.shields.io/badge/deploy%20to-Heroku-6762a6.svg?longCache=true)](https://heroku.com/deploy)
 
 ## Project Management
 ### Project purpose, project members
@@ -104,6 +103,8 @@ Looking at the mockup, the final result has been realized as intended with a cor
 
 
 # Deployment to Heroku
+
+[![Deploy to Heroku](https://img.shields.io/badge/deploy%20to-Heroku-6762a6.svg?longCache=true)](https://heroku.com/deploy)
 This web application was deployed to Heroku. 
 In order to make this work two main things needed to be done:
 ### Transfer of the code from GitLab to GitHub
