@@ -67,7 +67,7 @@ $(document).ready(function () {
 
     $(document).on('click', '#addCommentButton', function () {
         $('#input-new-comment').append(
-            $('<input type="text" class="form-control" name="comment" placeholder="Category name" required/>'),
+            $('<input type="text" class="form-control" name="comment" placeholder="Add your comment here" required/>'),
             $('<button class="btn btn_save saveNewComment">').text("Save")
         )
     });
