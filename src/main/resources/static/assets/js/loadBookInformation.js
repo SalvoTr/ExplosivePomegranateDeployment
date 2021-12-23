@@ -62,6 +62,7 @@ $(document).ready(function () {
     $(document).on('click', '#borrowBookBtn', function () {
         reserveThisBook(bookId, function (result) {
             alert("This book was reserved successfully");
+            location.reload();
         })
     });
 

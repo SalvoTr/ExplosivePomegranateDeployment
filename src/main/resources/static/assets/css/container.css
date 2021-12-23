@@ -120,4 +120,17 @@ on the a element in the rowList and say that the link lays 100% over the card */
   padding-bottom: 2rem;
 }
 
+.btn-primary:disabled {
+  background-color: #a59d9d;
+  border-color: #1e2125;
+  margin-right: 10px;
+}
 
+
+
+@media only screen and (max-width: 860px) {
+  .col-sm-9 {
+    width: 100%;
+    padding: 10px;
+  }
+}
