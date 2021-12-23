@@ -5,6 +5,7 @@ $(document).ready(function () {
         if (!isAdmin) {
             //navigation of currently borrowed
             $("#currentlyBorrowed").hide();
+            $("#currentlyBorrowedListItem").hide();
             // button to add new book
             $("#addNewBook").hide();
             // button to edit book
